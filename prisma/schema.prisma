@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// type Categories = "comida" | "bebidas" | "limpieza y hogar" | "cuidado personal"
+
+// type SubCategory = "vegetales" | "panadería" | "vino" | "lácteos y huevos" | "carne y aves" | "bebidas sin alcohol" | "productos de limpieza" | "cereales y botanas" | "frutas" | "pescados y mariscos" | "pastas y granos" | "té" | "café" | "cerveza" | "casa y cocina" | "higiene personal" | "bebes"
+
+// enum Categories {
+//   comida
+//   bebidas
+//   limpieza
+//   cuidado_personal @map("cuidado personal")
+// }
+
+// enum SubCategory {
+//   vegetales
+//   frutas
+//   vino
+//   te
+//   cafe
+//   cerveza
+//   bebes
+//   higiene_personal      @map("higiene personal")
+//   casa_y_cocina         @map("casa y cocina")
+//   panaderia             @map("panadería")
+//   lacteos_y_huevos      @map("lácteos y huevos")
+//   carne_y_aves          @map("carne y aves")
+//   bebidas_sin_alcohol   @map("bebidas sin alcohol")
+//   productos_de_limpieza @map("productos de limpieza")
+//   cereales_y_botanas    @map("cereales y botanas")
+//   pescados_y_mariscos   @map("pescados y mariscos")
+// }
+
+model Product {
+  id          String   @id @default(uuid())
+  image       String
+  title       String
+  description String
+  category    String
+  subCategory String
+  offer       Boolean
+  price       Decimal
+  stock       Int
+  ventas      Decimal?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
