@@ -4,9 +4,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from "swiper/modules"
 import "swiper/css/bundle"
 
-import { productsData } from '@/seed/productData';
 import { CardProduct } from '@/components';
 import { Product } from '@/interface';
+import { initialData } from '@/seed/productData';
 
 
 interface Props {
@@ -14,6 +14,8 @@ interface Props {
 }
 
 export function SwiperCard({ filterProduct }: Props) {
+
+    const { productsData } = initialData
 
     // FILTRAR POR PRODUCTOS MAS VENDIDOS 
 

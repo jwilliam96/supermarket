@@ -2,11 +2,11 @@ import type { Categories, Product } from "../interface";
 
 interface Type {
     productsData: Product[]
-    categories: Categories[]
+    categoriesData: Categories[]
 }
 
 export const initialData: Type = {
-    categories: ["comida", "bebidas", "limpieza y hogar", "cuidado personal"],
+    categoriesData: ["comida", "bebidas", "limpieza y hogar", "cuidado personal"],
     productsData: [
         // VEGETALES
         {

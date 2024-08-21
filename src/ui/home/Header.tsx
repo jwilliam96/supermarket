@@ -1,12 +1,11 @@
 "use client"
 
-import Image from "next/image";
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from "swiper/modules"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { imagesHeader } from "@/utils/helps";
+import Image from "next/image";
 
 export function Header() {
-
-    const images = [{ img: "/home/img1.png", description: "pan" }, { img: "/home/img2.png", description: "cafe" }, { img: "/home/img3.png", description: "oso de peluche" }]
 
     return (
         <header className="relative">
@@ -25,7 +24,7 @@ export function Header() {
 
             >
                 {
-                    images.map(image => (
+                    imagesHeader.map(image => (
                         <SwiperSlide key={image.img}>
                             <Image
                                 src={image.img}

@@ -15,7 +15,7 @@ datasource db {
 
 model Category {
   id       String @id @default(uuid())
-  category String
+  category String @unique
 
   Product     Product[]
   SubCategory SubCategory[]
@@ -23,7 +23,7 @@ model Category {
 
 model SubCategory {
   id          String @id @default(uuid())
-  subcategory String
+  subcategory String @unique
 
   // RELACION
   category   Category  @relation(fields: [categoryId], references: [id])

@@ -2,8 +2,13 @@
 import { CategoriesPopular, DownloadApp, Header, SectionTwo, ServiceInfo, SpecialOffersOne } from "@/ui";
 import { Button, SwiperCard, Title } from "@/components";
 import Image from "next/image";
+import { getProducts } from "@/actions/server-action";
+
+
 
 export default async function Home() {
+
+  const products = await getProducts()
 
   return (
     <main >

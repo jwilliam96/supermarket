@@ -1,12 +1,14 @@
 "use client"
 
-import { productsData } from "@/seed/productData";
+import { initialData } from "@/seed/productData";
 import type { Product } from "@/interface";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export function CardProduct({ ...product }: Product) {
+
+    const { productsData } = initialData
 
     const [counter, setCounter] = useState(1)
 
