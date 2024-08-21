@@ -56,6 +56,7 @@ export function SwiperCard({ filterProduct }: Props) {
 
                                 <CardProduct {...product} />
 
+
                             </SwiperSlide>
                         ))
                     )
@@ -68,6 +69,7 @@ export function SwiperCard({ filterProduct }: Props) {
                                 <SwiperSlide key={product.image}>
 
                                     <CardProduct {...product} />
+
 
                                 </SwiperSlide>
                             ))
@@ -82,6 +84,7 @@ export function SwiperCard({ filterProduct }: Props) {
 
                                 <CardProduct {...product} />
 
+
                             </SwiperSlide>
                         ))
                     )
@@ -92,6 +95,7 @@ export function SwiperCard({ filterProduct }: Props) {
                             <SwiperSlide key={product.image}>
 
                                 <CardProduct {...product} />
+
 
                             </SwiperSlide>
                         ))

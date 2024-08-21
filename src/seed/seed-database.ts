@@ -1,12 +1,23 @@
-import { productsData } from "./productData";
 import prisma from '../lib/prisma';
+import { initialData } from './productData';
 
 
 async function main() {
 
-    await prisma.product.createMany({
-        data: productsData
+    // ELIMINAR TABLAS
+    // await prisma.product.deleteMany()
+    await prisma.category.deleteMany()
+
+    // CREAR TABLAS
+
+    const categories = initialData.categories.map(category => ({ category }))
+
+    await prisma.category.createMany({
+        data: categories
     })
+
+
+
     console.log("seed ejecuto correctamente")
 
 }

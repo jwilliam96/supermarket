@@ -32,7 +32,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/seed/seed-database.ts",
+    "src/seed/initialData.ts",
     "src/app/about/page.Jsx"
   ],
   "exclude": [

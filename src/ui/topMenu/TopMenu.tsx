@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
@@ -7,7 +8,7 @@ export function TopMenu() {
     return (
         <header className=" text-white">
 
-            {/* LOGIN  */}
+            {/* ATENCIÓN AL CLIENTE */}
             <div className="flex justify-between items-center bg-red-800 py-5 px-20">
                 <ul className="flex gap-4">
                     <li>Acerca de</li>
@@ -24,7 +25,8 @@ export function TopMenu() {
 
             {/* SEARCH, CART  */}
             <div className="flex justify-between items-center bg-red-500 py-5 px-20">
-                <h1 className="text-4xl">Trébol</h1>
+                {/* lOGO  */}
+                <Link href={"/"}><h1 className="text-4xl">Trébol</h1></Link>
 
                 {/* SEARCH  */}
                 <div className="flex w-[450px] bg-white rounded-full overflow-hidden p-[1px]">
