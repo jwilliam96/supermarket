@@ -3,12 +3,12 @@ import { CategoriesPopular, DownloadApp, Header, SectionTwo, ServiceInfo, Specia
 import { Button, SwiperCard, Title } from "@/components";
 import Image from "next/image";
 import { getProducts } from "@/actions/server-action";
+import { Suspense } from "react";
 
 
 
 export default async function Home() {
 
-  const products = await getProducts()
 
   return (
     <main >
@@ -44,7 +44,7 @@ export default async function Home() {
         {/* INICIAR LA COMPRA  */}
         <Title text="Iniciar la Compra" />
 
-        <SwiperCard filterProduct={"all"} />
+        {/* <SwiperCard filterProduct={"all"} products={products} /> */}
 
         <Button text="Comprar productos" />
 

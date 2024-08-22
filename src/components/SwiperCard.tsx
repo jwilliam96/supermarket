@@ -5,39 +5,73 @@ import { Navigation } from "swiper/modules"
 import "swiper/css/bundle"
 
 import { CardProduct } from '@/components';
-import { Product } from '@/interface';
 import { initialData } from '@/seed/productData';
+import { Category, Product, SubCategory } from '@prisma/client';
+import { useEffect, useState } from 'react';
 
 
 interface Props {
     filterProduct: "all" | "offer" | "ventas" | "frescura"
 }
 
+interface TypeProducts {
+    products: Product[]
+    categories: Category[]
+    subCategory: SubCategory[]
+}
+
+
 export function SwiperCard({ filterProduct }: Props) {
 
-    const { productsData } = initialData
+    const [productsData, setProducts] = useState<TypeProducts>()
+
+    useEffect(() => {
+
+        async function getProducts() {
+            const data = await fetch("http://localhost:3000/api/products")
+                .then(res => res.json())
+                .catch(err => console.log(err))
+
+            setProducts(data)
+        }
+
+        getProducts()
+
+    }, [])
+
+
+    // if (productsData) {
+
+    //     const { categories, products, subCategory } = productsData
+
+    //     const masVendidos: Product[] = []
+
+    //     const filterVentas = (category: string) => {
+
+
+    //         const filtroCategory = categories.filter(c => c.category === category)
+
+    //         const ordenadosPorVentas = filtroCategory.sort((a, b) => b.ventas - a.ventas);
+
+    //         const mayorVenta = ordenadosPorVentas[0]
+
+    //         masVendidos.push(mayorVenta)
+
+    //     }
+
+    // if (filterProduct === "ventas") {
+    //     options.map(option => {
+    //         filterVentas(option)
+    //     })
+    // }
+    // }
+
 
     // FILTRAR POR PRODUCTOS MAS VENDIDOS 
 
-    const options = ["vegetales", "panadería", "vino", "lácteos y huevos", "carne y aves", "bebidas sin alcohol", "productos de limpieza", "cereales y botanas", "frutas", "pescados y mariscos", "pastas y granos", "té", "café", "cerveza", "casa y cocina", "higiene personal", "bebes"]
+    // const options = ["vegetales", "panadería", "vino", "lácteos y huevos", "carne y aves", "bebidas sin alcohol", "productos de limpieza", "cereales y botanas", "frutas", "pescados y mariscos", "pastas y granos", "té", "café", "cerveza", "casa y cocina", "higiene personal", "bebes"]
 
-    const masVendidos: Product[] = []
 
-    function filterVentas(category: string) {
-        const filtroCategory = productsData.filter(p => p.subCategory === category)
-
-        const ordenadosPorVentas = filtroCategory.sort((a, b) => b.ventas - a.ventas);
-
-        const mayorVenta = ordenadosPorVentas[0]
-
-        masVendidos.push(mayorVenta)
-    }
-
-    if (filterProduct === "ventas") {
-        options.map(option => {
-            filterVentas(option)
-        })
-    }
 
     return (
         <div className='px-16 relative'>
@@ -51,9 +85,9 @@ export function SwiperCard({ filterProduct }: Props) {
                 modules={[Navigation]}
                 navigation={{ nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }}
             >
-                {
+                {/* {
                     filterProduct === "all" && (
-                        productsData.map(product => (
+                        products.map(product => (
                             <SwiperSlide key={product.image}>
 
                                 <CardProduct {...product} />
@@ -67,7 +101,7 @@ export function SwiperCard({ filterProduct }: Props) {
                 {
                     filterProduct === "offer" && (
                         (
-                            productsData.filter(product => product[filterProduct]).map(product => (
+                            products.filter(product => product[filterProduct]).map(product => (
                                 <SwiperSlide key={product.image}>
 
                                     <CardProduct {...product} />
@@ -93,7 +127,7 @@ export function SwiperCard({ filterProduct }: Props) {
                 }
                 {
                     filterProduct === "frescura" && (
-                        productsData.filter(product => product.subCategory === "frutas" || product.subCategory === "vegetales").map(product => (
+                        products.filter(product => product.subCategory === "frutas" || product.subCategory === "vegetales").map(product => (
                             <SwiperSlide key={product.image}>
 
                                 <CardProduct {...product} />
@@ -102,7 +136,7 @@ export function SwiperCard({ filterProduct }: Props) {
                             </SwiperSlide>
                         ))
                     )
-                }
+                } */}
 
             </Swiper>
             <button
