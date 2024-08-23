@@ -1,8 +1,20 @@
-import type { Categories, Product } from "../interface";
+import type { Categories, SubCategory } from "../interface";
 
 interface Type {
     productsData: Product[]
     categoriesData: Categories[]
+}
+
+export interface Product {
+    image: string
+    title: string
+    description: string
+    category: Categories
+    subCategory: SubCategory
+    offer: boolean
+    price: number
+    stock: number
+    ventas: number
 }
 
 export const initialData: Type = {

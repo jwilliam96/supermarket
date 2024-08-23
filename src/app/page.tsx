@@ -9,6 +9,7 @@ import { Suspense } from "react";
 
 export default async function Home() {
 
+  const products = await getProducts()
 
   return (
     <main >
@@ -27,7 +28,7 @@ export default async function Home() {
         {/* MEJORES OFERTAS  */}
         <Title text="Mejores ofertas" />
 
-        <SwiperCard filterProduct={"offer"} />
+        <SwiperCard filterProduct={"offer"} products={products!} />
 
         <Button text="Comprar mejores ofertas" />
 

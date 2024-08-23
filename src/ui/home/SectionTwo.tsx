@@ -6,7 +6,7 @@ export function SectionTwo() {
         <section className="container m-auto">
             <Title text="Más populares" />
 
-            <SwiperCard filterProduct={"ventas"} />
+            {/* <SwiperCard filterProduct={"ventas"} /> */}
 
             <Button text="Comprar más populares" />
 
@@ -26,7 +26,7 @@ export function SectionTwo() {
 
             <Title text="Compra frescura" />
 
-            <SwiperCard filterProduct="frescura" />
+            {/* <SwiperCard filterProduct="frescura" /> */}
 
             <Button text="Continuar comprando" />
         </section>
