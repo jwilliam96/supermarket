@@ -18,8 +18,6 @@ export async function SwiperContainer() {
         masVendido.push(mayorVenta)
     })
 
-    console.log(masVendido)
-
     return (
         <SwiperCard products={masVendido} />
     )
