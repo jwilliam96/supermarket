@@ -23,8 +23,7 @@ export default async function Home() {
         {/* MEJORES OFERTAS  */}
         <Title text="Mejores ofertas" />
 
-        {/* <SwiperCard filterProduct={"offer"} products={products!} /> */}
-        <SwiperContainer />
+        <SwiperContainer filterProduct="offer" />
 
         <Button text="Comprar mejores ofertas" />
 
@@ -40,8 +39,7 @@ export default async function Home() {
 
         {/* INICIAR LA COMPRA  */}
         <Title text="Iniciar la Compra" />
-
-        {/* <SwiperCard filterProduct={"all"} products={products} /> */}
+        <SwiperContainer filterProduct="all" />
 
         <Button text="Comprar productos" />
 

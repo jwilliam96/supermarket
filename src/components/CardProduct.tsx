@@ -7,41 +7,37 @@ import { Product } from "@/interface";
 
 interface Props {
     product: Product
+    ventas?: Product[] | undefined
 }
 
-export function CardProduct({ product }: Props) {
-
-    // const { productsData } = initialData
+export function CardProduct({ product, ventas }: Props) {
 
     const { counter, handleIncrement, handleDecrement } = useCounter()
-
-
-    // const filtroCategory = productsData.filter(p => p.subCategory === products.subCategory)
-
-    // const ordenadosPorVentas = filtroCategory.sort((a, b) => b.ventas - a.ventas);
-
-    // const mayorVenta = ordenadosPorVentas[0]
 
 
     return (
 
         <article className="border border-gray-400 relative cursor-pointer ">
 
-            {/* ETIQUETA  */}
+            {/* ETIQUETAS  */}
             {/* MEJORES OFERTAS  */}
             {
                 product.offer && (
                     <span className="bg-red-500 text-white text-xl py-1 px-4 absolute top-0 left-0">Mejor oferta</span>
                 )
             }
-
+            {
+                ventas?.map(v => {
+                    if (product.id === v.id) {
+                        return <span key={v.id} className="bg-red-500 text-white text-xl py-1 px-4 absolute top-0 left-0">Más vendido</span>
+                    }
+                })
+            }
 
             {/* IMAGEN } */}
-
             <Image className="w-full h-[300px]  object-cover " src={product.image} width={300} height={200} alt='producto' />
 
             {/* DESCRIPTION  */}
-
             <div className='px-4'>
                 <h3 className=' line-clamp-1'>{product.title}</h3>
 
@@ -59,7 +55,6 @@ export function CardProduct({ product }: Props) {
                 </div>
 
                 {/* CONTADOR  */}
-
                 <div className='flex justify-between text-xl my-4 items-center gap-2'>
                     <button onClick={handleDecrement} className=' bg-gray-800 px-2.5 rounded-full text-white'>-</button>
                     <span className='border px-7'>{counter}</span>

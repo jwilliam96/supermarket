@@ -1,12 +1,14 @@
-import { Button, SwiperCard, Title } from "@/components";
+import { Button, SwiperCard, SwiperContainer, Title } from "@/components";
 import Image from "next/image";
 
 export function SectionTwo() {
     return (
         <section className="container m-auto">
+
             <Title text="Más populares" />
 
-            {/* <SwiperCard filterProduct={"ventas"} /> */}
+            {/* <MAS POPULARES */}
+            <SwiperContainer filterProduct="ventas" />
 
             <Button text="Comprar más populares" />
 
@@ -26,7 +28,7 @@ export function SectionTwo() {
 
             <Title text="Compra frescura" />
 
-            {/* <SwiperCard filterProduct="frescura" /> */}
+            <SwiperContainer filterProduct="frescura" />
 
             <Button text="Continuar comprando" />
         </section>

@@ -17,11 +17,6 @@ async function main() {
             data: categories,
         });
 
-
-        // for (const product of productsData) {
-        //     const {subCategory, category, ...rest} = product
-        // }
-
         // CREAR PRODUCTOS Y SUB CATEGORÍAS
         for (const product of productsData) {
             const { subCategory, category, ...rest } = product;
@@ -54,8 +49,6 @@ async function main() {
             }
         }
 
-
-        console.log(productsData.length)
         console.log('Seed ejecutado correctamente');
     } catch (error) {
         console.error('Error durante la ejecución del seed:', error);

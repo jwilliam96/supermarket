@@ -9,11 +9,11 @@ import { Product } from '@/interface';
 
 
 interface Props {
-    filterProduct?: "all" | "offer" | "ventas" | "frescura"
-    products: Product[]
+    ventas?: Product[] | undefined
+    products: Product[] | undefined
 }
 
-export function SwiperCard({ filterProduct, products }: Props) {
+export function SwiperCard({ ventas, products }: Props) {
 
 
 
@@ -33,7 +33,7 @@ export function SwiperCard({ filterProduct, products }: Props) {
                 {
                     products?.map(product => (
                         <SwiperSlide key={product.id}>
-                            <CardProduct product={product} />
+                            <CardProduct product={product} ventas={ventas} />
                         </SwiperSlide>
                     ))
                 }
