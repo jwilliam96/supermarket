@@ -935,7 +935,7 @@ export const initialData: Type = {
             offer: false,
             price: 219.99,
             stock: 50,
-            ventas: 0
+            ventas: 5
         },
         {
             image: "/products/cgardonnay.webp",

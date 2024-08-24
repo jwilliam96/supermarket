@@ -1,15 +1,10 @@
 
 import { CategoriesPopular, DownloadApp, Header, SectionTwo, ServiceInfo, SpecialOffersOne } from "@/ui";
-import { Button, SwiperCard, Title } from "@/components";
+import { Button, SwiperContainer, Title } from "@/components";
 import Image from "next/image";
-import { getProducts } from "@/actions/server-action";
-import { Suspense } from "react";
-
 
 
 export default async function Home() {
-
-  const products = await getProducts()
 
   return (
     <main >
@@ -28,7 +23,8 @@ export default async function Home() {
         {/* MEJORES OFERTAS  */}
         <Title text="Mejores ofertas" />
 
-        <SwiperCard filterProduct={"offer"} products={products!} />
+        {/* <SwiperCard filterProduct={"offer"} products={products!} /> */}
+        <SwiperContainer />
 
         <Button text="Comprar mejores ofertas" />
 

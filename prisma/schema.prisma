@@ -39,7 +39,7 @@ model Product {
   offer       Boolean
   price       Decimal
   stock       Int
-  ventas      Decimal?
+  ventas      Decimal  @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 

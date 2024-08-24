@@ -4,18 +4,18 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from "swiper/modules"
 import "swiper/css/bundle"
 
-
-import { useEffect, useState } from 'react';
-import { CardProduct } from './CardProduct';
+import { CardProduct } from '../CardProduct';
 import { Product } from '@/interface';
 
 
 interface Props {
-    filterProduct: "all" | "offer" | "ventas" | "frescura"
+    filterProduct?: "all" | "offer" | "ventas" | "frescura"
     products: Product[]
 }
 
 export function SwiperCard({ filterProduct, products }: Props) {
+
+
 
     return (
         <div className='px-16 relative'>

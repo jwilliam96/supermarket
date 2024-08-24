@@ -1,11 +1,8 @@
 "use client"
 
-import { initialData } from "@/seed/productData";
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCounter } from "@/hook/useCounter";
-import foto from "/public/products/agua.webp"
 import { Product } from "@/interface";
 
 interface Props {
@@ -32,6 +29,11 @@ export function CardProduct({ product }: Props) {
 
             {/* ETIQUETA  */}
             {/* MEJORES OFERTAS  */}
+            {
+                product.offer && (
+                    <span className="bg-red-500 text-white text-xl py-1 px-4 absolute top-0 left-0">Mejor oferta</span>
+                )
+            }
 
 
             {/* IMAGEN } */}
@@ -59,7 +61,7 @@ export function CardProduct({ product }: Props) {
                 {/* CONTADOR  */}
 
                 <div className='flex justify-between text-xl my-4 items-center gap-2'>
-                    <button onClick={() => handleDecrement} className=' bg-gray-800 px-2.5 rounded-full text-white'>-</button>
+                    <button onClick={handleDecrement} className=' bg-gray-800 px-2.5 rounded-full text-white'>-</button>
                     <span className='border px-7'>{counter}</span>
                     <button onClick={handleIncrement} className=' bg-gray-800 px-2 pb-0.5 rounded-full text-white'>+</button>
                 </div>

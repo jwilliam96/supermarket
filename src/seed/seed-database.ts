@@ -4,8 +4,8 @@ import { initialData } from './productData';
 async function main() {
     try {
         // ELIMINAR TABLAS
-        await prisma.subCategory.deleteMany();
         await prisma.product.deleteMany();
+        await prisma.subCategory.deleteMany();
         await prisma.category.deleteMany();
 
         const { categoriesData, productsData } = initialData;
@@ -17,6 +17,11 @@ async function main() {
             data: categories,
         });
 
+
+        // for (const product of productsData) {
+        //     const {subCategory, category, ...rest} = product
+        // }
+
         // CREAR PRODUCTOS Y SUB CATEGORÍAS
         for (const product of productsData) {
             const { subCategory, category, ...rest } = product;
@@ -27,15 +32,17 @@ async function main() {
             });
 
             // Verificar si la sub categoría ya existe
-            const getSubcategory = await prisma.subCategory.findUnique({
+            let getSubcategory = await prisma.subCategory.findUnique({
                 where: { subcategory: subCategory },
             });
 
             // Crear la sub categoría si no existe
             if (!getSubcategory && getCategoryId) {
-                await prisma.subCategory.create({
+                const createSubcategory = await prisma.subCategory.create({
                     data: { subcategory: subCategory, categoryId: getCategoryId?.id },
                 });
+
+                getSubcategory = createSubcategory
             }
 
 
@@ -47,6 +54,8 @@ async function main() {
             }
         }
 
+
+        console.log(productsData.length)
         console.log('Seed ejecutado correctamente');
     } catch (error) {
         console.error('Error durante la ejecución del seed:', error);
