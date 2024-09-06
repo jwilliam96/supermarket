@@ -1,15 +1,18 @@
-import { productsData } from "@/seed/productData";
+import { getProductById } from "@/actions";
 
 
-export default function ProductPage({ params }: { params: { name: string } }) {
+export default async function ProductPage({ params }: { params: { name: string } }) {
 
-    const product = productsData.filter(p => p.title === params.name.replace(/_/g, " "))
+    // const product = initialData.productsData.filter(p => p.title === params.name.replace(/_/g, " "))
 
+    const product = await getProductById(params.name)
+
+    console.log(product)
     return (
         <div className="min-h-screen">
             <h1>Hello Page</h1>
 
-            <p>{product[0].title}</p>
+            <p>{params.name}</p>
         </div>
     );
 }

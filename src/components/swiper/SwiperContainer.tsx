@@ -1,4 +1,4 @@
-import { getCategory, getProducts, getSubcategory } from "@/actions/server-action"
+import { getProducts, getSubcategory } from "@/actions"
 import { SwiperCard } from "./SwiperCard"
 import { Product } from "@/interface"
 
@@ -7,11 +7,9 @@ interface Props {
     filterProduct: "all" | "offer" | "ventas" | "frescura"
 }
 
-
 export async function SwiperContainer({ filterProduct }: Props) {
 
     const products = await getProducts()
-    const categories = await getCategory()
     const subCategories = await getSubcategory()
 
     // MAS VENDIDOS
@@ -29,32 +27,36 @@ export async function SwiperContainer({ filterProduct }: Props) {
     // MEJORES OFERTAS
     const offerProducts = products?.filter(p => p.offer === true)
 
-    // VERDURAS 
+    // VERDURAS Y FRUTAS
     const idFrescuras = subCategories?.filter(s => ["vegetales", "frutas"].includes(s.subcategory)).map(f => f.id);
 
-    const frescura = products?.filter(p => idFrescuras!.includes(p.subCategoryId));
+    const frescura = products?.filter(p => idFrescuras?.includes(p.subCategoryId));
 
 
     return (
         <>
+            {/* OFERTAS */}
             {
                 filterProduct === "offer" && (
                     <SwiperCard products={offerProducts} />
                 )
             }
 
+            {/* MEJORES VENTAS  */}
             {
                 filterProduct === "ventas" && (
                     <SwiperCard products={masVendido} ventas={masVendido} />
                 )
             }
 
+            {/* TODO  */}
             {
                 filterProduct === "all" && (
                     <SwiperCard products={products} ventas={masVendido} />
                 )
             }
 
+            {/* FRESCURA  */}
             {
                 filterProduct === "frescura" && (
                     <SwiperCard products={frescura} ventas={masVendido} />

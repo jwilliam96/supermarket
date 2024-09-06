@@ -14,6 +14,7 @@ export function CardProduct({ product, ventas }: Props) {
 
     const { counter, handleIncrement, handleDecrement } = useCounter()
 
+    product.title = product.title.replace(/ /g, "_")
 
     return (
 
@@ -35,7 +36,9 @@ export function CardProduct({ product, ventas }: Props) {
             }
 
             {/* IMAGEN } */}
-            <Image className="w-full h-[300px]  object-cover " src={product.image} width={300} height={200} alt='producto' />
+            <Link href={`/product/${product.title}`}>
+                <Image className="w-full h-[300px]  object-cover " src={product.image} width={300} height={200} alt='producto' />
+            </Link>
 
             {/* DESCRIPTION  */}
             <div className='px-4'>
@@ -61,7 +64,9 @@ export function CardProduct({ product, ventas }: Props) {
                     <button onClick={handleIncrement} className=' bg-gray-800 px-2 pb-0.5 rounded-full text-white'>+</button>
                 </div>
 
-                <button className='my-4 mb-6 py-2 bg-red-500 text-white w-full rounded-full hover:bg-red-700'>Comprar</button>
+                <Link href={`/product/${product.title}`}>
+                    <button className='my-4 mb-6 py-2 bg-red-500 text-white w-full rounded-full hover:bg-red-700'>Comprar</button>
+                </Link>
             </div>
         </article>
     )

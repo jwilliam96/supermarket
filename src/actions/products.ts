@@ -22,6 +22,23 @@ export const getProducts = async () => {
 
 }
 
+export const getProductById = async (productId: string) => {
+
+    const convertedProduct = productId.replace(/_/g, " ")
+
+    try {
+        const products = prisma.product.findFirst({
+            where: { title: convertedProduct }
+        })
+
+        return products
+
+    } catch (error) {
+        return { message: "error", error }
+
+    }
+}
+
 // GET SUBCATEGORY
 export const getSubcategory = async () => {
     try {

@@ -7,7 +7,7 @@ import Image from "next/image";
 export default async function Home() {
 
   return (
-    <main >
+    <>
 
       {/* HEADER  */}
 
@@ -63,6 +63,6 @@ export default async function Home() {
           src={"/home/frescura.png"} width={1500} height={600} alt="frutas y verduras" />
       </div>
 
-    </main>
+    </>
   )
 }

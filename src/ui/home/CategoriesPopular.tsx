@@ -21,8 +21,6 @@ export function CategoriesPopular() {
                                 alt={category.title} />
 
                             <div className=" bg-[#FEEFD2] w-4/6 mx-auto rounded-full aspect-square " />
-
-
                         </figure>
 
                         <p className="font-bold text-xl">{category.title}</p>
