@@ -7,7 +7,6 @@ export default async function ProductPage({ params }: { params: { name: string }
 
     const product = await getProductById(params.name)
 
-    console.log(product)
     return (
         <div className="min-h-screen">
             <h1>Hello Page</h1>
