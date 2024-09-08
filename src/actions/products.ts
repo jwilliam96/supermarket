@@ -1,6 +1,7 @@
 "use server"
 
 import prisma from "@/lib/prisma"
+import { notFound } from "next/navigation";
 
 // GET PRODUCTOS
 export const getProducts = async () => {
@@ -22,21 +23,25 @@ export const getProducts = async () => {
 
 }
 
+// GET PRODUCTS BY ID
 export const getProductById = async (productId: string) => {
 
     const convertedProduct = productId.replace(/_/g, " ")
+    let products = await prisma.product.findFirst({
+        where: { title: convertedProduct }
+    })
 
-    try {
-        const products = prisma.product.findFirst({
-            where: { title: convertedProduct }
-        })
-
-        return products
-
-    } catch (error) {
-        return { message: "error", error }
-
+    if (!products) {
+        return notFound()
     }
+
+    const product = {
+        ...products,
+        price: products.price.toNumber(), // Convierte Decimal a number
+        ventas: products.ventas.toNumber(),
+    }
+
+    return product
 }
 
 // GET SUBCATEGORY
