@@ -19,7 +19,7 @@ export function TopMenu() {
 
                 <div className="flex gap-4 items-center ml-36">
                     <figure className="w-8 h-8 bg-black rounded-full"></figure>
-                    <span>Entrar</span>
+                    <Link href={"/auth/register"}>Entrar</Link>
                 </div>
             </div>
 

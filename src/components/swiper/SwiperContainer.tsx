@@ -9,7 +9,7 @@ interface Props {
 
 export async function SwiperContainer({ filterProduct }: Props) {
 
-    const products = await getProducts()
+    const products: Product[] = await getProducts()
     const subCategories = await getSubcategory()
 
     // MAS VENDIDOS

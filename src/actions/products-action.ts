@@ -1,25 +1,23 @@
 "use server"
 
 import prisma from "@/lib/prisma"
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+
 
 // GET PRODUCTOS
 export const getProducts = async () => {
+    const products = await prisma.product.findMany()
 
-    try {
-        const products = await prisma.product.findMany()
+    const convertedProducts = products.map(product => ({
+        ...product,
+        price: product.price.toNumber(), // Convierte Decimal a number
+    }));
 
-        const convertedProducts = products.map(product => ({
-            ...product,
-            price: product.price.toNumber(), // Convierte Decimal a number
-            ventas: product.ventas.toNumber(),
-        }));
-
-        return convertedProducts
-
-    } catch (error) {
-        console.error("Error fetching data:", error)
+    if (!convertedProducts) {
+        redirect(notFound())
     }
+
+    return convertedProducts
 
 }
 
@@ -38,7 +36,6 @@ export const getProductById = async (productId: string) => {
     const product = {
         ...products,
         price: products.price.toNumber(), // Convierte Decimal a number
-        ventas: products.ventas.toNumber(),
     }
 
     return product
