@@ -21,7 +21,7 @@ export default function Register() {
     })
 
     return (
-        <form onSubmit={onSubmit} className="max-w-[500px] mx-auto px-4 py-8 border">
+        <form onSubmit={onSubmit} className="max-w-[500px] mx-auto px-4 py-8 border w-full">
             <h2 className="text-xl text-center mb-4">Register</h2>
 
             <div className="grid gap-4">
