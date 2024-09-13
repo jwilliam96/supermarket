@@ -1,5 +1,6 @@
 export { Footer } from "./footer/Footer"
 export { TopMenu } from "./topMenu/TopMenu"
+export { Search } from "./topMenu/Search"
 export { title } from "./font/fonts"
 
 export { Header } from "./home/Header"

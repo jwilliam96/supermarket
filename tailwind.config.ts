@@ -11,6 +11,9 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'home-postOne': "url('/home/img1.png')"
+      },
+      screens: {
+        "ss": "440px"
       }
     },
   },

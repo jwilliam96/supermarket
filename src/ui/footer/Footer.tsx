@@ -4,9 +4,9 @@ export function Footer() {
 
 
     return (
-        <footer className=" bg-red-500 text-white p-20">
+        <footer className=" bg-red-500 text-white px-4 py-8 md:p-20">
 
-            <div className="flex justify-between">
+            <div className="flex gap-6 flex-col items-center text-center md:flex-row md:items-start md:justify-between">
 
                 <section className="flex flex-col">
                     <h1 className="text-4xl font-bold">Trébol</h1>
@@ -23,7 +23,7 @@ export function Footer() {
                     </div>
                 </section>
 
-                <div>
+                <div className="hidden lg:block">
                     <h3 className="mb-6 text-2xl font-bold" >Menú</h3>
                     <ul className="flex flex-col gap-2">
                         <li>Ofertas</li>
