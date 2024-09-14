@@ -11,7 +11,6 @@ export async function SwiperContainer({ filterProduct }: Props) {
 
     const products: Product[] = await getProducts()
     const subCategories = await getSubcategory()
-
     // MAS VENDIDOS
     const masVendido: Product[] = []
 

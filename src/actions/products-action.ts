@@ -24,9 +24,9 @@ export const getProducts = async () => {
 // GET PRODUCTS BY ID
 export const getProductById = async (productId: string) => {
 
-    const convertedProduct = productId.replace(/_/g, " ")
-    let products = await prisma.product.findFirst({
-        where: { title: convertedProduct }
+    // const convertedProduct = productId.replace(/_/g, " ")
+    const products = await prisma.product.findFirst({
+        where: { id: productId }
     })
 
     if (!products) {

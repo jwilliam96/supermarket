@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCounter } from "@/hook/useCounter";
 import { Product } from "@/interface";
+import { Counter } from "./Counter";
 
 interface Props {
     product: Product
@@ -12,9 +12,7 @@ interface Props {
 
 export function CardProduct({ product, ventas }: Props) {
 
-    const { counter, handleIncrement, handleDecrement } = useCounter()
-
-    product.title = product.title.replace(/ /g, "_")
+    // const titleTransform = product.title.replace(/ /g, "_")
 
     return (
 
@@ -36,13 +34,13 @@ export function CardProduct({ product, ventas }: Props) {
             }
 
             {/* IMAGEN } */}
-            <Link href={`/product/${product.title}`}>
+            <Link href={`/product/${product.id}`}>
                 <Image className="w-full h-[300px]  object-cover " src={product.image} width={300} height={200} alt='producto' />
             </Link>
 
             {/* DESCRIPTION  */}
             <div className='px-4'>
-                <h3 className=' line-clamp-1'>{product.title}</h3>
+                <h3 className='line-clamp-1'>{product.title}</h3>
 
                 <div className='text-xl py-2'>
                     {
@@ -58,13 +56,9 @@ export function CardProduct({ product, ventas }: Props) {
                 </div>
 
                 {/* CONTADOR  */}
-                <div className='flex justify-between text-xl my-4 items-center gap-2'>
-                    <button onClick={handleDecrement} className=' bg-gray-800 px-2.5 rounded-full text-white'>-</button>
-                    <span className='border px-7'>{counter}</span>
-                    <button onClick={handleIncrement} className=' bg-gray-800 px-2 pb-0.5 rounded-full text-white'>+</button>
-                </div>
+                <Counter />
 
-                <Link href={`/product/${product.title}`}>
+                <Link href={`/product/${product.id}`}>
                     <button className='my-4 mb-6 py-2 bg-red-500 text-white w-full rounded-full hover:bg-red-700'>Comprar</button>
                 </Link>
             </div>

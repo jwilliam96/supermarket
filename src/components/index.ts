@@ -1,5 +1,6 @@
 export { SwiperContainer } from "./swiper/SwiperContainer"
 export { SwiperCard } from "./swiper/SwiperCard"
 export { CardProduct } from "./CardProduct"
+export { Counter } from "./Counter"
 export { Button } from "./Button"
 export { Title } from "./Title"
