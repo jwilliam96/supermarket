@@ -15,10 +15,10 @@ export default async function Home() {
 
       {/* SECCIÓN UNO  */}
 
-      <section className=" container mx-auto ">
+      {/* BENEFICIOS  USUARIO*/}
+      <ServiceInfo />
 
-        {/* BENEFICIOS  USUARIO*/}
-        <ServiceInfo />
+      <section className=" max-w-[1600px] mx-auto md:px-8">
 
         {/* MEJORES OFERTAS  */}
         <Title text="Mejores ofertas" />

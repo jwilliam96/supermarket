@@ -2,46 +2,64 @@ import Image from "next/image";
 
 export function SpecialOffersOne() {
     return (
-        <div className="grid grid-cols-3 gap-10 my-20">
+        <div className="xl:grid xl:grid-cols-3 gap-10 my-20">
 
             {/* VINO  */}
 
-            <figure className="col-span-2 relative">
-                <div className="absolute top-1/2 -translate-y-1/2 left-[20%]">
-                    <div className="h-32 w-32 rounded-full absolute -top-16 right-0 bg-red-500 flex flex-col justify-center items-center text-white rotate-12 text-2xl font-bold" >
-                        <p>oferta</p>
-                        <span>limitada</span>
+            <figure className="relative col-span-2 h-[350px] lg:h-[450px]">
+
+                <div className="absolute z-30 mx-auto right-0 left-0 px-4 ss:px6
+                mm:w-[450px] md:w-[500px] lg:w-[600px]
+                top-1/2 -translate-y-1/2  ">
+
+                    <div className="relative">
+                        <div className="flex justify-between">
+                            <div>
+                                <p className="font-bold text-xl">¡Es la hola del vino!</p>
+                                <p className="font-bold my-4 text-3xl md:text-4xl lg:text-5xl ">Gran oferta en </p>
+                            </div>
+
+                            {/* OFFER  CIRCLE */}
+                            <div className=" absolute right-0 ss:-top-10
+                            size-20 shrink-0 rounded-full bg-red-500 grid place-content-center text-center text-white rotate-12 font-bold
+                            ss:size-28 md:size-32 
+                                  md:text-2xl lg:size-32 " >
+                                <p>oferta</p>
+                                <span>limitada</span>
+                            </div>
+                        </div>
+
+                        <h3 className="font-bold mb-8 text-4xl md:text-5xl lg:text-7xl ">Vinos selectos</h3>
+                        <button className="bg-red-500 text-white px-4 py-2 rounded-full  hover:bg-red-700">Comprar ahora</button>
                     </div>
 
-                    <p className="font-bold text-xl">¡Es la hola del vino!</p>
-                    <p className="text-5xl font-bold my-4">Gran oferta en </p>
-                    <h3 className="text-7xl font-bold">Vinos selectos</h3>
-                    <button className="bg-red-500 text-white px-4 py-2 rounded-full my-8 hover:bg-red-700">Comprar ahora</button>
+
                 </div>
+
                 <Image
-                    className="w-full object-cover "
+                    className=" object-cover "
                     src={"/home/vino.png"}
-                    width={800}
-                    height={300}
+                    fill
                     alt="botella de vino" />
             </figure>
 
             {/* ESPONJA  */}
 
-            <figure className="relative">
-                <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 ">
+            <figure className="relative h-[350px] lg:h-[450px]">
+
+                <div className="absolute right-0 left-0 px-6 z-30 top-1/2 -translate-y-1/2 md:left-1/2 mm:w-[450px] mm:mx-auto md:-translate-x-1/2 ">
                     <p className="text-xl font-bold">Oferta de la semana</p>
-                    <h3 className="text-9xl font-bold">-40%</h3>
-                    <p className="text-3xl font-bold">Productos de limpieza</p>
-                    <button className="bg-red-500 text-white px-4 py-2 rounded-full my-8 hover:bg-red-700">Comprar ahora</button>
+                    <h3 className="text-8xl md:text-9xl font-bold">-40%</h3>
+                    <p className="text-2xl md:text-3xl font-bold">Productos de limpieza</p>
+                    <button className="bg-red-500 text-white px-4 py-2 rounded-full mt-8 hover:bg-red-700">Comprar ahora</button>
                 </div>
                 <Image
                     className="h-full object-cover"
                     src={"/home/esponja.png"}
-                    width={800}
-                    height={300}
+                    fill
                     alt="botella de vino" />
             </figure>
+
         </div>
     )
 }

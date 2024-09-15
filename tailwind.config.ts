@@ -13,7 +13,8 @@ const config: Config = {
         'home-postOne': "url('/home/img1.png')"
       },
       screens: {
-        "ss": "440px"
+        "ss": "440px",
+        "mm": "540px"
       }
     },
   },

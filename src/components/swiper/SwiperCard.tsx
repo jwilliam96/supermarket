@@ -25,9 +25,20 @@ export function SwiperCard({ ventas, products }: Props) {
                 className='swiper-button-prev'></button>
             <Swiper
                 spaceBetween={50}
-                slidesPerView={4}
+                slidesPerView={1}
                 modules={[Navigation]}
                 navigation={{ nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }}
+                breakpoints={{
+                    640: {
+                        slidesPerView: 2
+                    },
+                    1024: {
+                        slidesPerView: 3
+                    },
+                    1280: {
+                        slidesPerView: 4
+                    }
+                }}
             >
 
                 {

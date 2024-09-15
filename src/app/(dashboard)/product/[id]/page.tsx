@@ -13,7 +13,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
     const product: Product = await getProductById(params.id)
 
     return (
-        <div className="min-h-screen max-w-[500px] mx-auto md:max-w-[1200px] my-8">
+        <div className="min-h-screen max-w-[500px] mx-auto md:max-w-[1100px] my-8">
             <Link href={"/"} className="flex gap-2 items-center my-8 md:hidden">
                 <IoIosArrowBack size={25} />
                 <span className="underline underline-offset-8 decoration-black/60">Volver a Inicio</span>
@@ -24,9 +24,11 @@ export default async function ProductPage({ params }: { params: { id: string } }
                 {/* IMAGE  */}
                 <div>
                     <figure className="relative h-[350px] md:h-[500px] md:border">
+
+                        {/* ETIQUETA OFFER  */}
                         {
                             product.offer && (
-                                <span className="bg-red-500 text-white text-xl py-1 px-8 absolute top-0 left-0 z-30">Oferta</span>
+                                <span className="bg-red-500 text-white text-xl py-1 px-8 absolute top-0 left-0 z-30 lg:text-2xl">Oferta</span>
                             )
                         }
                         <Image src={product.image} alt={product.description} className="object-cover md:object-contain" fill priority />
