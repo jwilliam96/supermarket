@@ -3,13 +3,13 @@ import Image from "next/image";
 
 export function CategoriesPopular() {
     return (
-        <div className="grid grid-cols-4">
+        <div className="flex flex-wrap justify-center lg:grid lg:grid-cols-4">
             {
                 categoryPopular.map(category => (
 
                     <div
                         key={category.title}
-                        className="h-[400px] border border-gray-400 flex flex-col justify-center items-center gap-12"
+                        className="min-w-[240px] max-w-[385px] w-full h-[400px] border border-gray-400 flex flex-col justify-center items-center gap-12"
                     >
 
                         <figure className="w-full h-1/2 relative">

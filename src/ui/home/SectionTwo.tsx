@@ -1,4 +1,6 @@
 import { Button, SwiperCard, SwiperContainer, Title } from "@/components";
+import pastas from "/public/home/section2.png"
+import cereales from "/public/home/section2oferta.png"
 import Image from "next/image";
 
 export function SectionTwo() {
@@ -17,13 +19,17 @@ export function SectionTwo() {
 
             {/* FRESCURA  */}
 
-            <div className="flex gap-12 my-20">
-                <Image
-                    className="w-1/2 object-cover"
-                    src={"/home/section2.png"} width={900} height={500} alt="pastas" />
-                <Image
-                    className="w-1/2 object-cover"
-                    src={"/home/section2oferta.png"} width={900} height={500} alt="cereales" />
+            <div className="lg:flex gap-12 my-20">
+                <figure>
+                    <Image
+                        className=" object-cover "
+                        src={pastas} alt="pastas" />
+                </figure>
+                <figure>
+                    <Image
+                        className=" object-cover"
+                        src={cereales} alt="cereales" />
+                </figure>
             </div>
 
             <Title text="Compra frescura" />
