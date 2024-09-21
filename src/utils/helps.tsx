@@ -1,5 +1,6 @@
 
 
+import { SubCategory } from "@/interface";
 import { BiSupport } from "react-icons/bi";
 import { BsBasket2 } from "react-icons/bs";
 import { CiDeliveryTruck } from "react-icons/ci";
@@ -15,6 +16,7 @@ interface ServiceInfo {
 interface CategoryPopular {
     title: string
     image: string
+    url: string
 }
 
 export const serviceInfo: ServiceInfo[] = [
@@ -43,35 +45,43 @@ export const serviceInfo: ServiceInfo[] = [
 export const categoryPopular: CategoryPopular[] = [
     {
         title: "Vegetales",
-        image: "/home/populares/vegetales.png"
+        image: "/home/populares/vegetales.png",
+        url: "vegetales"
     },
     {
         title: "Panadería",
-        image: "/home/populares/panaderia.png"
+        image: "/home/populares/panaderia.png",
+        url: "panaderia"
     },
     {
         title: "Vinos",
-        image: "/home/populares/vinos.png"
+        image: "/home/populares/vinos.png",
+        url: "vinos"
     },
     {
         title: "Lácteos y huevos",
-        image: "/home/populares/lacteos_huevos.png"
+        image: "/home/populares/lacteos_huevos.png",
+        url: "lacteos-y-huevos"
     },
     {
         title: "Carnes y aves",
-        image: "/home/populares/carnes.png"
+        image: "/home/populares/carnes.png",
+        url: "carnes-y-aves"
     },
     {
         title: "Bebidas sin alcohol",
-        image: "/home/populares/bebidas.png"
+        image: "/home/populares/bebidas.png",
+        url: "bebidas-sin-alcohol"
     },
     {
         title: "Productos de limpieza",
-        image: "/home/populares/limpieza.png"
+        image: "/home/populares/limpieza.png",
+        url: "productos-de-limpieza"
     },
     {
         title: "Cereales y botanas",
-        image: "/home/populares/cereales.png"
+        image: "/home/populares/cereales.png",
+        url: "cereales-y-botanas"
     },
 ]
 
@@ -82,3 +92,4 @@ export const politicInfo = [
     { title: "Política de devolución y reembolso", description: "Política de devolución y reembolso. Lugar ideal para explicar a tus clientes qué hacer si no están satisfechos con su compra. Tener una política de reembolso o cambio clara es una gran manera de generar confianza y garantizar que tus clientes compren con seguridad." },
     { title: "Información de envío", description: "Política de envío. Lugar ideal para agregar más información sobre tus métodos de envío, empaquetado y costos. Brindar información clara sobre tu política de envío es una gran manera de generar confianza y garantizar que tus clientes compren con seguridad." }
 ]
+

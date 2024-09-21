@@ -9,7 +9,7 @@ export function CategoriesPopular() {
                 categoryPopular.map(category => (
 
                     <Link
-                        href={`/categories/${category.title}`}
+                        href={`/categories/${category.url}`}
                         key={category.title}
                         className="min-w-[240px] max-w-[385px] w-full h-[400px] border border-gray-400 flex flex-col justify-center items-center gap-12"
                     >

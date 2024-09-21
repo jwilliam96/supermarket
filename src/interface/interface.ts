@@ -14,4 +14,4 @@ export interface Product {
 
 export type Categories = "comida" | "bebidas" | "limpieza y hogar" | "cuidado personal"
 
-export type SubCategory = "vegetales" | "panadería" | "vino" | "lácteos y huevos" | "carne y aves" | "bebidas sin alcohol" | "productos de limpieza" | "cereales y botanas" | "frutas" | "pescados y mariscos" | "pastas y granos" | "té" | "café" | "cerveza" | "casa y cocina" | "higiene personal" | "bebes"
+export type SubCategory = "vegetales" | "panadería" | "vinos" | "lácteos y huevos" | "carnes y aves" | "bebidas sin alcohol" | "productos de limpieza" | "cereales y botanas" | "frutas" | "pescados y mariscos" | "pastas y granos" | "té" | "café" | "cervezas" | "casa y cocina" | "higiene personal" | "bebés"

@@ -53,6 +53,23 @@ export const getSubcategory = async () => {
     }
 }
 
+// GET SUBCATEGORY NAME
+export const getSubcategoryName = async (name: string) => {
+
+    const convertedName = name.toLowerCase()
+
+    const subCategories = await prisma.subCategory.findUnique({ where: { subcategory: convertedName } })
+
+    const products = await prisma.product.findMany({ where: { subCategoryId: subCategories?.id } })
+
+    if (!subCategories) {
+        redirect(notFound())
+    }
+
+    return products
+
+}
+
 // GET CATEGORY
 export const getCategory = async () => {
     try {
