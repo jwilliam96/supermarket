@@ -16,7 +16,7 @@ export function CardProduct({ product, ventas }: Props) {
 
     return (
 
-        <article className="border border-gray-400 relative cursor-pointer ">
+        <article className="border border-gray-400 relative cursor-pointer max-w-[350px]">
 
             {/* ETIQUETAS  */}
             {/* MEJORES OFERTAS  */}

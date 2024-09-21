@@ -8,16 +8,7 @@ import { notFound, redirect } from "next/navigation";
 export const getProducts = async () => {
     const products = await prisma.product.findMany()
 
-    const convertedProducts = products.map(product => ({
-        ...product,
-        price: product.price.toNumber(), // Convierte Decimal a number
-    }));
-
-    if (!convertedProducts) {
-        redirect(notFound())
-    }
-
-    return convertedProducts
+    return products
 
 }
 
@@ -33,12 +24,8 @@ export const getProductById = async (productId: string) => {
         return notFound()
     }
 
-    const product = {
-        ...products,
-        price: products.price.toNumber(), // Convierte Decimal a number
-    }
 
-    return product
+    return products
 }
 
 // GET SUBCATEGORY

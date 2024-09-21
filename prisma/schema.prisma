@@ -37,7 +37,7 @@ model Product {
   title       String
   description String
   offer       Boolean
-  price       Decimal
+  price       Float
   stock       Int
   ventas      Int      @default(0)
   createdAt   DateTime @default(now())
