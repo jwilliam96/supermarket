@@ -1,6 +1,5 @@
-import { IconCorazon } from "@/components/icons/Icons";
+import { IconCarrito, IconCorazon } from "@/components/icons/Icons";
 import { FaLocationDot } from "react-icons/fa6";
-import { FaShoppingCart } from "react-icons/fa";
 import { Search } from "./Search";
 import Link from "next/link";
 
@@ -44,7 +43,7 @@ export function TopMenu() {
                     <div className="flex gap-4">
                         <FaLocationDot size={25} />
                         <IconCorazon size={27} />
-                        <FaShoppingCart size={25} />
+                        <IconCarrito size={25} />
                     </div>
                 </div>
                 {/* SEARCH MOBILE  */}

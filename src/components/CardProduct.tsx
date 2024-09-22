@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/interface";
 import { Counter } from "./Counter";
+import { IconCarrito } from "./icons/Icons";
 
 interface Props {
     product: Product
@@ -58,9 +59,10 @@ export function CardProduct({ product, ventas }: Props) {
                 {/* CONTADOR  */}
                 <Counter />
 
-                <Link href={`/product/${product.id}`}>
-                    <button className='my-4 mb-6 py-2 bg-red-500 text-white w-full rounded-full hover:bg-red-700'>Comprar</button>
-                </Link>
+                <div className="flex justify-center gap-4 my-4 mb-6 py-2 bg-red-500 text-white w-full rounded-full hover:bg-red-700 ">
+                    <button className=''>Añadir</button>
+                    <IconCarrito size={20} />
+                </div>
             </div>
         </article>
     )
