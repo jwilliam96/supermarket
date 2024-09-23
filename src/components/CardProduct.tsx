@@ -1,10 +1,10 @@
 "use client"
 
+import { useCounter } from "@/hook/useCounter";
+import { IconCarrito } from "./icons/Icons";
+import { Product } from "@/interface";
 import Image from "next/image";
 import Link from "next/link";
-import { Product } from "@/interface";
-import { Counter } from "./Counter";
-import { IconCarrito } from "./icons/Icons";
 
 interface Props {
     product: Product
@@ -13,7 +13,7 @@ interface Props {
 
 export function CardProduct({ product, ventas }: Props) {
 
-    // const titleTransform = product.title.replace(/ /g, "_")
+    const { counter, handleIncrement, handleDecrement } = useCounter()
 
     return (
 
@@ -57,8 +57,13 @@ export function CardProduct({ product, ventas }: Props) {
                 </div>
 
                 {/* CONTADOR  */}
-                <Counter />
+                <div className='flex justify-between text-xl my-4 items-center gap-2'>
+                    <button onClick={handleDecrement} className=' bg-gray-800 px-2.5 rounded-full text-white'>-</button>
+                    <span className='border px-7'>{counter}</span>
+                    <button onClick={handleIncrement} className=' bg-gray-800 px-2 pb-0.5 rounded-full text-white'>+</button>
+                </div>
 
+                {/* BUTTON  */}
                 <div className="flex justify-center gap-4 my-4 mb-6 py-2 bg-red-500 text-white w-full rounded-full hover:bg-red-700 ">
                     <button className=''>Añadir</button>
                     <IconCarrito size={20} />
