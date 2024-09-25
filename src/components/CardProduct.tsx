@@ -5,6 +5,7 @@ import { IconCarrito } from "./icons/Icons";
 import { Product } from "@/interface";
 import Image from "next/image";
 import Link from "next/link";
+import { cartStore } from "@/store/cartStore";
 
 interface Props {
     product: Product
@@ -13,7 +14,16 @@ interface Props {
 
 export function CardProduct({ product, ventas }: Props) {
 
+    const addCart = cartStore(state => state.addCart)
+    const changeCart = cartStore(state => state.changeCart)
+
     const { counter, handleIncrement, handleDecrement } = useCounter()
+
+    const handlerCart = (data: Product) => {
+        addCart(data, counter)
+        changeCart()
+    }
+
 
     return (
 
@@ -64,7 +74,10 @@ export function CardProduct({ product, ventas }: Props) {
                 </div>
 
                 {/* BUTTON  */}
-                <div className="flex justify-center gap-4 my-4 mb-6 py-2 bg-red-500 text-white w-full rounded-full hover:bg-red-700 ">
+                <div
+                    className="flex justify-center gap-4 my-4 mb-6 py-2 bg-red-500 text-white w-full rounded-full hover:bg-red-700 "
+                    onClick={() => handlerCart(product)}
+                >
                     <button className=''>Añadir</button>
                     <IconCarrito size={20} />
                 </div>
