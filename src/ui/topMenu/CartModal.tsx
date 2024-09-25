@@ -36,6 +36,7 @@ export default function CartModal() {
 
                                 <div>
                                     <h3>{cart.product.title}</h3>
+                                    <p>{cart.quantity}</p>
                                 </div>
 
                             </div>
