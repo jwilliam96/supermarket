@@ -25,10 +25,10 @@ export const cartStore = create<Cart>()((set) => ({
             (item) => item.product.id === data.id
         );
 
-        if (existingProduct === 1) {
+        if (existingProduct !== -1) {
             // Si el producto ya está en el carrito, incrementa su cantidad
-            const updatedCart = state.cartState.map((item, index) =>
-                index === existingProduct
+            const updatedCart = state.cartState.map((item) =>
+                data.id === item.product.id
                     ? { ...item, quantity: item.quantity + quantity }
                     : item
             );
