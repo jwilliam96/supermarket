@@ -1,8 +1,9 @@
 "use client"
 
-import { IconDelete } from "@/components"
+import { Button, IconDelete } from "@/components"
 import { cartStore } from "@/store/cartStore"
 import Image from "next/image"
+import { IoIosArrowForward } from "react-icons/io"
 
 
 export default function CartModal() {
@@ -20,10 +21,15 @@ export default function CartModal() {
                 className={`fixed backdrop-filter backdrop-blur-sm bg-black/70 inset-0  z-[70] cursor-pointer ${!isCart && "hidden"}`}
                 onClick={changeCart} />
 
-            <div className={`fixed z-[80] bg-white w-[400px] right-0 top-0 bottom-0 transition-all duration-700 ${!isCart && "translate-x-full"}`}>
-                <h2 className="py-10 bg-red-500 text-white text-2xl font-semibold text-center">Carrito</h2>
+            {/* CONTAINER CART  */}
+            <div className={`fixed flex flex-col z-[80] bg-white max-w-[400px] right-0 top-0 bottom-0 transition-all duration-700 ${!isCart && "translate-x-full"}`}>
+                <div className="py-10 bg-red-500 text-white text-2xl font-semibold relative">
+                    <IoIosArrowForward size={35} className="absolute left-10 cursor-pointer" onClick={changeCart} />
+                    <h2 className=" text-center">Carrito</h2>
+                </div>
 
-                <div className="px-4 py-4  ">
+                <div className="px-4 py-4 grow overflow-auto">
+                    {/* PRODUCTOS  */}
                     {
                         cartProduct.map(cart => (
                             <div key={cart.product.id} className="flex items-center py-4 border-b">
@@ -52,6 +58,17 @@ export default function CartModal() {
                             </div>
                         ))
                     }
+
+                </div>
+
+                {/* TOTAL  */}
+                <div className="px-6 pt-6 ">
+                    <p className="text-3xl font-bold text-gray-700">Subtotal: <span className="text-3xl font-semibold text-green-700">$ 700</span></p>
+
+
+                    <div >
+                        <Button text="Ver carrito" className="w-full" />
+                    </div>
                 </div>
 
             </div>
