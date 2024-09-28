@@ -10,6 +10,7 @@ interface CartItem {
 interface Cart {
     cartState: CartItem[];
     addCart: (data: Product, quantity: number) => void;
+    decrementCart: (data: Product, quantity: number) => void
     deleteCart: (id: string) => void;
 
     isCart: boolean
@@ -44,6 +45,15 @@ export const cartStore = create<Cart>()(
                     };
                 }
             }),
+            decrementCart: (data, quantity = 1) => set(state => {
+                const updatedCart = state.cartState.map((item) =>
+                    data.id === item.product.id && item.quantity > 1
+                        ? { ...item, quantity: item.quantity - quantity }
+                        : item
+                )
+                return { cartState: updatedCart }
+            }),
+
             deleteCart: (id) => set((state) => ({
                 cartState: state.cartState.filter((item) => item.product.id !== id),
             })),
