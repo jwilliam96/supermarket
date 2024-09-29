@@ -1,8 +1,10 @@
-import { IconCarrito, IconCorazon } from "@/components/icons/Icons";
+import { IconCorazon } from "@/components/icons/Icons";
 import { FaLocationDot } from "react-icons/fa6";
+import logo from "/public/logo-completo.svg"
 import { Search } from "./Search";
 import Link from "next/link";
 import CartMenu from "./CartMenu";
+import Image from "next/image";
 
 export function TopMenu() {
 
@@ -33,7 +35,7 @@ export function TopMenu() {
 
                 <div className="flex gap-6 justify-between items-center px-6 max-w-[1600px] mx-auto ">
                     {/* lOGO  */}
-                    <Link href={"/"}><h1 className="text-4xl">Trébol</h1></Link>
+                    <Link href={"/"} ><Image src={logo} alt="logo" className="h-[70px] w-auto" /></Link>
 
                     {/* SEARCH  */}
                     <div className="hidden sm:block max-w-[450px] w-full ">

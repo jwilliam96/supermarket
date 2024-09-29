@@ -4,6 +4,7 @@ import { IoIosArrowForward } from "react-icons/io"
 import { Button, IconDelete } from "@/components"
 import { cartStore } from "@/store/cartStore"
 import Image from "next/image"
+import Link from "next/link"
 
 
 export default function CartModal() {
@@ -84,9 +85,9 @@ export default function CartModal() {
                     <p className="text-3xl font-bold text-gray-700">Subtotal: <span className="text-3xl font-semibold text-green-700">$ {subTotal.toFixed(2)}</span></p>
 
 
-                    <div >
+                    <Link href={"/cart"} onClick={changeCart}>
                         <Button text="Ver carrito" className="w-full" />
-                    </div>
+                    </Link>
                 </div>
 
             </div>
