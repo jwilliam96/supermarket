@@ -12,6 +12,12 @@ interface Cart {
     addCart: (data: Product, quantity: number) => void;
     decrementCart: (data: Product, quantity: number) => void
     deleteCart: (id: string) => void;
+    getTotal: () => {
+        items: number
+        subTotal: number
+        porcentaje: number
+        total: number
+    }
 
     isCart: boolean
     changeCart: () => void
@@ -19,8 +25,30 @@ interface Cart {
 
 export const cartStore = create<Cart>()(
     persist(
-        (set) => ({
+        (set, get) => ({
             cartState: [],
+
+            getTotal: () => {
+                const { cartState } = get()
+
+                const account: number[] = []
+                cartState.map(item => {
+                    const { product } = item
+                    let price = product.price
+                    if (product.offer) {
+                        price = product.price - (product.price * 0.20)
+                    }
+                    account.push(price * item.quantity)
+                })
+
+                const items = cartState.length
+                const subTotal = account.reduce((p, s) => p + s, 0)
+                const porcentaje = subTotal * 0.15
+                const total = subTotal + porcentaje
+
+                return { subTotal, porcentaje, total, items }
+            },
+
             addCart: (data, quantity = 1) => set((state) => {
 
                 // busca que el producto exista por medio del id

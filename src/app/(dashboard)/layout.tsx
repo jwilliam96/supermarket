@@ -7,10 +7,12 @@ export default function Layout({
     children: React.ReactNode;
 }) {
     return (
-        <div className="relative">
+        <div className="relative flex flex-col min-h-screen">
             <CartModal />
             <TopMenu />
-            {children}
+            <div className="grow">
+                {children}
+            </div>
             <Footer />
         </div>
     );
