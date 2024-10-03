@@ -4,29 +4,23 @@ import { IoIosArrowForward } from "react-icons/io"
 import { cartStore } from "@/store/cartStore"
 import { Button, CartProducts } from "@/components"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 export default function CartModal() {
 
-    const cartProduct = cartStore(state => state.cartState)
+    const cartProducts = cartStore(state => state.cartState)
     const changeCart = cartStore(state => state.changeCart)
     const isCart = cartStore(state => state.isCart)
 
+    const [subTotal, setSubTotal] = useState(0)
 
-    const account: number[] = []
-    cartProduct.map(item => {
-        const { product } = item
-        let price = product.price
-        if (product.offer) {
-            price = product.price - (product.price * 0.20)
-        }
-        account.push(price * item.quantity)
-    })
-
-    const subTotal = account.reduce((p, s) => p + s, 0)
+    useEffect(() => {
+        const { subTotal } = cartStore.getState().getTotal()
+        setSubTotal(subTotal)
+    }, [cartProducts])
 
     return (
         <div>
-
             {/* FONDO NEGRO  */}
             <div
                 className={`fixed backdrop-filter backdrop-blur-sm bg-black/70 inset-0  z-[70] cursor-pointer ${!isCart && "hidden"}`}
@@ -48,12 +42,10 @@ export default function CartModal() {
                 <div className="px-6 pt-8 ">
                     <p className="text-3xl font-bold text-gray-700">Subtotal: <span className="text-3xl font-semibold text-green-700">$ {subTotal.toFixed(2)}</span></p>
 
-
                     <Link href={"/cart"} onClick={changeCart}>
                         <Button text="Ver carrito" className="w-full" />
                     </Link>
                 </div>
-
             </div>
         </div>
     )
