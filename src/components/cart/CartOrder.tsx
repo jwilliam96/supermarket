@@ -1,6 +1,8 @@
 
 export function CartOrder() {
     return (
+
+
         <div className=" border rounded-xl p-4">
             <h3 className="text-2xl">Resumen de orden</h3>
 
