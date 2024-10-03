@@ -5,13 +5,24 @@ import { cartStore } from "@/store/cartStore"
 import { Button, CartProducts } from "@/components"
 import Link from "next/link"
 
-
 export default function CartModal() {
 
+    const cartProduct = cartStore(state => state.cartState)
     const changeCart = cartStore(state => state.changeCart)
     const isCart = cartStore(state => state.isCart)
 
-    const subTotal = cartStore(state => state.getTotal().subTotal)
+
+    const account: number[] = []
+    cartProduct.map(item => {
+        const { product } = item
+        let price = product.price
+        if (product.offer) {
+            price = product.price - (product.price * 0.20)
+        }
+        account.push(price * item.quantity)
+    })
+
+    const subTotal = account.reduce((p, s) => p + s, 0)
 
     return (
         <div>
