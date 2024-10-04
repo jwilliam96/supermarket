@@ -5,6 +5,7 @@ import { cartStore } from "@/store/cartStore"
 import { Button, CartProducts } from "@/components"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { currencyFormat } from "@/utils/currencyFormat"
 
 export default function CartModal() {
 
@@ -40,7 +41,7 @@ export default function CartModal() {
 
                 {/* SUBTOTAL  */}
                 <div className="px-6 pt-8 ">
-                    <p className="text-3xl font-bold text-gray-700">Subtotal: <span className="text-3xl font-semibold text-green-700">$ {subTotal.toFixed(2)}</span></p>
+                    <p className="text-3xl font-bold text-gray-700">Subtotal: <span className="text-3xl font-semibold text-green-700">{currencyFormat(subTotal)}</span></p>
 
                     <Link href={"/cart"} onClick={changeCart}>
                         <Button text="Ver carrito" className="w-full" />

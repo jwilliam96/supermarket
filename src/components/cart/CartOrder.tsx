@@ -25,15 +25,15 @@ export function CartOrder() {
                 <span className="text-right">{cartProducts.length} Productos</span>
 
                 <span>Subtotal</span>
-                <span className="text-right">$ {currencyFormat(account.subTotal)}</span>
+                <span className="text-right">{currencyFormat(account.subTotal)}</span>
 
                 <span>Impuestos (15%)</span>
-                <span className="text-right">$ {currencyFormat(account.porcentaje)}</span>
+                <span className="text-right">{currencyFormat(account.porcentaje)}</span>
 
             </div>
 
             <div className="flex justify-between">
-                <span>Total</span><span>$ {currencyFormat(account.total)}</span>
+                <span>Total</span><span>{currencyFormat(account.total)}</span>
             </div>
 
         </div>
