@@ -1,11 +1,11 @@
 "use client"
 
+import { currencyFormat } from "@/utils/currencyFormat"
+import { Button, CartProducts } from "@/components"
 import { IoIosArrowForward } from "react-icons/io"
 import { cartStore } from "@/store/cartStore"
-import { Button, CartProducts } from "@/components"
-import Link from "next/link"
 import { useEffect, useState } from "react"
-import { currencyFormat } from "@/utils/currencyFormat"
+import Link from "next/link"
 
 export default function CartModal() {
 
@@ -18,6 +18,8 @@ export default function CartModal() {
     useEffect(() => {
         const { subTotal } = cartStore.getState().getTotal()
         setSubTotal(subTotal)
+
+
     }, [cartProducts])
 
     return (

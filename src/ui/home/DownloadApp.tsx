@@ -10,8 +10,17 @@ export function DownloadApp() {
             <div className="absolute xl:left-[10%] 2xl:left-[20%] inset-y-0 m-auto z-50 flex">
 
                 <div className="relative hidden md:block">
-                    <Image className="absolute top-8 left-9  w-[300px] h-[500px] object-contain" src={"/home/section1Cel.png"} width={400} height={600} alt="un fondo de celular" />
-                    <Image src={"/home/fondoCel.png"} width={370} height={600} alt="un fondo de celular" />
+                    <Image className="absolute top-8 left-9 w-[300px] h-[500px] object-contain"
+                        src={"/home/section1Cel.png"}
+                        width={400}
+                        height={600}
+                        alt="un fondo de celular" />
+                    <Image
+                        className="w-auto h-auto"
+                        src={"/home/fondoCel.png"}
+                        width={370}
+                        height={600}
+                        alt="un fondo de celular" />
                 </div>
 
                 <div className="text-white px-6 md:px-0 ss:w-[450px] md:w-[400px] flex flex-col justify-center">
@@ -30,7 +39,10 @@ export function DownloadApp() {
             <div className="absolute inset-0 bg-[#00000052] z-30" />
             <Image
                 className="w-full h-[500px] object-cover object-top relative"
-                src={"/home/section1.png"} fill alt="mujer con un celular" />
+                src={"/home/section1.png"}
+                fill
+                sizes="100vw"
+                alt="mujer con un celular" />
 
 
         </div>

@@ -31,7 +31,11 @@ export default async function ProductPage({ params }: { params: { id: string } }
                                 <span className="bg-red-500 text-white text-xl py-1 px-8 absolute top-0 left-0 z-30 lg:text-2xl">Oferta</span>
                             )
                         }
-                        <Image src={product.image} alt={product.description} className="object-cover md:object-contain" fill priority />
+                        <Image src={product.image} alt={product.description}
+                            className="object-cover md:object-contain"
+                            sizes="(max-w: 768) 100vw, 528px"
+                            fill
+                            priority />
                     </figure>
 
                     {/* DESCRIPTION DESKTOP  */}

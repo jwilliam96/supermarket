@@ -23,8 +23,10 @@ export function CartProducts() {
                             <Image
                                 src={cart.product.image}
                                 alt={cart.product.description}
-                                fill
                                 className="object-cover"
+                                fill
+                                sizes="(max-w: 1600px) 100px"
+                                priority
                             />
                         </figure>
 

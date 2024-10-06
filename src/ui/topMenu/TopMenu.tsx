@@ -5,10 +5,9 @@ import { Search } from "./Search";
 import Link from "next/link";
 import CartMenu from "./CartMenu";
 import Image from "next/image";
+import { selectOption } from "@/utils/topMenu";
 
 export function TopMenu() {
-
-    const selectOption = ["Ofertas", "Comidas", "Bebidas", "Limpieza del hogar", "Cuidado personal", "Más vendido", "Mis pedidos"]
 
     return (
         <header className=" text-white">
@@ -35,7 +34,7 @@ export function TopMenu() {
 
                 <div className="flex gap-6 justify-between items-center px-6 max-w-[1600px] mx-auto ">
                     {/* lOGO  */}
-                    <Link href={"/"} ><Image src={logo} alt="logo" className="h-[70px] w-auto" /></Link>
+                    <Link href={"/"} ><Image src={logo} alt="logo" className="h-[70px] w-auto" priority /></Link>
 
                     {/* SEARCH  */}
                     <div className="hidden sm:block max-w-[450px] w-full ">
@@ -57,13 +56,28 @@ export function TopMenu() {
 
             {/* LIST  */}
             <div className="hidden md:flex justify-center py-6 ">
-                <ul className="text-black flex gap-8">
+                <div className="text-black flex gap-8">
                     {
                         selectOption.map(option => (
-                            <li key={option}>{option}</li>
+                            <div key={option.title} className="group relative">
+                                <div className="hover:text-red-500 cursor-pointer">{option.title}</div>
+
+                                {/* HOVER LISTA  */}
+                                {
+                                    option.menu && (
+                                        <ul className="hidden group-hover:block absolute z-[60] bg-white w-[200px] p-4 space-y-2">
+                                            {
+                                                option.menu.map(list => (
+                                                    <li key={list} className="cursor-pointer hover:text-red-500 capitalize">{list}</li>
+                                                ))
+                                            }
+                                        </ul>
+                                    )
+                                }
+                            </div>
                         ))
                     }
-                </ul>
+                </div>
             </div>
         </header>
     )

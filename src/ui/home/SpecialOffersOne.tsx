@@ -40,6 +40,7 @@ export function SpecialOffersOne() {
                     className=" object-cover "
                     src={"/home/vino.png"}
                     fill
+                    sizes="(max-w: 1270) 100vw, (max-w: 1600) 66vw"
                     alt="botella de vino" />
             </figure>
 
@@ -57,6 +58,7 @@ export function SpecialOffersOne() {
                     className="h-full object-cover"
                     src={"/home/esponja.png"}
                     fill
+                    sizes="(max-w: 1270) 100vw, (max-w: 1600) 33vw"
                     alt="botella de vino" />
             </figure>
 
