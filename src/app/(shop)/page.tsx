@@ -3,7 +3,6 @@ import { CategoriesPopular, DownloadApp, Header, SectionTwo, ServiceInfo, Specia
 import { Button, SwiperContainer, Title } from "@/components";
 import Image from "next/image";
 
-
 export default async function Home() {
 
   return (

@@ -6,7 +6,7 @@ export const selectOption = [
     },
     {
         title: "Comidas",
-        menu: ["vegetales", "frutas", "carne y aves", "pescado y mariscos", "lácteos y huevos", "panadería", "pastas y granos", "cereales y botanas"]
+        menu: ["vegetales", "frutas", "carnes y aves", "pescados y mariscos", "lácteos y huevos", "panadería", "pastas y granos", "cereales y botanas"]
     },
     {
         title: "Bebidas",

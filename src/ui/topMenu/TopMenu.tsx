@@ -60,7 +60,7 @@ export function TopMenu() {
                     {
                         selectOption.map(option => (
                             <div key={option.title} className="group relative">
-                                <div className="hover:text-red-500 cursor-pointer">{option.title}</div>
+                                <div className="hover:text-red-500 cursor-pointer px-4">{option.title}</div>
 
                                 {/* HOVER LISTA  */}
                                 {
@@ -68,7 +68,9 @@ export function TopMenu() {
                                         <ul className="hidden group-hover:block absolute z-[60] bg-white w-[200px] p-4 space-y-2">
                                             {
                                                 option.menu.map(list => (
-                                                    <li key={list} className="cursor-pointer hover:text-red-500 capitalize">{list}</li>
+                                                    <li key={list} className="cursor-pointer hover:text-red-500 capitalize">
+                                                        <Link href={`/categories/${list}`}>{list}</Link>
+                                                    </li>
                                                 ))
                                             }
                                         </ul>
