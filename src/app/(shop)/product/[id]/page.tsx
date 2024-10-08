@@ -1,7 +1,7 @@
-import { IconCorazon } from "@/components/icons/Icons";
+import { IconCorazonLleno } from "@/components/icons/Icons";
 import PoliticInfo from "@/components/PoliticInfo";
 import { IoIosArrowBack } from "react-icons/io";
-import { Button, Counter } from "@/components";
+import { AddProduct, Button, Counter } from "@/components";
 import { getProductById } from "@/actions";
 import { Product } from "@/interface";
 import Image from "next/image";
@@ -65,19 +65,8 @@ export default async function ProductPage({ params }: { params: { id: string } }
                         </div>
                     </div>
 
-                    {/* COUNTER  */}
-                    <div className="w-[200px] mt-4">
-                        <h3>Cantidad :</h3>
-                        <Counter />
-                    </div>
-
-                    {/* BUTTON  FAVORITE*/}
-                    <div className="md:flex items-center gap-8">
-                        <Button text="Agregar al Carrito" className="mx-0 w-full" />
-                        <div className="size-12 border border-red-500 rounded-full hidden  md:flex justify-center items-center shrink-0 ">
-                            <IconCorazon className="text-red-500 " />
-                        </div>
-                    </div>
+                    {/* ADD PRODUCT  BUTTON / COUNTER / FAVORITE */}
+                    <AddProduct product={product} />
 
                     {/* DESCRIPTION MOBILE  */}
                     <p className="md:hidden">{product.description}</p>

@@ -1,4 +1,4 @@
-import { IconCorazon } from "@/components/icons/Icons";
+import { IconCorazonLleno } from "@/components/icons/Icons";
 import { FaLocationDot } from "react-icons/fa6";
 import logo from "/public/logo-completo.svg"
 import { Search } from "./Search";
@@ -44,7 +44,7 @@ export function TopMenu() {
                     {/* CART, FAVORITE */}
                     <div className="flex gap-4">
                         <FaLocationDot size={25} />
-                        <IconCorazon size={27} />
+                        <IconCorazonLleno size={27} />
                         <CartMenu />
                     </div>
                 </div>

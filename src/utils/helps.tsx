@@ -16,7 +16,6 @@ interface ServiceInfo {
 interface CategoryPopular {
     title: string
     image: string
-    url: string
 }
 
 export const serviceInfo: ServiceInfo[] = [
@@ -46,42 +45,34 @@ export const categoryPopular: CategoryPopular[] = [
     {
         title: "Vegetales",
         image: "/home/populares/vegetales.png",
-        url: "vegetales"
     },
     {
         title: "Panadería",
         image: "/home/populares/panaderia.png",
-        url: "panaderia"
     },
     {
         title: "Vinos",
         image: "/home/populares/vinos.png",
-        url: "vinos"
     },
     {
         title: "Lácteos y huevos",
         image: "/home/populares/lacteos_huevos.png",
-        url: "lacteos-y-huevos"
     },
     {
         title: "Carnes y aves",
         image: "/home/populares/carnes.png",
-        url: "carnes-y-aves"
     },
     {
         title: "Bebidas sin alcohol",
         image: "/home/populares/bebidas.png",
-        url: "bebidas-sin-alcohol"
     },
     {
         title: "Productos de limpieza",
         image: "/home/populares/limpieza.png",
-        url: "productos-de-limpieza"
     },
     {
         title: "Cereales y botanas",
         image: "/home/populares/cereales.png",
-        url: "cereales-y-botanas"
     },
 ]
 export const imagesHeader = [{ img: "/home/img1.png", description: "pan" }, { img: "/home/img2.png", description: "cafe" }, { img: "/home/img3.png", description: "oso de peluche" }]

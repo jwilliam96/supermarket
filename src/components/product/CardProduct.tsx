@@ -1,7 +1,7 @@
 "use client"
 
 import { useCounter } from "@/hook/useCounter";
-import { IconCarrito } from "./icons/Icons";
+import { IconCarrito } from "../icons/Icons";
 import { Product } from "@/interface";
 import Image from "next/image";
 import Link from "next/link";
@@ -46,7 +46,7 @@ export function CardProduct({ product, ventas }: Props) {
 
             {/* IMAGEN } */}
             <Link href={`/product/${product.id}`}>
-                <Image className="w-full  object-cover " src={product.image} width={300} height={200} alt='producto' />
+                <Image className="w-full object-cover h-[350px]" src={product.image} width={300} height={200} alt='producto' />
             </Link>
 
             {/* DESCRIPTION  */}
@@ -67,7 +67,7 @@ export function CardProduct({ product, ventas }: Props) {
                 </div>
 
                 {/* CONTADOR  */}
-                <div className='flex justify-between text-xl my-4 items-center gap-2'>
+                <div className='flex justify-between text-xl mt-4 mb-6 items-center gap-2'>
                     <button onClick={handleDecrement} className=' bg-gray-800 px-2.5 rounded-full text-white'>-</button>
                     <span className='border px-7'>{counter}</span>
                     <button onClick={handleIncrement} className=' bg-gray-800 px-2 pb-0.5 rounded-full text-white'>+</button>
