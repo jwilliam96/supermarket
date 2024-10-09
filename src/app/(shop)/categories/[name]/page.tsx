@@ -21,7 +21,7 @@ export default async function CategoryPage({ params }: { params: { name: string 
     masVendido.push(mayorVenta)
 
     return (
-        <div className="max-w-[1600px] mx-auto ">
+        <div className="max-w-[1600px] mx-auto px-6">
 
             <h2 className="my-10 text-5xl lg:text-7xl text-center font-semibold">{subcategory}</h2>
 

@@ -3,6 +3,7 @@
 import { cartStore } from "@/store/cartStore"
 import { currencyFormat } from "@/utils/currencyFormat"
 import { useEffect, useState } from "react"
+import { Button } from "../Button"
 
 
 export function CartOrder() {
@@ -18,9 +19,9 @@ export function CartOrder() {
 
     return (
         <div className=" border rounded-xl p-4">
-            <h3 className="text-2xl">Resumen de orden</h3>
+            <h3 className="text-3xl">Resumen de orden</h3>
 
-            <div className="my-6 grid grid-cols-2">
+            <div className="my-6 grid grid-cols-2 gap-2 text-xl" >
                 <span>No. Productos</span>
                 <span className="text-right">{cartProducts.length} Productos</span>
 
@@ -33,8 +34,10 @@ export function CartOrder() {
             </div>
 
             <div className="flex justify-between">
-                <span>Total</span><span>{currencyFormat(account.total)}</span>
+                <span className="text-3xl font-semibold">Total</span><span className="text-4xl font-bold text-green-600">{currencyFormat(account.total)}</span>
             </div>
+
+            <Button text="Comprar" className="w-full text-xl rounded-none" />
 
         </div>
     )
