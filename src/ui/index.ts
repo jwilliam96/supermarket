@@ -9,4 +9,4 @@ export { ServiceInfo } from "./home/ServiceInfo"
 export { SpecialOffersOne } from "./home/SpecialOffersOne"
 export { CategoriesPopular } from "./home/CategoriesPopular"
 export { DownloadApp } from "./home/DownloadApp"
-
+export { Address } from "./address/Address"
