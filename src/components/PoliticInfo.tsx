@@ -6,7 +6,6 @@ import { useState } from "react";
 
 export default function PoliticInfo() {
 
-
     const [isOpen, setIsOpen] = useState(politicInfo[0].title);
 
     const toggleInfo = (data: string) => {
@@ -15,7 +14,6 @@ export default function PoliticInfo() {
         } else {
             setIsOpen(data);
         }
-
     };
 
     return (
