@@ -44,7 +44,7 @@ export function TopMenu() {
                     {/* CART, FAVORITE */}
                     <div className="flex gap-4">
                         <FaLocationDot size={25} />
-                        <IconCorazonLleno size={27} />
+                        <Link href={"/favorite"}><IconCorazonLleno size={27} /></Link>
                         <CartMenu />
                     </div>
                 </div>
