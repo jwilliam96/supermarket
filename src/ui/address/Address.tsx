@@ -14,7 +14,7 @@ export function Address() {
                 </div>
 
                 <div className="grid gap-2">
-                    <label htmlFor="postal">Código postal</label>
+                    <label htmlFor="postalCode">Código postal</label>
                     <input className="px-6 bg-gray-300 py-2" type="text" />
                 </div>
 

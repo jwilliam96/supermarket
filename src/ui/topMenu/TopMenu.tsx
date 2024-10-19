@@ -1,11 +1,11 @@
 import { IconCorazonLleno } from "@/components/icons/Icons";
 import { FaLocationDot } from "react-icons/fa6";
-import logo from "/public/logo-completo.svg"
-import { Search } from "./Search";
-import Link from "next/link";
-import CartMenu from "./CartMenu";
-import Image from "next/image";
 import { selectOption } from "@/utils/topMenu";
+import logo from "/public/logo-completo.svg"
+import CartMenu from "./CartMenu";
+import { Search } from "./Search";
+import Image from "next/image";
+import Link from "next/link";
 
 export function TopMenu() {
 
