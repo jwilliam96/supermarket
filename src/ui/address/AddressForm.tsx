@@ -1,26 +1,37 @@
-import { Button } from "@/components";
+"use client"
 
-export function Address() {
+import { Button } from "@/components";
+import { addressSchema } from "@/validations/address-Schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+
+type AddressFormData = z.infer<typeof addressSchema>
+
+export function AddressForm() {
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<AddressFormData>({ resolver: zodResolver(addressSchema) })
+
     return (
         <form className="grid grid-cols-2 gap-10 mt-10 mb-20">
             <div className="space-y-3">
                 <div className="grid gap-2">
                     <label htmlFor="userName">Nombre</label>
-                    <input className="px-6 bg-gray-300 py-2" type="text" />
+                    <input {...register("name")} className="px-6 bg-gray-300 py-2" type="text" />
                 </div>
                 <div className="grid gap-2">
                     <label htmlFor="address">Dirección</label>
-                    <input className="px-6 bg-gray-300 py-2" type="text" />
+                    <input {...register("address")} className="px-6 bg-gray-300 py-2" type="text" />
                 </div>
 
                 <div className="grid gap-2">
                     <label htmlFor="postalCode">Código postal</label>
-                    <input className="px-6 bg-gray-300 py-2" type="text" />
+                    <input {...register("postalCode")} className="px-6 bg-gray-300 py-2" type="text" />
                 </div>
 
                 <div className="grid gap-2">
                     <label htmlFor="country">País</label>
-                    <input className="px-6 bg-gray-300 py-2" type="text" />
+                    <input {...register("country")} className="px-6 bg-gray-300 py-2" type="text" />
                 </div>
 
                 <div className="py-4 flex gap-4 items-center">
@@ -35,24 +46,24 @@ export function Address() {
             <div className="space-y-3">
                 <div className="grid gap-2">
                     <label htmlFor="lastName">Apellido</label>
-                    <input className="px-6 bg-gray-300 py-2" type="text" />
+                    <input {...register("lastName")} className="px-6 bg-gray-300 py-2" type="text" />
                 </div>
 
 
                 <div className="grid gap-2">
                     <label htmlFor="addressOptional">Dirección 2 (opcional)</label>
-                    <input className="px-6 bg-gray-300 py-2" type="text" />
+                    <input {...register("addressOptional")} className="px-6 bg-gray-300 py-2" type="text" />
                 </div>
 
                 <div className="grid gap-2">
                     <label htmlFor="city">Ciudad</label>
-                    <input className="px-6 bg-gray-300 py-2" type="text" />
+                    <input {...register("city")} className="px-6 bg-gray-300 py-2" type="text" />
                 </div>
 
 
                 <div className="grid gap-2">
                     <label htmlFor="phone">Teléfono</label>
-                    <input className="px-6 bg-gray-300 py-2" type="text" />
+                    <input {...register("phone")} className="px-6 bg-gray-300 py-2" type="text" />
                 </div>
             </div>
         </form>
