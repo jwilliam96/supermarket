@@ -13,7 +13,7 @@ export default function CartPage() {
             <div className="grid gap-10 my-8 md:grid-cols-2">
 
                 {/* PRODUCTOS  */}
-                <div className="shadow-lg">
+                <div >
                     <CartProducts />
                 </div>
 

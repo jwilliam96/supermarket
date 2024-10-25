@@ -15,8 +15,6 @@ interface Props {
 
 export function SwiperCard({ ventas, products }: Props) {
 
-
-
     return (
         <div className='px-16 relative'>
             <button style={{
@@ -24,7 +22,7 @@ export function SwiperCard({ ventas, products }: Props) {
             } as React.CSSProperties}
                 className='swiper-button-prev'></button>
             <Swiper
-                spaceBetween={50}
+                spaceBetween={25}
                 slidesPerView={1}
                 modules={[Navigation]}
                 navigation={{ nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }}

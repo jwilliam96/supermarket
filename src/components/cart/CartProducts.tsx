@@ -14,7 +14,7 @@ export function CartProducts() {
     const decrementQuantity = cartStore(state => state.decrementCart)
 
     return (
-        <div className="px-4 grow overflow-auto">
+        <div className="px-4 grow overflow-auto shadow-lg">
             {/* PRODUCTOS  */}
             {
                 cartProduct.slice().reverse().map(cart => (
