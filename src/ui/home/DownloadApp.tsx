@@ -10,7 +10,7 @@ export function DownloadApp() {
             <div className="absolute xl:left-[10%] 2xl:left-[20%] inset-y-0 m-auto z-50 flex">
 
                 <div className="relative hidden md:block">
-                    <Image className="absolute top-8 left-9 w-[300px] h-[500px] object-contain"
+                    <Image className="absolute top-9 left-11 w-[300px] h-[500px] object-contain"
                         src={"/home/section1Cel.png"}
                         width={400}
                         height={600}

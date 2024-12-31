@@ -65,7 +65,6 @@ export function Footer() {
                     </ul>
                 </div>
             </div>
-            <div className="h-0.5 bg-white rounded-full my-14" />
         </footer>
     )
 }

@@ -1,4 +1,4 @@
-import { serviceInfo } from "@/utils/helps";
+import { serviceInfo } from "@/utils";
 
 export function ServiceInfo() {
     return (

@@ -1,6 +1,6 @@
 "use client"; // para que sea un componente del lado del cliente
 
-import { politicInfo } from "@/utils/helps";
+import { politicInfo } from "@/utils";
 import { useState } from "react";
 
 

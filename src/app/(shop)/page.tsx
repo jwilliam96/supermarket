@@ -49,11 +49,11 @@ export default async function Home() {
       {/* DESCARGA APP  */}
       <DownloadApp />
 
-      {/* SECCIÓN DOS */}
-
+      {/* SECCIÓN DOS*/}
+      {/* MÁS POPULARES / PROMOCIONES / FRESCURA  */}
       <SectionTwo />
 
-      {/* POST DOS */}
+      {/* POST DOS FRESCURA*/}
 
       <div className="relative mt-20">
         <div className="absolute inset-0 bg-[#00000052] z-30" />

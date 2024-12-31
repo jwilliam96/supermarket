@@ -1,8 +1,8 @@
 "use client"
 
 import { cartStore } from "@/store/cartStore"
-import Image from "next/image"
 import { IconDelete } from "../icons/Icons"
+import Image from "next/image"
 import Link from "next/link"
 
 

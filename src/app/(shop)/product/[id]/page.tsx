@@ -1,8 +1,7 @@
-import { IconCorazonLleno } from "@/components/icons/Icons";
 import PoliticInfo from "@/components/PoliticInfo";
 import { IoIosArrowBack } from "react-icons/io";
-import { AddProduct, Button, Counter } from "@/components";
 import { getProductById } from "@/actions";
+import { AddProduct } from "@/components";
 import { Product } from "@/interface";
 import Image from "next/image";
 import Link from "next/link";

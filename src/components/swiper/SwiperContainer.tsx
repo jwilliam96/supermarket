@@ -1,4 +1,4 @@
-import { getProducts, getSubcategory } from "@/actions"
+import { getProducts, getSubcategories } from "@/actions"
 import { SwiperCard } from "./SwiperCard"
 import { Product } from "@/interface"
 
@@ -10,7 +10,7 @@ interface Props {
 export async function SwiperContainer({ filterProduct }: Props) {
 
     const products: Product[] = await getProducts()
-    const subCategories = await getSubcategory()
+    const subCategories = await getSubcategories()
     // MAS VENDIDOS
     const masVendido: Product[] = []
 

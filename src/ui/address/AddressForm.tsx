@@ -26,59 +26,55 @@ export function AddressForm() {
     })
 
     return (
-        <form onSubmit={submit} className="grid md:grid-cols-2 gap-10 mt-10 mb-20">
-            <div className="space-y-3">
-                <div className="grid gap-2">
-                    <label htmlFor="userName">Nombre</label>
-                    <input id="userName" {...register("name", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
-                    {errors.name && <span className="text-red-500">{errors.name.message}</span>}
-                </div>
+        <form onSubmit={submit} className="grid md:grid-cols-2 gap-x-10 gap-y-5 mt-10 mb-20">
 
-                <div className="grid gap-2">
-                    <label htmlFor="lastName">Apellido</label>
-                    <input id="lastName" {...register("lastName")} className="px-6 bg-gray-300 py-2" type="text" />
-                    {errors.lastName && <span className="text-red-500">{errors.lastName.message}</span>}
-                </div>
-
-                <div className="grid gap-2">
-                    <label htmlFor="country">País</label>
-                    <input id="country" {...register("country", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
-                    {errors.country && <span className="text-red-500">{errors.country.message}</span>}
-                </div>
-
-                <div className="grid gap-2">
-                    <label htmlFor="city">Ciudad</label>
-                    <input id="city" {...register("city", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
-                    {errors.city && <span className="text-red-500">{errors.city.message}</span>}
-                </div>
-
+            <div className="grid gap-2">
+                <label htmlFor="userName">Nombre</label>
+                <input id="userName" {...register("name", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
+                {errors.name && <span className="text-red-500">{errors.name.message}</span>}
             </div>
 
-            <div className="space-y-3">
+            <div className="grid gap-2">
+                <label htmlFor="lastName">Apellido</label>
+                <input id="lastName" {...register("lastName")} className="px-6 bg-gray-300 py-2" type="text" />
+                {errors.lastName && <span className="text-red-500">{errors.lastName.message}</span>}
+            </div>
 
-                <div className="grid gap-2">
-                    <label htmlFor="address">Dirección</label>
-                    <input id="address" {...register("address", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
-                    {errors.address && <span className="text-red-500">{errors.address.message}</span>}
-                </div>
+            <div className="grid gap-2">
+                <label htmlFor="country">País</label>
+                <input id="country" {...register("country", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
+                {errors.country && <span className="text-red-500">{errors.country.message}</span>}
+            </div>
 
-                <div className="grid gap-2">
-                    <label htmlFor="postalCode">Código postal</label>
-                    <input id="postalCode" {...register("postalCode", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
-                    {errors.postalCode && <span className="text-red-500">{errors.postalCode.message}</span>}
-                </div>
+            <div className="grid gap-2">
+                <label htmlFor="city">Ciudad</label>
+                <input id="city" {...register("city", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
+                {errors.city && <span className="text-red-500">{errors.city.message}</span>}
+            </div>
 
-                <div className="grid gap-2">
-                    <label htmlFor="addressOptional">Dirección 2 (opcional)</label>
-                    <input id="addressOptional" {...register("addressOptional")} className="px-6 bg-gray-300 py-2" type="text" />
-                    {errors.addressOptional && <span className="text-red-500">{errors.addressOptional.message}</span>}
-                </div>
 
-                <div className="grid gap-2">
-                    <label htmlFor="phone">Teléfono</label>
-                    <input id="phone" {...register("phone", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
-                    {errors.phone && <span className="text-red-500">{errors.phone.message}</span>}
-                </div>
+            <div className="grid gap-2">
+                <label htmlFor="address">Dirección</label>
+                <input id="address" {...register("address", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
+                {errors.address && <span className="text-red-500">{errors.address.message}</span>}
+            </div>
+
+            <div className="grid gap-2">
+                <label htmlFor="postalCode">Código postal</label>
+                <input id="postalCode" {...register("postalCode", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
+                {errors.postalCode && <span className="text-red-500">{errors.postalCode.message}</span>}
+            </div>
+
+            <div className="grid gap-2">
+                <label htmlFor="addressOptional">Dirección 2 (opcional)</label>
+                <input id="addressOptional" {...register("addressOptional")} className="px-6 bg-gray-300 py-2" type="text" />
+                {errors.addressOptional && <span className="text-red-500">{errors.addressOptional.message}</span>}
+            </div>
+
+            <div className="grid gap-2">
+                <label htmlFor="phone">Teléfono</label>
+                <input id="phone" {...register("phone", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
+                {errors.phone && <span className="text-red-500">{errors.phone.message}</span>}
             </div>
 
             <div>

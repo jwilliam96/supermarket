@@ -2,7 +2,7 @@
 
 import { Autoplay, EffectFade } from "swiper/modules"
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { imagesHeader } from "@/utils/helps";
+import { imagesHeader } from "@/utils";
 import Image from "next/image";
 
 export function Header() {

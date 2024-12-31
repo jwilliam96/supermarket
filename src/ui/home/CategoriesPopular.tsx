@@ -1,4 +1,4 @@
-import { categoryPopular } from "@/utils/helps";
+import { categoryPopular } from "@/utils";
 import Image from "next/image";
 import Link from "next/link";
 

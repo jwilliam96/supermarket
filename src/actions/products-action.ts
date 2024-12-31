@@ -28,17 +28,6 @@ export const getProductById = async (productId: string) => {
     return products
 }
 
-// GET SUBCATEGORY
-export const getSubcategory = async () => {
-    try {
-        const subCategory = await prisma.subCategory.findMany()
-
-        return subCategory
-
-    } catch (error) {
-        console.log("hubo un error", error)
-    }
-}
 
 // GET SUBCATEGORY NAME
 export const getSubcategoryName = async (name: string) => {
@@ -55,16 +44,4 @@ export const getSubcategoryName = async (name: string) => {
 
     return products
 
-}
-
-// GET CATEGORY
-export const getCategory = async () => {
-    try {
-        const category = await prisma.category.findMany()
-
-        return category
-
-    } catch (error) {
-        console.log("hubo un error", error)
-    }
 }

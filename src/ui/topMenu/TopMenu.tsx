@@ -56,7 +56,7 @@ export function TopMenu() {
 
             {/* LIST  */}
             <div className="hidden md:flex justify-center py-6 ">
-                <div className="text-black flex gap-8">
+                <div className="text-black lg:text-xl flex gap-8">
                     {
                         selectOption.map(option => (
                             <div key={option.title} className="group relative">

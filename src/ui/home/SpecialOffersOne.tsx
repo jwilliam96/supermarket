@@ -8,7 +8,7 @@ export function SpecialOffersOne() {
 
             <figure className="relative col-span-2 h-[350px] lg:h-[450px]">
 
-                <div className="absolute z-30 mx-auto right-0 left-0 px-4 ss:px6
+                <figcaption className="absolute z-30 mx-auto right-0 left-0 px-4 ss:px6
                 mm:w-[450px] md:w-[500px] lg:w-[600px]
                 top-1/2 -translate-y-1/2  ">
 
@@ -34,7 +34,7 @@ export function SpecialOffersOne() {
                     </div>
 
 
-                </div>
+                </figcaption>
 
                 <Image
                     className=" object-cover "
@@ -48,12 +48,12 @@ export function SpecialOffersOne() {
 
             <figure className="relative h-[350px] lg:h-[450px]">
 
-                <div className="absolute right-0 left-0 px-6 z-30 top-1/2 -translate-y-1/2 md:left-1/2 mm:w-[450px] mm:mx-auto md:-translate-x-1/2 ">
+                <figcaption className="absolute right-0 left-0 px-6 z-30 top-1/2 -translate-y-1/2 md:left-1/2 mm:w-[450px] mm:mx-auto md:-translate-x-1/2 ">
                     <p className="text-xl font-bold">Oferta de la semana</p>
                     <h3 className="text-8xl md:text-9xl font-bold">-40%</h3>
                     <p className="text-2xl md:text-3xl font-bold">Productos de limpieza</p>
                     <button className="bg-red-500 text-white px-4 py-2 rounded-full mt-8 hover:bg-red-700">Comprar ahora</button>
-                </div>
+                </figcaption>
                 <Image
                     className="h-full object-cover"
                     src={"/home/esponja.png"}
