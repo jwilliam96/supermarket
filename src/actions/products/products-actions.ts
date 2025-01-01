@@ -30,7 +30,7 @@ export const getProducts = async () => {
 
 }
 
-export const getProductsByCategory = async (category: string) => {
+export const getProductsByCategories = async (category: string) => {
 
     try {
 

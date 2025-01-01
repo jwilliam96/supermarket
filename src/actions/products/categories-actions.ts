@@ -1,14 +1,10 @@
 
 "use server"
 
+import { Category } from "@/interface"
 import prisma from "@/lib/prisma"
 
-interface Categories {
-    id: string,
-    category: string
-}
-
-export const getCategories = async (): Promise<Categories[]> => {
+export const getCategories = async (): Promise<Category[]> => {
 
     try {
 

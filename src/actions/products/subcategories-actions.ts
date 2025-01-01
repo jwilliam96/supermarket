@@ -1,12 +1,7 @@
 "use server"
 
+import { SubCategories } from "@/interface"
 import prisma from "@/lib/prisma"
-
-interface SubCategories {
-    id: string;
-    subcategory: string;
-    categoryId: string;
-}
 
 export const getSubcategories = async (): Promise<SubCategories[]> => {
 
