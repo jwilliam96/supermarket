@@ -24,7 +24,6 @@ export function CardProduct({ product, ventas }: Props) {
         changeCart()
     }
 
-
     return (
 
         <article className="border border-gray-400 relative cursor-pointer max-w-[350px]">
@@ -32,9 +31,12 @@ export function CardProduct({ product, ventas }: Props) {
             {/* ETIQUETAS  */}
             {/* MEJORES OFERTAS  */}
             {
-                product.offer && (
-                    <span className="bg-red-500 text-white text-xl py-1 px-4 absolute top-0 left-0">Mejor oferta</span>
-                )
+                product.masVendido ? (
+                    <span className="bg-red-500 text-white text-xl py-1 px-4 absolute top-0 left-0">Mas vendido</span>
+                ) :
+                    product.offer ? (
+                        <span className="bg-red-500 text-white text-xl py-1 px-4 absolute top-0 left-0">Mejor oferta</span>
+                    ) : null
             }
             {
                 ventas?.map(v => {

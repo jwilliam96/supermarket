@@ -9,4 +9,7 @@ export interface Product {
     price: number
     stock: number
     ventas: number
+    category?: { category: string }
+    subCategory?: { subcategory: string }
+    masVendido?: boolean
 }

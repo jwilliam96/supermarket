@@ -2,15 +2,19 @@ import { Button, SwiperContainer, Title } from "@/components";
 import pastas from "/public/home/section2.png"
 import cereales from "/public/home/section2oferta.png"
 import Image from "next/image";
+import { getProducts } from "@/actions/products/products-actions";
 
-export function SectionTwo() {
+export async function SectionTwo() {
+
+    const products = await getProducts()
+
     return (
         <section className="max-w-[1400px] m-auto md:px-4">
 
             <Title text="Más populares" />
 
             {/* <MAS POPULARES */}
-            <SwiperContainer filterProduct="ventas" />
+            <SwiperContainer products={products} filterProduct="ventas" />
 
             <Button text="Comprar más populares" />
 
@@ -83,7 +87,7 @@ export function SectionTwo() {
 
             <Title text="Compra frescura" />
 
-            <SwiperContainer filterProduct="frescura" />
+            <SwiperContainer products={products} filterProduct="frescura" />
 
             <Button text="Continuar comprando" />
         </section>

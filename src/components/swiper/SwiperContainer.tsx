@@ -1,66 +1,73 @@
-import { getProducts, getSubcategories } from "@/actions"
-import { SwiperCard } from "./SwiperCard"
-import { Product } from "@/interface"
+"use client"
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from "swiper/modules"
+import "swiper/css/bundle"
+
+import { CardProduct } from '../product/CardProduct';
+import { Product } from '@/interface';
 
 interface Props {
-    filterProduct: "all" | "offer" | "ventas" | "frescura"
+    products: Product[]
+    filterProduct?: "offer" | "ventas" | "frescura"
 }
 
-export async function SwiperContainer({ filterProduct }: Props) {
+export function SwiperContainer({ products, filterProduct }: Props) {
 
-    const products: Product[] = await getProducts()
-    const subCategories = await getSubcategories()
-    // MAS VENDIDOS
-    const masVendido: Product[] = []
+    let productsFilter: Product[] = [];
 
-    if (subCategories && products) {
-        subCategories.map(sub => {
-            const filterBySubcategory = products.filter(product => product.subCategoryId === sub.id)
-            const ordenadosPorVentas = filterBySubcategory.sort((a, b) => b.ventas - a.ventas);
-            const mayorVenta = ordenadosPorVentas[0]
-            masVendido.push(mayorVenta)
-        })
+    const filters: Record<string, (product: Product) => boolean> = {
+        offer: (product) => product.offer,
+        ventas: (product) => product.masVendido ?? false,
+        frescura: (product) =>
+            ["vegetales", "frutas"].includes(product.subCategory?.subcategory || ""),
+    };
+
+    if (filterProduct && filters[filterProduct]) {
+        productsFilter = products.filter(filters[filterProduct]);
+    } else {
+        productsFilter = products;
     }
-
-    // MEJORES OFERTAS
-    const offerProducts = products?.filter(p => p.offer === true)
-
-    // VERDURAS Y FRUTAS
-    const idFrescuras = subCategories?.filter(s => ["vegetales", "frutas"].includes(s.subcategory)).map(f => f.id);
-
-    const frescura = products?.filter(p => idFrescuras?.includes(p.subCategoryId));
 
 
     return (
-        <>
-            {/* OFERTAS */}
-            {
-                filterProduct === "offer" && (
-                    <SwiperCard products={offerProducts} />
-                )
-            }
+        <div className='px-16 relative'>
+            <button style={{
+                "color": "#ef4444"
+            } as React.CSSProperties}
+                className='swiper-button-prev'></button>
+            <Swiper
+                spaceBetween={25}
+                slidesPerView={1}
+                modules={[Navigation]}
+                navigation={{ nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }}
+                breakpoints={{
+                    640: {
+                        slidesPerView: 2
+                    },
+                    1024: {
+                        slidesPerView: 3
+                    },
+                    1280: {
+                        slidesPerView: 4
+                    }
+                }}
+            >
 
-            {/* MEJORES VENTAS  */}
-            {
-                filterProduct === "ventas" && (
-                    <SwiperCard products={masVendido} ventas={masVendido} />
-                )
-            }
+                {
+                    productsFilter.map(product => (
+                        <SwiperSlide key={product.id}>
+                            <CardProduct product={product} />
+                        </SwiperSlide>
+                    ))
+                }
 
-            {/* TODO  */}
-            {
-                filterProduct === "all" && (
-                    <SwiperCard products={products} ventas={masVendido} />
-                )
-            }
-
-            {/* FRESCURA  */}
-            {
-                filterProduct === "frescura" && (
-                    <SwiperCard products={frescura} ventas={masVendido} />
-                )
-            }
-        </>
+            </Swiper>
+            <button
+                style={{
+                    "color": "#ef4444"
+                } as React.CSSProperties}
+                className='swiper-button-next'></button>
+        </div>
     )
 }

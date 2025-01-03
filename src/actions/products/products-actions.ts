@@ -1,36 +1,38 @@
 
 "use server"
 
+import { Product } from "@/interface"
 import prisma from "@/lib/prisma"
 
+export const getProducts = async (): Promise<Product[]> => {
+    // Obtener productos con categorías y subCategorías relacionadas
+    const products = await prisma.product.findMany({
+        include: {
+            category: { select: { category: true } },
+            subCategory: { select: { subcategory: true } },
+        },
+    });
 
-export const getProducts = async () => {
+    if (!products.length) return [];
 
-    try {
-        const products = await prisma.product.findMany({
-            include: {
-                category: {
-                    select: {
-                        category: true
-                    }
-                },
-                subCategory: {
-                    select: {
-                        subcategory: true
-                    }
-                },
-            }
-        })
+    // Crear un mapa para agrupar productos por subCategoría
+    const productsBySubcategory = products.reduce((acc, product) => {
+        const subCategoryId = product.subCategoryId;
+        if (!acc[subCategoryId]) acc[subCategoryId] = [];
+        acc[subCategoryId].push(product);
+        return acc;
+    }, {} as Record<string, Product[]>);
 
-        return products ?? []
+    // Identificar el producto más vendido por subCategoría
+    Object.values(productsBySubcategory).forEach((productGroup) => {
+        const mostSold = productGroup.sort((a, b) => b.ventas - a.ventas)[0];
+        if (mostSold) mostSold.masVendido = true;
+    });
 
-    } catch (error) {
-        throw new Error(`hubo un error ${error}`)
-    }
+    return products;
+};
 
-}
-
-export const getProductsByCategories = async (category: string) => {
+export const productsByCategories = async (category: string) => {
 
     try {
 
