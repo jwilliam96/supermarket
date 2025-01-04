@@ -26,9 +26,12 @@ export default async function ProductPage({ params }: { params: { id: string } }
 
                         {/* ETIQUETA OFFER  */}
                         {
-                            product.offer && (
-                                <span className="bg-red-500 text-white text-xl py-1 px-8 absolute top-0 left-0 z-30 lg:text-2xl">Oferta</span>
-                            )
+                            product.masVendido ? (
+                                <span className="bg-red-500 text-white text-xl py-1 px-8 absolute top-0 left-0 z-30 lg:text-2xl">Mas vendido</span>
+                            ) :
+                                product.offer ? (
+                                    <span className="bg-red-500 text-white text-xl py-1 px-8 absolute top-0 left-0 z-30 lg:text-2xl">Oferta</span>
+                                ) : null
                         }
                         <Image src={product.image} alt={product.description}
                             className="object-cover md:object-contain"

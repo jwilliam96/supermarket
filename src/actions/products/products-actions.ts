@@ -3,6 +3,7 @@
 
 import { Product } from "@/interface"
 import prisma from "@/lib/prisma"
+import { notFound, redirect } from "next/navigation";
 
 export const getProducts = async (): Promise<Product[]> => {
     // Obtener productos con categorías y subCategorías relacionadas
@@ -23,6 +24,7 @@ export const getProducts = async (): Promise<Product[]> => {
         return acc;
     }, {} as Record<string, Product[]>);
 
+
     // Identificar el producto más vendido por subCategoría
     Object.values(productsBySubcategory).forEach((productGroup) => {
         const mostSold = productGroup.sort((a, b) => b.ventas - a.ventas)[0];
@@ -32,31 +34,13 @@ export const getProducts = async (): Promise<Product[]> => {
     return products;
 };
 
-export const productsByCategories = async (category: string) => {
+export const getProductsByCategories = async (category: string) => {
 
     try {
 
-        const products = await prisma.product.findMany({
-            where: {
-                category: {
-                    category
-                }
-            },
-            include: {
-                category: {
-                    select: {
-                        category: true
-                    }
-                },
-                subCategory: {
-                    select: {
-                        subcategory: true
-                    }
-                },
-            }
-        })
+        const products = (await getProducts()).filter(product => product.category?.category === category)
 
-        return products ?? []
+        return products
 
     } catch (error) {
         throw new Error(`hubo un error ${error}`)
@@ -67,13 +51,13 @@ export const productsByCategories = async (category: string) => {
 export const getProductById = async (productId: string) => {
 
     try {
-        const product = await prisma.product.findUnique({
-            where: {
-                id: productId
-            }
-        })
+        const product = (await getProducts()).find(product => product.id === productId)
 
-        return product ?? {}
+        if (!product) {
+            redirect(notFound())
+        }
+
+        return product
     } catch (error) {
         throw new Error(`hubo un error ${error}`)
     }
