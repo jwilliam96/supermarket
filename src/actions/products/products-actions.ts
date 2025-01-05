@@ -36,31 +36,41 @@ export const getProducts = async (): Promise<Product[]> => {
 };
 
 export const getProductsByCategories = async (category: string) => {
-
     try {
-
-        const products = (await getProducts()).filter(product => product.category?.category === category)
-
-        return products
-
-    } catch (error) {
-        throw new Error(`hubo un error ${error}`)
-    }
-
-}
-
-export const getProductById = async (productId: string) => {
-
-    try {
-        const product = (await getProducts()).find(product => product.id === productId)
-
-        if (!product) {
-            redirect(notFound())
+        if (!category) {
+            throw new Error("La categoría no puede estar vacía.");
         }
 
-        return product
-    } catch (error) {
-        throw new Error(`hubo un error ${error}`)
-    }
+        const products = await getProducts();
 
+        if (!Array.isArray(products)) {
+            throw new Error("La lista de productos no es válida.");
+        }
+
+        const filteredProducts = products.filter(product =>
+            product.category?.category.toLowerCase() === category.toLowerCase()
+        );
+
+        return filteredProducts;
+
+    } catch (error) {
+        throw new Error(`Hubo un error: ${error instanceof Error ? error.message : error}`);
+    }
+}
+
+
+export const getProductById = async (productId: string) => {
+    try {
+        const products = await getProducts();
+
+        const product = products.find(product => product.id === productId);
+
+        if (!product) {
+            throw notFound(); // Usar notFound directamente si es una excepción
+        }
+
+        return product;
+    } catch (error) {
+        throw new Error(`Hubo un error: ${error instanceof Error ? error.message : error}`);
+    }
 }

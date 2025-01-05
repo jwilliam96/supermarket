@@ -9,7 +9,7 @@ export async function SectionTwo() {
     const products = await getProducts()
 
     return (
-        <section className="max-w-[1400px] m-auto md:px-4">
+        <section className="max-w-[1600px] m-auto md:px-4">
 
             <Title text="Más populares" />
 

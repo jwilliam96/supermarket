@@ -1,5 +1,5 @@
-import Register from "@/ui/form/Register";
 import imageRegister from "/public/auth/register.jpg"
+import { RegisterForm } from "@/ui";
 import Image from "next/image";
 
 export default function RegisterPage() {
@@ -9,7 +9,7 @@ export default function RegisterPage() {
                 <div className="absolute bg-black bg-opacity-10 inset-0" />
                 <Image src={imageRegister} alt="supermarket" className="object-cover" />
             </figure>
-            <Register />
+            <RegisterForm />
         </div>
     );
 }

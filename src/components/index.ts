@@ -1,4 +1,5 @@
 export { IconCarrito, IconCorazonLleno, IconDelete, IconCorazon } from "./icons/Icons"
+export { IconLogoCompleto } from "./icons/SvgLogo"
 export { SwiperContainer } from "./swiper/SwiperContainer"
 export { CardProduct } from "./product/CardProduct"
 export { CartProducts } from "./cart/CartProducts"
