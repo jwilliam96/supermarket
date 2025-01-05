@@ -4,7 +4,7 @@ import ImageLogin from "/public/auth/login.jpg"
 
 export default function LoginPage() {
     return (
-        <div className="min-h-screen grid grid-cols-2 place-content-center max-w-[1600px] mx-auto px-10">
+        <div className=" grid grid-cols-2 place-content-center max-w-[1600px] mx-auto px-10">
             <div className="flex justify-center items-center">
                 <Login />
             </div>

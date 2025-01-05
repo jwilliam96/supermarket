@@ -31,6 +31,7 @@ export const getProducts = async (): Promise<Product[]> => {
         if (mostSold) mostSold.masVendido = true;
     });
 
+
     return products;
 };
 
