@@ -1,6 +1,6 @@
 "use client"
 
-import { userSchema } from "@/validations/userSchema"
+import { registerSchema } from "@/validations/registerSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { IconLogoCompleto } from "@/components"
 import { useForm } from "react-hook-form"
@@ -9,11 +9,11 @@ import { FcGoogle } from "react-icons/fc"
 import Link from "next/link"
 import { z } from "zod"
 
-type UserFormData = z.infer<typeof userSchema>
+type UserFormData = z.infer<typeof registerSchema>
 
 export function RegisterForm() {
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormData>({ resolver: zodResolver(userSchema) })
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormData>({ resolver: zodResolver(registerSchema) })
 
     const onSubmit = handleSubmit(data => {
         reset({
@@ -56,7 +56,7 @@ export function RegisterForm() {
                         {...register("email")}
                         type="text"
                         className="border focus:outline-red-500 border-gray-400 rounded-md p-2 " />
-                    {errors.userName && <span className="text-red-500 mt-1">{errors.email?.message} </span>}
+                    {errors.email && <span className="text-red-500 mt-1">{errors.email?.message} </span>}
                 </div>
 
                 {/* CONTRASEÑA  */}
@@ -70,7 +70,7 @@ export function RegisterForm() {
                         {...register("password")}
                         className="border focus:outline-red-500 border-gray-400 rounded-md p-2"
                     />
-                    {errors.userName && <span className="text-red-500 mt-1">{errors.password?.message} </span>}
+                    {errors.password && <span className="text-red-500 mt-1">{errors.password?.message} </span>}
                 </div>
 
                 {/* CONFIRMAR CONTRASEÑA  */}
@@ -83,7 +83,7 @@ export function RegisterForm() {
                         {...register("confirmPassword")}
                         type="password"
                         className="border focus:outline-red-500 border-gray-400 rounded-md p-2" />
-                    {errors.userName && <span className="text-red-500 mt-1">{errors.confirmPassword?.message} </span>}
+                    {errors.confirmPassword && <span className="text-red-500 mt-1">{errors.confirmPassword?.message} </span>}
                 </div>
 
 
