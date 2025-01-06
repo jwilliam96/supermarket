@@ -7,11 +7,11 @@ export function LoginForm() {
 
 
     return (
-        <div className="max-w-[600px] w-full  px-20 py-6">
-            <form action="" className="">
+        <div className="max-w-[480px] w-full px-2 py-6 mx-auto">
+            <form action="" className="w-full">
                 {/* lOGO  */}
                 <Link href={"/"} >
-                    <IconLogoCompleto className="w-[220px] h-[55px] fill-red-500 mx-auto" />
+                    <IconLogoCompleto className="w-full h-[55px] fill-red-500 mx-auto" />
                 </Link>
                 <h1 className="text-4xl font-bold mb-10 mt-8">Iniciar Sesión</h1>
 
