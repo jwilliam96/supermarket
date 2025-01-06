@@ -8,7 +8,7 @@ export default function LoginPage() {
 
             <figure className="relative hidden md:block">
                 <div className="absolute bg-black bg-opacity-20 inset-0" />
-                <Image src={ImageLogin} alt="supermarket" className="object-cover h-full" />
+                <Image src={ImageLogin} alt="supermarket" className="object-cover h-full" priority />
             </figure>
 
             <LoginForm />

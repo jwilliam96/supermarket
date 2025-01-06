@@ -1,14 +1,30 @@
+"use client"
+
+import { loginSchema } from "@/validations/loginSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { IconLogoCompleto } from "@/components";
+import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
+import { z } from "zod";
 
 export function LoginForm() {
 
+    type UserFormData = z.infer<typeof loginSchema>
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormData>({ resolver: zodResolver(loginSchema) })
+
+    const onSubmit = handleSubmit(data => {
+        reset({
+            email: "",
+            password: ""
+        })
+    })
 
     return (
         <div className="max-w-[480px] w-full px-2 py-6 mx-auto">
-            <form action="" className="w-full">
+            <form onSubmit={onSubmit} className="w-full">
                 {/* lOGO  */}
                 <Link href={"/"} >
                     <IconLogoCompleto className="w-full h-[55px] fill-red-500 mx-auto" />
@@ -17,18 +33,31 @@ export function LoginForm() {
 
                 {/* EMAIL  */}
                 <div className="flex flex-col">
-                    <label htmlFor="email">
+                    <label htmlFor="email" className="my-3">
                         Correo Electrónico
                     </label>
-                    <input id="email" type="text" className="border focus:outline-red-500 border-gray-400 rounded-md my-3 p-2 " />
+                    <input
+                        id="email"
+                        type="text"
+                        className="border focus:outline-red-500 border-gray-400 rounded-md p-2 "
+                        {...register("email")}
+                    />
+                    {errors.email && <span className="text-red-500 mt-1">{errors.email.message} </span>}
                 </div>
 
                 {/* PASSWORD  */}
                 <div className="flex flex-col">
-                    <label htmlFor="password">
+                    <label htmlFor="password" className="my-3">
                         Contraseña
                     </label>
-                    <input id="password" type="text" className="border focus:outline-red-500 border-gray-400 rounded-md my-3 p-2" />
+                    <input
+                        id="password"
+                        type="text"
+                        className="border focus:outline-red-500 border-gray-400 rounded-md p-2"
+                        {...register("password")}
+                    />
+                    {errors.password && <span className="text-red-500 mt-1">{errors.password.message} </span>}
+                    { }
                 </div>
 
                 <div className="flex items-center justify-between">
