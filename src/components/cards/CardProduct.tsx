@@ -1,18 +1,17 @@
 "use client"
 
 import { useCounter } from "@/hook/useCounter";
+import { cartStore } from "@/store/cartStore";
 import { IconCarrito } from "../icons/Icons";
 import { Product } from "@/interface";
 import Image from "next/image";
 import Link from "next/link";
-import { cartStore } from "@/store/cartStore";
 
 interface Props {
     product: Product
-    ventas?: Product[] | undefined
 }
 
-export function CardProduct({ product, ventas }: Props) {
+export function CardProduct({ product }: Props) {
 
     const addCart = cartStore(state => state.addCart)
     const changeCart = cartStore(state => state.changeCart)
@@ -37,13 +36,6 @@ export function CardProduct({ product, ventas }: Props) {
                     product.offer ? (
                         <span className="bg-red-500 text-white text-xl py-1 px-4 absolute top-0 left-0">Mejor oferta</span>
                     ) : null
-            }
-            {
-                ventas?.map(v => {
-                    if (product.id === v.id) {
-                        return <span key={v.id} className="bg-red-500 text-white text-xl py-1 px-4 absolute top-0 left-0">Más vendido</span>
-                    }
-                })
             }
 
             {/* IMAGEN } */}

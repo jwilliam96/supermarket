@@ -5,7 +5,7 @@ export const selectOption = [
         title: "Ofertas",
     },
     {
-        title: "Comidas",
+        title: "Comida",
         menu: ["vegetales", "frutas", "carnes y aves", "pescados y mariscos", "lácteos y huevos", "panadería", "pastas y granos", "cereales y botanas"]
     },
     {
@@ -13,7 +13,7 @@ export const selectOption = [
         menu: ["té", "café", "bebidas sin alcohol", "cervezas", "vinos"]
     },
     {
-        title: "Limpieza del hogar",
+        title: "Limpieza y hogar",
         menu: ["casa y cocina", "productos de limpieza"]
     },
     {

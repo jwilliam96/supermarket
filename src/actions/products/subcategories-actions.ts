@@ -23,16 +23,28 @@ export const getSubcategoryName = async (name: string) => {
     if (!name.trim()) {
         throw new Error("Nombre del parámetro de subcategory es requerido")
     }
-
     const convertedName = name.trim().toLowerCase();
 
     const products = await getProducts()
 
-    const filterBySubcategory = products.filter(product => product.subCategory?.subcategory === convertedName)
+    if (convertedName === "ofertas") {
+        const filterByOffer = products.filter(product => product.offer)
+        return filterByOffer ?? []
+    }
 
-    if (filterBySubcategory.length === 0) {
+    if (convertedName === "más vendido") {
+        const filterByMasVendidos = products.filter(product => product.masVendido)
+        return filterByMasVendidos ?? []
+    }
+
+    const filterByCategories = products.filter(product => (
+        product.subCategory?.subcategory === convertedName ||
+        product.category?.category === convertedName
+    ))
+
+    if (filterByCategories.length === 0) {
         throw notFound()
     }
 
-    return filterBySubcategory;
+    return filterByCategories;
 };

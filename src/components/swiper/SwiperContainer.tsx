@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from "swiper/modules"
 import "swiper/css/bundle"
 
-import { CardProduct } from '../product/CardProduct';
+import { CardProduct } from '../cards/CardProduct';
 import { Product } from '@/interface';
 
 interface Props {

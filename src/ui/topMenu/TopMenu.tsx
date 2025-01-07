@@ -60,7 +60,7 @@ export function TopMenu() {
                     {
                         selectOption.map(option => (
                             <div key={option.title} className="group relative">
-                                <div className="hover:text-red-500 cursor-pointer px-4">{option.title}</div>
+                                <Link href={`/categories/${option.title}`} className="hover:text-red-500 cursor-pointer px-4 text-center">{option.title}</Link>
 
                                 {/* HOVER LISTA  */}
                                 {
