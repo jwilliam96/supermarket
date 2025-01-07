@@ -1,7 +1,7 @@
-import { getSubcategoryName } from "@/actions/products-action";
 import { notFound, redirect } from "next/navigation";
 import { CardProduct } from "@/components";
 import { Product } from "@/interface";
+import { getSubcategoryName } from "@/actions";
 
 export default async function CategoryPage({ params }: { params: { name: string } }) {
 
@@ -13,13 +13,6 @@ export default async function CategoryPage({ params }: { params: { name: string 
         redirect(notFound())
     }
 
-    // MAS VENDIDO
-    const masVendido: Product[] = []
-
-    const ordenadosPorVentas = subCategories.sort((a, b) => b.ventas - a.ventas);
-    const mayorVenta = ordenadosPorVentas[0]
-    masVendido.push(mayorVenta)
-
     return (
         <div className="max-w-[1600px] mx-auto px-6">
 
@@ -28,7 +21,7 @@ export default async function CategoryPage({ params }: { params: { name: string 
             <div className="grid justify-center lg:grid-cols-5 gap-8 mb-32 mt-20">
                 {
                     subCategories.map(product => (
-                        <CardProduct product={product} key={product.id} ventas={masVendido} />
+                        <CardProduct product={product} key={product.id} />
                     ))
                 }
             </div>

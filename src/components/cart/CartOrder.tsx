@@ -19,7 +19,7 @@ export function CartOrder() {
     }, [cartProducts])
 
     return (
-        <div className="shadow-lg border rounded-xl p-4">
+        <div className="shadow-lg border rounded-xl p-4 sticky top-4 right-0  ">
             <h3 className="text-3xl">Resumen de orden</h3>
 
             <div className="my-6 grid grid-cols-2 gap-2 text-xl" >

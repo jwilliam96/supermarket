@@ -10,7 +10,7 @@ export const selectOption = [
     },
     {
         title: "Bebidas",
-        menu: ["té", "café", "bebidas sin alcohol", "cerveza", "vino"]
+        menu: ["té", "café", "bebidas sin alcohol", "cervezas", "vinos"]
     },
     {
         title: "Limpieza del hogar",
