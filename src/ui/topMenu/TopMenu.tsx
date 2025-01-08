@@ -65,10 +65,10 @@ export function TopMenu() {
                                 {/* HOVER LISTA  */}
                                 {
                                     option.menu && (
-                                        <ul className="hidden group-hover:block absolute z-[60] bg-white w-[200px] p-4 space-y-2">
+                                        <ul className="hidden group-hover:block absolute z-[60] rounded-lg bg-red-500 text-white w-[200px] p-4 space-y-2 ">
                                             {
                                                 option.menu.map(list => (
-                                                    <li key={list} className="cursor-pointer hover:text-red-500 capitalize">
+                                                    <li key={list} className="cursor-pointer hover:underline capitalize">
                                                         <Link href={`/categories/${list}`}>{list}</Link>
                                                     </li>
                                                 ))

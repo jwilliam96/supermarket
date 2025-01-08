@@ -1,7 +1,7 @@
 
 import { CategoriesPopular, DownloadApp, Header, SectionTwo, ServiceInfo, SpecialOffersOne } from "@/ui";
 import { getProducts } from "@/actions/products/products-actions";
-import { Button, SwiperContainer, Title } from "@/components";
+import { LinkButton, SwiperContainer, Title } from "@/components";
 import Image from "next/image";
 
 export default async function Home() {
@@ -27,7 +27,7 @@ export default async function Home() {
 
         <SwiperContainer products={products} filterProduct="offer" />
 
-        <Button text="Comprar mejores ofertas" />
+        <LinkButton text="Comprar mejores ofertas" href="/categories/ofertas" className="max-w-max" />
 
 
         {/* PROMOCIÓN*/}
@@ -43,7 +43,7 @@ export default async function Home() {
         <Title text="Iniciar la Compra" />
         <SwiperContainer products={products} />
 
-        <Button text="Comprar productos" />
+        <LinkButton text="Comprar productos" href="/categories/todos" />
 
       </section>
 

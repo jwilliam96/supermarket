@@ -1,6 +1,5 @@
 "use client"
 
-import { Button } from "@/components";
 import { addressSchema } from "@/validations/address-Schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -83,7 +82,7 @@ export function AddressForm() {
                     <span>¿Recordar dirección?</span>
                 </div>
 
-                <Button text="Siguiente" className="w-full rounded-none" />
+                <button className="bg-red-500 w-full text-white px-4 py-2  mx-auto block my-8 hover:bg-red-700">Siguiente</button>
             </div>
         </form>
     )

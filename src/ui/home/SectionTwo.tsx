@@ -1,8 +1,8 @@
-import { Button, SwiperContainer, Title } from "@/components";
-import pastas from "/public/home/section2.png"
-import cereales from "/public/home/section2oferta.png"
-import Image from "next/image";
+import { LinkButton, SwiperContainer, Title } from "@/components";
 import { getProducts } from "@/actions/products/products-actions";
+import cereales from "/public/home/section2oferta.png"
+import pastas from "/public/home/section2.png"
+import Image from "next/image";
 
 export async function SectionTwo() {
 
@@ -16,7 +16,7 @@ export async function SectionTwo() {
             {/* <MAS POPULARES */}
             <SwiperContainer products={products} filterProduct="ventas" />
 
-            <Button text="Comprar más populares" />
+            <LinkButton text="Comprar más populares" href="/categories/más vendido" />
 
 
             {/* PROMOCIONES DOS  */}
@@ -89,7 +89,7 @@ export async function SectionTwo() {
 
             <SwiperContainer products={products} filterProduct="frescura" />
 
-            <Button text="Continuar comprando" />
+            <LinkButton text="Continuar comprando" href="/categories/verduras y frutas" />
         </section>
     )
 }

@@ -8,7 +8,6 @@ import prisma from "@/lib/prisma"
 export const getSubcategories = async (): Promise<SubCategories[]> => {
 
     try {
-
         const subcategories = await prisma.subCategory.findMany()
 
         return subcategories ?? []
@@ -20,31 +19,35 @@ export const getSubcategories = async (): Promise<SubCategories[]> => {
 }
 
 export const getSubcategoryName = async (name: string) => {
-    if (!name.trim()) {
-        throw new Error("Nombre del parámetro de subcategory es requerido")
-    }
+
     const convertedName = name.trim().toLowerCase();
+    const products = await getProducts();
 
-    const products = await getProducts()
-
-    if (convertedName === "ofertas") {
-        const filterByOffer = products.filter(product => product.offer)
-        return filterByOffer ?? []
+    if (convertedName === "todos") {
+        return products
     }
 
-    if (convertedName === "más vendido") {
-        const filterByMasVendidos = products.filter(product => product.masVendido)
-        return filterByMasVendidos ?? []
+    const filters: Record<string, (product: any) => boolean> = {
+        "ofertas": (product) => product.offer,
+        "más vendido": (product) => product.masVendido,
+        "verduras y frutas": (product) =>
+            ["vegetales", "frutas"].includes(product.subCategory?.subcategory || "")
+    };
+
+    if (filters[convertedName]) {
+        const filteredProducts = products.filter(filters[convertedName]);
+        return filteredProducts;
     }
 
-    const filterByCategories = products.filter(product => (
-        product.subCategory?.subcategory === convertedName ||
-        product.category?.category === convertedName
-    ))
+    // Filtro por categorías y subCategorías
+    const filteredByCategories = products.filter(product =>
+        product.subCategory?.subcategory?.toLowerCase() === convertedName ||
+        product.category?.category?.toLowerCase() === convertedName
+    );
 
-    if (filterByCategories.length === 0) {
-        throw notFound()
+    if (filteredByCategories.length === 0) {
+        throw notFound();
     }
 
-    return filterByCategories;
+    return filteredByCategories;
 };

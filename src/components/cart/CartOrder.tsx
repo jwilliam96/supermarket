@@ -3,9 +3,7 @@
 import { cartStore } from "@/store/cartStore"
 import { currencyFormat } from "@/utils/currencyFormat"
 import { useEffect, useState } from "react"
-import { Button } from "../Button"
-import Link from "next/link"
-
+import { LinkButton } from "../LinkButton"
 
 export function CartOrder() {
 
@@ -38,8 +36,7 @@ export function CartOrder() {
                 <span className="text-3xl font-semibold">Total</span><span className="text-4xl font-bold text-green-600">{currencyFormat(account.total)}</span>
             </div>
 
-            <Link href={"/address"} ><Button text="Comprar" className="w-full text-xl rounded-none" /></Link>
-
+            <LinkButton text="Comprar" className="w-full text-xl rounded-none" href="/address" />
         </div>
     )
 }

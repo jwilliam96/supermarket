@@ -3,7 +3,7 @@
 import { useCounter } from "@/hook/useCounter";
 import { cartStore } from "@/store/cartStore";
 import { IconCorazon, IconCorazonLleno } from "../icons/Icons";
-import { Button } from "../Button";
+import { LinkButton } from "../LinkButton";
 import { Product } from "@/interface";
 import { useState } from "react";
 
@@ -35,9 +35,11 @@ export function AddProduct({ product }: { product: Product }) {
             {/* BUTTON  FAVORITE*/}
             <div className="md:flex items-center gap-8">
 
-                <div className="w-full" onClick={() => handlerCart(product)}>
-                    <Button text="Agregar al Carrito" className="mx-0 w-full" />
-                </div>
+                <button
+                    className="bg-red-500  w-full text-white px-4 py-2 rounded-full  my-8 hover:bg-red-700"
+                    onClick={() => handlerCart(product)}>
+                    Agregar al Carrito
+                </button>
 
                 <div onClick={() => setIsFavorite(!isFavorite)}
                     className="size-12 border border-red-500 rounded-full hidden  md:flex justify-center items-center shrink-0 text-red-500 cursor-pointer">
