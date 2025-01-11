@@ -5,6 +5,7 @@ async function main() {
     try {
         // ELIMINAR TABLAS
         await prisma.product.deleteMany();
+        await prisma.favorite.deleteMany()
         await prisma.subCategory.deleteMany();
         await prisma.category.deleteMany();
 
