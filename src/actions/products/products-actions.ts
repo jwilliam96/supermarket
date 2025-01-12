@@ -1,9 +1,9 @@
 
 "use server"
 
+import { notFound } from "next/navigation";
 import { Product } from "@/interface"
 import prisma from "@/lib/prisma"
-import { notFound, redirect } from "next/navigation";
 
 export const getProducts = async (): Promise<Product[]> => {
     // Obtener productos con categorías y subCategorías relacionadas

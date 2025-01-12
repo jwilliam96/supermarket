@@ -6,6 +6,7 @@ import { IconCorazon, IconCorazonLleno } from "../icons/Icons";
 import { LinkButton } from "../LinkButton";
 import { Product } from "@/interface";
 import { useState } from "react";
+import { addFavorite } from "@/actions";
 
 export function AddProduct({ product }: { product: Product }) {
 
@@ -17,6 +18,11 @@ export function AddProduct({ product }: { product: Product }) {
     const handlerCart = (data: Product) => {
         addCart(data, counter)
         changeCart()
+    }
+
+    const handleFavorite = async () => {
+        setIsFavorite(!isFavorite)
+        await addFavorite({ id: product.id })
     }
 
     return (
@@ -41,7 +47,7 @@ export function AddProduct({ product }: { product: Product }) {
                     Agregar al Carrito
                 </button>
 
-                <div onClick={() => setIsFavorite(!isFavorite)}
+                <div onClick={handleFavorite}
                     className="size-12 border border-red-500 rounded-full hidden  md:flex justify-center items-center shrink-0 text-red-500 cursor-pointer">
                     {
                         isFavorite
