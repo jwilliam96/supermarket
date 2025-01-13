@@ -13,6 +13,7 @@ export const addFavorite = async ({ id }: Props) => {
         const favorite = await prisma.favorite.findFirst({ where: { productId: id } })
 
         if (favorite) {
+            await prisma.favorite.deleteMany({ where: { productId: id } })
             return
         }
 
