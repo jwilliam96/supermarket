@@ -1,7 +1,7 @@
 "use client"
 
-import { cartStore } from "@/store/cartStore"
 import { currencyFormat } from "@/utils/currencyFormat"
+import { cartStore } from "@/store/cartStore"
 import { useEffect, useState } from "react"
 import { LinkButton } from "../LinkButton"
 
@@ -18,7 +18,7 @@ export function CartOrder() {
 
     return (
         <div className="shadow-lg border rounded-xl p-4 sticky top-4 right-0  ">
-            <h3 className="text-3xl">Resumen de orden</h3>
+            <h3 className="text-3xl">Resumen de productos</h3>
 
             <div className="my-6 grid grid-cols-2 gap-2 text-xl" >
                 <span>No. Productos</span>

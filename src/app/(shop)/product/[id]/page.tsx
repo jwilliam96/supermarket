@@ -11,6 +11,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
 
     const product: Product = await getProductById(params.id)
 
+
     return (
         <div className="min-h-screen max-w-[500px] mx-auto md:max-w-[1100px] my-8">
             <Link href={"/"} className="flex gap-2 items-center my-8 md:hidden">

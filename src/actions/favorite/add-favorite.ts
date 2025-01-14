@@ -23,6 +23,8 @@ export const addFavorite = async ({ id }: Props) => {
         console.log({ message: `hubo un error ${error}` })
     }
 
-    revalidatePath("/favorite")
+    finally {
+        revalidatePath("/favorite")
+    }
 
 }

@@ -5,7 +5,6 @@ import { CartProducts, LinkButton } from "@/components"
 import { IoIosArrowForward } from "react-icons/io"
 import { cartStore } from "@/store/cartStore"
 import { useEffect, useState } from "react"
-import Link from "next/link"
 
 export default function CartModal() {
 
@@ -45,7 +44,9 @@ export default function CartModal() {
                 <div className="px-6 pt-8 ">
                     <p className="text-3xl font-bold text-gray-700">Subtotal: <span className="text-3xl font-semibold text-green-700">{currencyFormat(subTotal)}</span></p>
 
-                    <LinkButton text="Ver carrito" className="w-full" href="/cart" />
+                    <div onClick={changeCart}>
+                        <LinkButton text="Ver carrito" className="w-full" href="/cart" />
+                    </div>
                 </div>
             </div>
         </div>

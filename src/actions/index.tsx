@@ -2,5 +2,6 @@ export { getProductById, getProducts, getProductsByCategories } from "./products
 export { getSubcategories, getSubcategoryName } from "./products/subcategories-actions"
 export { paginationProduct } from "./products/product-pagination"
 export { getCategories } from "./products/categories-actions"
+export { getFavoriteById } from "./favorite/get-favorite"
 export { getFavorite } from "./favorite/get-favorite"
 export { addFavorite } from "./favorite/add-favorite"
