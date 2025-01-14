@@ -16,7 +16,7 @@ export function PaginationButton({ currentPage, totalPages, url }: Props) {
                 {/* Botón Anterior */}
                 {currentPage > 1 ? (
                     <Link
-                        href={`/categories/${url}/?page=${currentPage - 1}`}
+                        href={`${url}/?page=${currentPage - 1}`}
                         className="relative inline-flex items-center rounded-l-md px-2 py-2 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 "
                     >
                         <svg className="size-8" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -38,7 +38,7 @@ export function PaginationButton({ currentPage, totalPages, url }: Props) {
                 {Array.from({ length: totalPages }).map((_, i) => (
                     <Link
                         key={`page-${i + 1}`}
-                        href={`/categories/${url}/?page=${i + 1}`}
+                        href={`${url}/?page=${i + 1}`}
                         aria-current={currentPage === i + 1 ? "page" : undefined}
                         className={clsx(
                             "relative inline-flex items-center px-6 py-2 text-xl font-semibold ring-1 ring-inset ring-gray-300",
@@ -52,7 +52,7 @@ export function PaginationButton({ currentPage, totalPages, url }: Props) {
                 {/* Botón Siguiente */}
                 {currentPage < totalPages ? (
                     <Link
-                        href={`/categories/${url}/?page=${currentPage + 1}`}
+                        href={`${url}/?page=${currentPage + 1}`}
                         className="relative inline-flex items-center rounded-r-md px-2 py-2 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 "
                     >
                         <svg className="size-8" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

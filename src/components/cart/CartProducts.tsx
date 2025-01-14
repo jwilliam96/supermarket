@@ -30,7 +30,7 @@ export function CartProducts() {
                         Array.from({ length: 3 }, (_, i) => <SkeletonProductCart key={i} />)
                     ) : (
                         <div className="h-full flex justify-center items-center">
-                            <p className="text-5xl text-gray-500 italic mb-10 text-center">No hay productos</p>
+                            <p className="text-5xl text-gray-500 italic mb-10 text-center">No hay productos en el carrito</p>
                         </div>
                     )
                 ) : (

@@ -1,6 +1,7 @@
-import { getFavorite } from "@/actions";
-import { CardProductsGrid, SvgFavorite } from "@/components";
+import { getFavorite, paginationProduct } from "@/actions";
+import { CardProductsGrid, PaginationButton, SvgFavorite } from "@/components";
 import Link from "next/link";
+import { notFound, redirect } from "next/navigation";
 
 interface Props {
     searchParams: { page?: string };
@@ -9,6 +10,13 @@ interface Props {
 export default async function FavoritePage({ searchParams }: Props) {
 
     const favorites = await getFavorite()
+    const page = searchParams.page ? parseInt(searchParams.page) : 1
+    const { products, currentPage, totalPage } = await paginationProduct({ products: favorites, page })
+
+    if (!products) {
+        redirect(notFound())
+    }
+
 
     return (
         <div className="max-w-[1600px] mx-auto px-4">
@@ -23,7 +31,8 @@ export default async function FavoritePage({ searchParams }: Props) {
                     </div>
                 ) : (
                     <div>
-                        <CardProductsGrid products={favorites} />
+                        <CardProductsGrid products={products} />
+                        <PaginationButton currentPage={currentPage} totalPages={totalPage} url={"/favorite"} />
                     </div>
                 )
             }
