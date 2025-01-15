@@ -8,6 +8,7 @@ import { FaGithub } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
 import Link from "next/link"
 import { z } from "zod"
+import { createUser } from "@/actions"
 
 type UserFormData = z.infer<typeof registerSchema>
 
@@ -16,6 +17,8 @@ export function RegisterForm() {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormData>({ resolver: zodResolver(registerSchema) })
 
     const onSubmit = handleSubmit(async (data) => {
+
+        await createUser(data)
 
         reset({
             userName: "",
