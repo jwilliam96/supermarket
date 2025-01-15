@@ -15,7 +15,8 @@ export function RegisterForm() {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormData>({ resolver: zodResolver(registerSchema) })
 
-    const onSubmit = handleSubmit(data => {
+    const onSubmit = handleSubmit(async (data) => {
+
         reset({
             userName: "",
             email: "",
@@ -54,7 +55,7 @@ export function RegisterForm() {
                     <input
                         id="email"
                         {...register("email")}
-                        type="text"
+                        type="email"
                         className="border focus:outline-red-500 border-gray-400 rounded-md p-2 " />
                     {errors.email && <span className="text-red-500 mt-1">{errors.email?.message} </span>}
                 </div>

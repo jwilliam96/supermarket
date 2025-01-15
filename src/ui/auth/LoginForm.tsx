@@ -6,6 +6,7 @@ import { IconLogoCompleto } from "@/components";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { signInGoogle } from "@/actions";
 import Link from "next/link";
 import { z } from "zod";
 
@@ -21,6 +22,11 @@ export function LoginForm() {
             password: ""
         })
     })
+
+    const handleGoogle = async () => {
+        await signInGoogle()
+    }
+
 
     return (
         <div className="max-w-[480px] w-full px-2 py-6 mx-auto">
@@ -78,8 +84,11 @@ export function LoginForm() {
 
             {/* OTRA FORMA DE INGRESO  */}
             <div className="flex gap-8 my-10">
+
                 {/* GOOGLE  */}
-                <div className="flex items-center gap-2 border border-gray-400 bg-gray-50 w-full justify-center py-2 rounded-md">
+                <div
+                    onClick={handleGoogle}
+                    className="cursor-pointer flex items-center gap-2 border border-gray-400 bg-gray-50 w-full justify-center py-2 rounded-md">
                     <FcGoogle size={30} />
                     <p className="font-bold text-xl">Google</p>
                 </div>
