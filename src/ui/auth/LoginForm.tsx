@@ -1,31 +1,33 @@
 "use client"
 
+import { ButtonLoginRedes, IconLogoCompleto } from "@/components";
 import { loginSchema } from "@/validations/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { IconLogoCompleto } from "@/components";
 import { useForm } from "react-hook-form";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
-import { signInGoogle } from "@/actions";
 import Link from "next/link";
-import { z } from "zod";
+import { set, z } from "zod";
+import { signInCredentials } from "@/actions";
+import { useState } from "react";
+import { useFormState } from "react-dom";
+
+
+type UserFormData = z.infer<typeof loginSchema>
 
 export function LoginForm() {
 
-    type UserFormData = z.infer<typeof loginSchema>
-
     const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormData>({ resolver: zodResolver(loginSchema) })
 
-    const onSubmit = handleSubmit(data => {
-        reset({
-            email: "",
-            password: ""
-        })
-    })
+    const [errorValidate, setErrorValidate] = useState<string | null>(null)
 
-    const handleGoogle = async () => {
-        await signInGoogle()
-    }
+    const onSubmit = handleSubmit(async (data) => {
+
+        const validateUser = await signInCredentials(data)
+
+        if (validateUser) {
+            setErrorValidate(validateUser)
+        }
+
+    })
 
 
     return (
@@ -63,7 +65,10 @@ export function LoginForm() {
                         {...register("password")}
                     />
                     {errors.password && <span className="text-red-500 mt-1">{errors.password.message} </span>}
-                    { }
+                    {errorValidate &&
+                        <span className="text-red-500 mt-1">
+                            {errorValidate}
+                        </span>}
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -83,22 +88,8 @@ export function LoginForm() {
             </div>
 
             {/* OTRA FORMA DE INGRESO  */}
-            <div className="flex gap-8 my-10">
+            <ButtonLoginRedes />
 
-                {/* GOOGLE  */}
-                <div
-                    onClick={handleGoogle}
-                    className="cursor-pointer flex items-center gap-2 border border-gray-400 bg-gray-50 w-full justify-center py-2 rounded-md">
-                    <FcGoogle size={30} />
-                    <p className="font-bold text-xl">Google</p>
-                </div>
-
-                {/* GITHUB */}
-                <div className="flex items-center gap-2 border border-gray-400 bg-gray-50 w-full justify-center py-2 rounded-md">
-                    <FaGithub size={30} />
-                    <p className="font-bold text-xl">GitHub</p>
-                </div>
-            </div>
         </div>
     )
 }

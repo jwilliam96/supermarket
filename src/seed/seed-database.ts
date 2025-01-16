@@ -4,8 +4,8 @@ import { initialData } from './productData';
 async function main() {
     try {
         // ELIMINAR TABLAS
-        await prisma.product.deleteMany();
         await prisma.favorite.deleteMany()
+        await prisma.product.deleteMany();
         await prisma.subCategory.deleteMany();
         await prisma.category.deleteMany();
 

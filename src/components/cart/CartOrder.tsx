@@ -36,7 +36,7 @@ export function CartOrder() {
                 <span className="text-3xl font-semibold">Total</span><span className="text-4xl font-bold text-green-600">{currencyFormat(account.total)}</span>
             </div>
 
-            <LinkButton text="Comprar" className="w-full text-xl rounded-none" href="/address" />
+            <LinkButton text="Comprar" className="w-full text-xl rounded-none mb-3" href="/address" />
         </div>
     )
 }

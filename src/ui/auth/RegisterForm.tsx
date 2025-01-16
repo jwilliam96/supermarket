@@ -1,14 +1,12 @@
 "use client"
 
+import { ButtonLoginRedes, IconLogoCompleto } from "@/components"
 import { registerSchema } from "@/validations/registerSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { IconLogoCompleto } from "@/components"
 import { useForm } from "react-hook-form"
-import { FaGithub } from "react-icons/fa"
-import { FcGoogle } from "react-icons/fc"
+import { createUser } from "@/actions"
 import Link from "next/link"
 import { z } from "zod"
-import { createUser } from "@/actions"
 
 type UserFormData = z.infer<typeof registerSchema>
 
@@ -104,19 +102,8 @@ export function RegisterForm() {
             </div>
 
             {/* OTRA FORMA DE INGRESO  */}
-            <div className="flex gap-8 my-10">
-                {/* GOOGLE  */}
-                <div className="flex items-center gap-2 border border-gray-400 bg-gray-50 w-full justify-center py-2 rounded-md">
-                    <FcGoogle size={30} />
-                    <p className="font-bold text-xl">Google</p>
-                </div>
+            <ButtonLoginRedes />
 
-                {/* GITHUB */}
-                <div className="flex items-center gap-2 border border-gray-400 bg-gray-50 w-full justify-center py-2 rounded-md">
-                    <FaGithub size={30} />
-                    <p className="font-bold text-xl">GitHub</p>
-                </div>
-            </div>
         </div>
     )
 }
