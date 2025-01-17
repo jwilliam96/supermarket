@@ -2,12 +2,16 @@ import { IconCorazonLleno } from "@/components/icons/Icons";
 import { FaLocationDot } from "react-icons/fa6";
 import { selectOption } from "@/utils/topMenu";
 import logo from "/public/logo-completo.svg"
+import { auth } from "@/auth-config";
 import CartMenu from "./CartMenu";
 import { Search } from "./Search";
 import Image from "next/image";
 import Link from "next/link";
+import { ButtonSignOut } from "@/components";
 
-export function TopMenu() {
+export async function TopMenu() {
+
+    const session = await auth()
 
     return (
         <header className=" text-white">
@@ -24,7 +28,14 @@ export function TopMenu() {
 
                     <div className="flex gap-4 items-center lg:ml-36">
                         <figure className="w-8 h-8 bg-black rounded-full"></figure>
-                        <Link href={"/auth/login"}>Entrar</Link>
+                        {
+                            session ? (
+                                <ButtonSignOut />
+                            ) : (
+
+                                <Link href={"/auth/login"}>Entrar</Link>
+                            )
+                        }
                     </div>
                 </div>
             </div>

@@ -4,12 +4,15 @@ import { loginSchema } from "@/validations/loginSchema";
 import { signIn } from "@/auth-config"
 import { AuthError } from "next-auth";
 import { z } from "zod";
+import { redirect } from "next/navigation";
 
 type LoginFormData = z.infer<typeof loginSchema>;
 
-export const signInCredentials = async (data: LoginFormData) => {
+// LOGIN CREDENTIALS
+export const signInCredentials = async (formData: LoginFormData) => {
     try {
-        await signIn("credentials", data)
+        await signIn("credentials", formData)
+
     } catch (error) {
 
         if (error instanceof AuthError) {
@@ -19,9 +22,13 @@ export const signInCredentials = async (data: LoginFormData) => {
     }
 }
 
+
+// LOGIN GOOGLE
 export const signInGoogle = async () => {
     try {
         await signIn("google")
+        redirect("/")
+
     } catch (error) {
         console.log(error)
     }

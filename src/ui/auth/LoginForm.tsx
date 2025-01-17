@@ -8,7 +8,6 @@ import Link from "next/link";
 import { set, z } from "zod";
 import { signInCredentials } from "@/actions";
 import { useState } from "react";
-import { useFormState } from "react-dom";
 
 
 type UserFormData = z.infer<typeof loginSchema>
@@ -60,7 +59,7 @@ export function LoginForm() {
                     </label>
                     <input
                         id="password"
-                        type="text"
+                        type="password"
                         className="border focus:outline-red-500 border-gray-400 rounded-md p-2"
                         {...register("password")}
                     />

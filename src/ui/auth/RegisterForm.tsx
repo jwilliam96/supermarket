@@ -4,26 +4,35 @@ import { ButtonLoginRedes, IconLogoCompleto } from "@/components"
 import { registerSchema } from "@/validations/registerSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { createUser } from "@/actions"
+import { createUser, signInCredentials } from "@/actions"
 import Link from "next/link"
 import { z } from "zod"
+import { useState } from "react"
 
 type UserFormData = z.infer<typeof registerSchema>
 
 export function RegisterForm() {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormData>({ resolver: zodResolver(registerSchema) })
+    const [errorEmail, setErrorEmail] = useState("")
 
     const onSubmit = handleSubmit(async (data) => {
 
-        await createUser(data)
+        setErrorEmail("")
+        const newUser = await createUser(data)
 
-        reset({
-            userName: "",
-            email: "",
-            password: "",
-            confirmPassword: ""
-        })
+        if (newUser.ok) {
+            await signInCredentials(data)
+            reset({
+                confirmPassword: "",
+                email: "",
+                name: "",
+                password: ""
+            })
+        } else {
+            setErrorEmail(newUser?.message!)
+        }
+
     })
 
     return (
@@ -37,15 +46,15 @@ export function RegisterForm() {
 
                 {/* NOMBRE DE USUARIO  */}
                 <div className="flex flex-col">
-                    <label htmlFor="userName" className="my-3">
+                    <label htmlFor="name" className="my-3">
                         Nombre de usuario
                     </label>
                     <input
-                        id="userName"
-                        {...register("userName")}
+                        id="name"
+                        {...register("name")}
                         type="text"
                         className="border focus:outline-red-500 border-gray-400 rounded-md p-2 " />
-                    {errors.userName && <span className="text-red-500 mt-1">{errors.userName.message} </span>}
+                    {errors.name && <span className="text-red-500 mt-1">{errors.name.message} </span>}
                 </div>
 
                 {/* CORREO ELECTRÓNICO  */}
@@ -59,6 +68,7 @@ export function RegisterForm() {
                         type="email"
                         className="border focus:outline-red-500 border-gray-400 rounded-md p-2 " />
                     {errors.email && <span className="text-red-500 mt-1">{errors.email?.message} </span>}
+                    {errorEmail && <span className="text-red-500 mt-1">{errorEmail} </span>}
                 </div>
 
                 {/* CONTRASEÑA  */}
