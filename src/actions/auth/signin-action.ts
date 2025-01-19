@@ -4,7 +4,6 @@ import { loginSchema } from "@/validations/loginSchema";
 import { signIn } from "@/auth-config"
 import { AuthError } from "next-auth";
 import { z } from "zod";
-import { redirect } from "next/navigation";
 
 type LoginFormData = z.infer<typeof loginSchema>;
 
@@ -26,11 +25,10 @@ export const signInCredentials = async (formData: LoginFormData) => {
 // LOGIN GOOGLE
 export const signInGoogle = async () => {
     try {
-        await signIn("google")
-        redirect("/")
+        await signIn("google",)
 
     } catch (error) {
-        console.log(error)
+        console.log({ error })
     }
 }
 

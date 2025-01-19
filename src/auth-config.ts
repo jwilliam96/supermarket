@@ -7,7 +7,7 @@ import { z } from "zod"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     pages: {
-        signIn: "/auth/login"
+        signIn: "/auth/login",
     },
     providers: [
         Google,
@@ -34,7 +34,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 const { password: _, ...resto } = user
 
                 return resto
-            }
+            },
         })
     ],
+
+
 })

@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { Provider } from "@/provider";
 import type { Metadata } from "next";
 import "../ui/globals.css";
 
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="es">
       <body className={inter.className}>
         <main>
-          {children}
+          <Provider>
+            {children}
+          </Provider>
         </main>
       </body>
     </html>
