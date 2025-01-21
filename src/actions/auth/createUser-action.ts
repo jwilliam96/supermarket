@@ -1,7 +1,7 @@
 "use server"
 
 import { registerSchema } from "@/validations/registerSchema";
-import { signIn } from "@/auth-config";
+import { signIn } from "@/auth.config";
 import prisma from "@/lib/prisma";
 import bcryptjs from "bcryptjs"
 import { z } from "zod";

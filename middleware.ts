@@ -1,4 +1,4 @@
-import { auth } from '@/auth-config';
+import { auth } from '@/auth.config';
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 

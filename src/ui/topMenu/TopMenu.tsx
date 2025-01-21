@@ -3,7 +3,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { selectOption } from "@/utils/topMenu";
 import { ButtonSignOut } from "@/components";
 import logo from "/public/logo-completo.svg"
-import { auth } from "@/auth-config";
+import { auth } from "@/auth.config";
 import CartMenu from "./CartMenu";
 import { Search } from "./Search";
 import Image from "next/image";

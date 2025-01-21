@@ -1,7 +1,7 @@
 "use server"
 
 import { loginSchema } from "@/validations/loginSchema";
-import { signIn } from "@/auth-config"
+import { signIn } from "@/auth.config"
 import { AuthError } from "next-auth";
 import { z } from "zod";
 

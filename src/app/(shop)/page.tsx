@@ -3,10 +3,13 @@ import { CategoriesPopular, DownloadApp, Header, SectionTwo, ServiceInfo, Specia
 import { getProducts } from "@/actions/products/products-actions";
 import { LinkButton, SwiperContainer, Title } from "@/components";
 import Image from "next/image";
+import { auth } from "@/auth.config";
 
 export default async function Home() {
 
   const products = await getProducts()
+
+  const session = await auth()
 
   return (
     <>

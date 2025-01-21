@@ -1,7 +1,7 @@
 import { CardProductsGrid, PaginationButton, SvgFavorite } from "@/components";
 import { getFavorite, paginationProduct } from "@/actions";
 import { notFound, redirect } from "next/navigation";
-import { auth } from "@/auth-config";
+import { auth } from "@/auth.config";
 import Link from "next/link";
 
 interface Props {
