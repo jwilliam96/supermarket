@@ -9,22 +9,22 @@ interface Props {
 
 export const addFavorite = async ({ id }: Props) => {
 
-    try {
-        const favorite = await prisma.favorite.findFirst({ where: { productId: id } })
+    // try {
+    //     const favorite = await prisma.favorite.findFirst({ where: { productId: id } })
 
-        if (favorite) {
-            await prisma.favorite.deleteMany({ where: { productId: id } })
-            return
-        }
+    //     if (favorite) {
+    //         await prisma.favorite.deleteMany({ where: { productId: id } })
+    //         return
+    //     }
 
-        await prisma.favorite.create({ data: { productId: id } })
+    //     await prisma.favorite.create({ data: { productId: id } })
 
-    } catch (error) {
-        console.log({ message: `hubo un error ${error}` })
-    }
+    // } catch (error) {
+    //     console.log({ message: `hubo un error ${error}` })
+    // }
 
-    finally {
-        revalidatePath("/favorite")
-    }
+    // finally {
+    //     revalidatePath("/favorite")
+    // }
 
 }

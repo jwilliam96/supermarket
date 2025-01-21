@@ -24,11 +24,8 @@ export const signInCredentials = async (formData: LoginFormData) => {
 
 // LOGIN GOOGLE
 export const signInGoogle = async () => {
-    try {
-        await signIn("google",)
 
-    } catch (error) {
-        console.log({ error })
-    }
+    await signIn("google")
+
 }
 

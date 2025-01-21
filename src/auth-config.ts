@@ -8,6 +8,8 @@ import { z } from "zod"
 export const { handlers, signIn, signOut, auth } = NextAuth({
     pages: {
         signIn: "/auth/login",
+        signOut: "/auth/login",
+        newUser: "/auth/register"
     },
     providers: [
         Google,
@@ -38,5 +40,28 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         })
     ],
 
+    callbacks: {
+        async signIn({ account, profile }) {
 
+            if (account?.provider === "google") {
+                if (profile?.email) {
+                    const emailVerify = await prisma.user.findUnique({ where: { email: profile?.email } })
+
+                    if (!emailVerify) {
+                        await prisma.user.create({
+                            data: {
+                                email: profile.email,
+                                image: profile.picture,
+                                name: profile.name,
+                                emailVerified: new Date()
+                            }
+                        })
+                    }
+                }
+            }
+
+            return true
+        },
+    },
+    trustHost: true
 })

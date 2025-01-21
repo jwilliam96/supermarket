@@ -28,38 +28,49 @@ export function AddressForm() {
         <form onSubmit={submit} className="grid md:grid-cols-2 gap-x-10 gap-y-5 mt-10 mb-20">
 
             <div className="grid gap-2">
-                <label htmlFor="userName">Nombre</label>
+                <label htmlFor="userName">Nombre
+                    {errors.name && <span className="text-red-500 text-xl"> *</span>}
+                </label>
                 <input id="userName" {...register("name", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
                 {errors.name && <span className="text-red-500">{errors.name.message}</span>}
             </div>
 
             <div className="grid gap-2">
-                <label htmlFor="lastName">Apellido</label>
+                <label htmlFor="lastName">Apellido
+                    {errors.lastName && <span className="text-red-500 text-xl"> *</span>}
+                </label>
                 <input id="lastName" {...register("lastName")} className="px-6 bg-gray-300 py-2" type="text" />
                 {errors.lastName && <span className="text-red-500">{errors.lastName.message}</span>}
             </div>
 
             <div className="grid gap-2">
-                <label htmlFor="country">País</label>
+                <label htmlFor="country">País
+                    {errors.country && <span className="text-red-500 text-xl"> *</span>}
+                </label>
                 <input id="country" {...register("country", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
                 {errors.country && <span className="text-red-500">{errors.country.message}</span>}
             </div>
 
             <div className="grid gap-2">
-                <label htmlFor="city">Ciudad</label>
+                <label htmlFor="city">Ciudad
+                    {errors.city && <span className="text-red-500 text-xl"> *</span>}
+                </label>
                 <input id="city" {...register("city", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
                 {errors.city && <span className="text-red-500">{errors.city.message}</span>}
             </div>
 
 
             <div className="grid gap-2">
-                <label htmlFor="address">Dirección</label>
+                <label htmlFor="address">Dirección
+                    {errors.address && <span className="text-red-500 text-xl"> *</span>}
+                </label>
                 <input id="address" {...register("address", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
-                {errors.address && <span className="text-red-500">{errors.address.message}</span>}
             </div>
 
             <div className="grid gap-2">
-                <label htmlFor="postalCode">Código postal</label>
+                <label htmlFor="postalCode">Código postal
+                    {errors.postalCode && <span className="text-red-500 text-xl"> *</span>}
+                </label>
                 <input id="postalCode" {...register("postalCode", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
                 {errors.postalCode && <span className="text-red-500">{errors.postalCode.message}</span>}
             </div>
@@ -67,11 +78,13 @@ export function AddressForm() {
             <div className="grid gap-2">
                 <label htmlFor="addressOptional">Dirección 2 (opcional)</label>
                 <input id="addressOptional" {...register("addressOptional")} className="px-6 bg-gray-300 py-2" type="text" />
-                {errors.addressOptional && <span className="text-red-500">{errors.addressOptional.message}</span>}
+
             </div>
 
             <div className="grid gap-2">
-                <label htmlFor="phone">Teléfono</label>
+                <label htmlFor="phone">Teléfono
+                    {errors.phone && <span className="text-red-500 text-xl"> *</span>}
+                </label>
                 <input id="phone" {...register("phone", { required: true })} className="px-6 bg-gray-300 py-2" type="text" />
                 {errors.phone && <span className="text-red-500">{errors.phone.message}</span>}
             </div>

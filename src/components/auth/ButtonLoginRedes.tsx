@@ -8,6 +8,7 @@ export function ButtonLoginRedes() {
 
     const handleGoogle = async () => {
         await signInGoogle()
+
     }
 
     return (

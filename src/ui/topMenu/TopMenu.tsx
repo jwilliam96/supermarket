@@ -1,13 +1,13 @@
 import { IconCorazonLleno } from "@/components/icons/Icons";
 import { FaLocationDot } from "react-icons/fa6";
 import { selectOption } from "@/utils/topMenu";
+import { ButtonSignOut } from "@/components";
 import logo from "/public/logo-completo.svg"
 import { auth } from "@/auth-config";
 import CartMenu from "./CartMenu";
 import { Search } from "./Search";
 import Image from "next/image";
 import Link from "next/link";
-import { ButtonSignOut } from "@/components";
 
 export async function TopMenu() {
 
@@ -26,8 +26,26 @@ export async function TopMenu() {
 
                     <p className="hidden lg:block">-20% en tu primer pedido. Suscríbete</p>
 
+                    {/*  USER = NAME / IMAGE  */}
                     <div className="flex gap-4 items-center lg:ml-36">
-                        <figure className="w-8 h-8 bg-black rounded-full"></figure>
+
+                        {session?.user ? (
+                            <>
+                                <p > {session.user.name.toUpperCase()}</p>
+                                <figure>
+                                    <Image
+                                        src={session.user.image ?? "https://i.pinimg.com/474x/31/ec/2c/31ec2ce212492e600b8de27f38846ed7.jpg"}
+                                        alt="foto de usuario"
+                                        width={45}
+                                        height={45}
+                                        className="rounded-full"
+                                    />
+                                </figure>
+                            </>
+                        ) : (
+                            <figure className="w-8 h-8 bg-black rounded-full"></figure>
+                        )
+                        }
                         {
                             session ? (
                                 <ButtonSignOut />
