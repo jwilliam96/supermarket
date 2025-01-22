@@ -1,8 +1,6 @@
-import { CardProductsGrid, PaginationButton, SvgFavorite } from "@/components";
+import { FavoriteProducts } from "@/ui/favorite/FavoriteProducts";
 import { getFavorite, paginationProduct } from "@/actions";
-import { notFound, redirect } from "next/navigation";
-import { auth } from "@/auth.config";
-import Link from "next/link";
+import { PaginationButton } from "@/components";
 
 interface Props {
     searchParams: { page?: string };
@@ -10,25 +8,16 @@ interface Props {
 
 
 export default async function FavoritePage({ searchParams }: Props) {
-    const session = await auth()
-
-    if (!session) {
-        redirect("/auth/login")
-    }
 
     const favorites = await getFavorite()
     const page = searchParams.page ? parseInt(searchParams.page) : 1
     const { products, currentPage, totalPage } = await paginationProduct({ products: favorites, page })
 
-    if (!products) {
-        redirect(notFound())
-    }
-
     return (
-        <div className="max-w-[1600px] mx-auto px-4">
+        <div className="max-w-[1600px] mx-auto px-4 my-20">
             <h1 className="text-5xl my-8 font-semibold">Favoritos</h1>
 
-            {
+            {/* {
                 favorites.length === 0 ? (
                     <div className="flex flex-col items-center my-14 ">
                         <SvgFavorite className="h-72" />
@@ -41,7 +30,9 @@ export default async function FavoritePage({ searchParams }: Props) {
                         <PaginationButton currentPage={currentPage} totalPages={totalPage} url={"/favorite"} />
                     </div>
                 )
-            }
+            } */}
+
+            <FavoriteProducts />
         </div>
     );
 }

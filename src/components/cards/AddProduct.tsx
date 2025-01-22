@@ -1,26 +1,19 @@
 "use client"
 
 import { IconCorazon, IconCorazonLleno } from "../icons/Icons";
-import { addFavorite, getFavoriteById } from "@/actions";
+import { cartStore, useFavoriteState } from "@/store";
 import { useCounter } from "@/hook/useCounter";
-import { cartStore } from "@/store/cartStore";
-import { useEffect, useState } from "react";
 import { Product } from "@/interface";
 
 export function AddProduct({ product }: { product: Product }) {
 
-    const [isFavorite, setIsFavorite] = useState(false)
     const { counter, handleIncrement, handleDecrement } = useCounter()
     const addCart = cartStore(state => state.addCart)
     const changeCart = cartStore(state => state.changeCart)
 
-    useEffect(() => {
-        const validateIsFavorite = async () => {
-            return await getFavoriteById(product.id)
-        }
-
-        validateIsFavorite().then(result => setIsFavorite(result))
-    }, [isFavorite, product.id])
+    const favorites = useFavoriteState((state) => state.favorites)
+    const isFavorite = favorites.find(p => p.id === product.id)
+    const changeFavorite = useFavoriteState(state => state.isFavorite)
 
 
     const handlerCart = (data: Product) => {
@@ -28,9 +21,8 @@ export function AddProduct({ product }: { product: Product }) {
         changeCart()
     }
 
-    const handleFavorite = async () => {
-        setIsFavorite(!isFavorite)
-        await addFavorite({ id: product.id })
+    const handleFavorite = () => {
+        changeFavorite(product)
     }
 
     return (
@@ -63,14 +55,16 @@ export function AddProduct({ product }: { product: Product }) {
                 </div>
             </div>
 
-            {/* BUTTON  FAVORITE*/}
             <div className="md:flex items-center gap-8">
 
+                {/* AGREGAR AL CARRITO  */}
                 <button
                     className="bg-red-500  w-full text-white px-4 py-2 rounded-full  my-8 hover:bg-red-700"
                     onClick={() => handlerCart(product)}>
                     Agregar al Carrito
                 </button>
+
+                {/*   FAVORITE DESKTOP*/}
 
                 <div onClick={handleFavorite}
                     className="size-12 border border-red-500 rounded-full hidden  md:flex justify-center items-center shrink-0 text-red-500 cursor-pointer">
