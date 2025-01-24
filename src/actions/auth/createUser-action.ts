@@ -1,7 +1,6 @@
 "use server"
 
 import { registerSchema } from "@/validations/registerSchema";
-import { signIn } from "@/auth.config";
 import prisma from "@/lib/prisma";
 import bcryptjs from "bcryptjs"
 import { z } from "zod";
@@ -29,5 +28,4 @@ export const createUser = async (formData: RegisterFormData) => {
         return { ok: false, message: "Correo ya existe" }
 
     }
-
 }

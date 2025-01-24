@@ -1,14 +1,23 @@
-export { Footer } from "./footer/Footer"
-export { TopMenu } from "./topMenu/TopMenu"
-export { Search } from "./topMenu/Search"
-export { title } from "./font/fonts"
-
 export { CategoriesPopular } from "./home/CategoriesPopular"
 export { SpecialOffersOne } from "./home/SpecialOffersOne"
-export { AddressForm } from "./address/AddressForm"
-export { RegisterForm } from "./auth/RegisterForm"
 export { ServiceInfo } from "./home/ServiceInfo"
 export { DownloadApp } from "./home/DownloadApp"
 export { SectionTwo } from "./home/SectionTwo"
-export { LoginForm } from "./auth/LoginForm"
 export { Header } from "./home/Header"
+
+
+export { TopMenu } from "./topMenu/TopMenu"
+export { Search } from "./topMenu/Search"
+
+export { Footer } from "./footer/Footer"
+export { title } from "./font/fonts"
+
+export { AddressForm } from "./address/AddressForm"
+
+export { RegisterForm } from "./auth/RegisterForm"
+export { LoginForm } from "./auth/LoginForm"
+
+export { CheckoutProducts } from "./checkout/checkout-products"
+export { CheckoutSummary } from "./checkout/checkout-summary"
+
+

@@ -25,7 +25,7 @@ export const signInCredentials = async (formData: LoginFormData) => {
 // LOGIN GOOGLE
 export const signInGoogle = async () => {
 
-    await signIn("google")
+    await signIn("google", { redirectTo: "/" })
 
 }
 
