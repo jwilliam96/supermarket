@@ -27,7 +27,7 @@ export function CheckoutProducts() {
                     ))
                 ) :
                     products.map(product => (
-                        <div key={product.product.id} className=" flex gap-6 items-center">
+                        <div key={product.product.id} className=" flex gap-6 items-center mb-2">
                             <figure className="w-[120px] h-[120px] relative">
                                 <Image
                                     src={product.product.image}
