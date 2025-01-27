@@ -4,24 +4,38 @@ import { create } from 'zustand'
 import { z } from 'zod'
 
 interface AddressStore {
-    addressStore: Address | null
-    isAddress: (data: Address) => void
+    address: Address | null
+    hasAddress: boolean
+    setAddress: (data?: Address) => void
+    toggleAddressState: () => void
 }
 
 type Address = z.infer<typeof addressSchema>
 
 export const useAddress = create<AddressStore>()(
-    persist((set, get) => ({
-        addressStore: null,
+    persist(
+        (set, get) => ({
+            address: null,
+            hasAddress: false,
 
-        isAddress: (data) => {
-            if (get().addressStore) {
-                set({ addressStore: null })
-            }
+            setAddress: (data?: Address) => {
+                if (data) {
+                    // Validar datos usando Zod
+                    const parsedAddress = addressSchema.safeParse(data)
+                    if (!parsedAddress.success) {
+                        console.error('Invalid address:', parsedAddress.error)
+                        return
+                    }
+                    set({ address: parsedAddress.data, hasAddress: true })
+                } else {
+                    set({ address: null, hasAddress: false })
+                }
+            },
 
-            set({ addressStore: data })
-        }
-    }),
-        { name: "address-store" }
+            toggleAddressState: () => {
+                set((state) => ({ hasAddress: !state.hasAddress }))
+            },
+        }),
+        { name: 'address-store' }
     )
 )
