@@ -1,7 +1,7 @@
 "use client"
 
 import { IconCarrito } from "@/components/icons/Icons";
-import { cartStore } from "@/store/cartStore";
+import { cartStore } from "@/store/cart-store";
 
 export default function CartMenu() {
 

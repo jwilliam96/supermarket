@@ -1,8 +1,10 @@
 "use client"
 
+import { useAddress } from "@/store";
 import { addressSchema } from "@/validations/address-Schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -12,20 +14,18 @@ export function AddressForm() {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<AddressFormData>({ resolver: zodResolver(addressSchema) })
     const route = useRouter()
 
+    const address = useAddress(state => state.addressStore)
+    const isAddress = useAddress(state => state.isAddress)
+
+
+    useEffect(() => {
+
+    }, [])
+
 
     const submit = handleSubmit((data: AddressFormData) => {
 
         route.push("/checkout")
-        reset({
-            address: "",
-            addressOptional: "",
-            city: "",
-            country: "",
-            lastName: "",
-            name: "",
-            phone: "",
-            postalCode: ""
-        })
     })
 
     return (

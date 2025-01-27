@@ -3,7 +3,7 @@
 import { currencyFormat } from "@/utils/currencyFormat"
 import { CartProducts, LinkButton } from "@/components"
 import { IoIosArrowForward } from "react-icons/io"
-import { cartStore } from "@/store/cartStore"
+import { cartStore } from "@/store/cart-store"
 import { useEffect, useState } from "react"
 
 export default function CartModal() {

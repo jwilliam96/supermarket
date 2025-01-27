@@ -1,7 +1,7 @@
 "use client"
 
 import { useCounter } from "@/hook/useCounter";
-import { cartStore } from "@/store/cartStore";
+import { cartStore } from "@/store/cart-store";
 import { IconCarrito } from "../icons/Icons";
 import { Product } from "@/interface";
 import Image from "next/image";

@@ -1,7 +1,7 @@
 "use client"
 
 import { currencyFormat } from "@/utils/currencyFormat"
-import { cartStore } from "@/store/cartStore"
+import { cartStore } from "@/store/cart-store"
 import { useEffect, useState } from "react"
 import { LinkButton } from "../LinkButton"
 
