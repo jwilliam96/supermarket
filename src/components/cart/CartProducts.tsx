@@ -4,7 +4,7 @@ import { cartStore } from "@/store/cart-store"
 import { IconDelete } from "../icons/Icons"
 import Image from "next/image"
 import Link from "next/link"
-import { SkeletonProductCart } from "../skeleton/skeleton-productCart"
+import { SkeletonProductCart } from "../skeleton/productCart-skeleton"
 import { useEffect, useState } from "react"
 
 export function CartProducts() {

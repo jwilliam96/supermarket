@@ -1,4 +1,4 @@
-export { getProductById, getProducts, getProductsByCategories } from "./products/products-actions"
+export { getProductById, getProducts, getProductsByCategories } from "./products/get-products"
 export { getSubcategories, getSubcategoryName } from "./products/subcategories-actions"
 export { signInGoogle, signInCredentials } from "./auth/signin-action"
 export { paginationProduct } from "./products/product-pagination"

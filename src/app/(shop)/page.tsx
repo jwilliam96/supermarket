@@ -1,6 +1,6 @@
 
 import { CategoriesPopular, DownloadApp, Header, SectionTwo, ServiceInfo, SpecialOffersOne } from "@/ui";
-import { getProducts } from "@/actions/products/products-actions";
+import { getProducts } from "@/actions/products/get-products";
 import { LinkButton, SwiperContainer, Title } from "@/components";
 import Image from "next/image";
 import { auth } from "@/auth.config";

@@ -1,11 +1,11 @@
 
 "use client"
 
-import { SkeletonProductCart } from "@/components"
-import { cartStore } from "@/store"
 import { currencyFormat } from "@/utils/currencyFormat"
-import Image from "next/image"
+import { SkeletonProductCheckout } from "@/components"
 import { useEffect, useState } from "react"
+import { cartStore } from "@/store"
+import Image from "next/image"
 
 export function CheckoutProducts() {
 
@@ -23,12 +23,12 @@ export function CheckoutProducts() {
             {
                 isLoading ? (
                     Array.from({ length: 3 }, (_, i) => (
-                        <SkeletonProductCart key={i} />
+                        <SkeletonProductCheckout key={i} />
                     ))
                 ) :
-                    products.map(product => (
-                        <div key={product.product.id} className=" flex gap-6 items-center mb-2">
-                            <figure className="w-[120px] h-[120px] relative">
+                    products.slice().reverse().map(product => (
+                        <div key={product.product.id} className=" flex gap-6 items-center mb-2 shadow-lg">
+                            <figure className="w-[100px] h-[100px] relative shrink-0">
                                 <Image
                                     src={product.product.image}
                                     alt={product.product.description}
@@ -39,8 +39,8 @@ export function CheckoutProducts() {
                             </figure>
 
                             <div className="">
-                                <h2 className="text-xl font-medium mb-2">{product.product.title} <span>{`(${product.quantity})`}</span></h2>
-                                <p className="font-bold text-xl">{currencyFormat(product.product.price)}</p>
+                                <h2 className="md:text-xl font-medium mb-2">{product.product.title} <span>{`(${product.quantity})`}</span></h2>
+                                <p className="font-bold md:text-xl text-green-700">{currencyFormat(product.product.price)}</p>
 
                             </div>
                         </div>

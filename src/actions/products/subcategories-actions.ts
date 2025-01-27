@@ -1,6 +1,6 @@
 "use server"
 
-import { getProducts } from "./products-actions";
+import { getProducts } from "./get-products";
 import { SubCategories } from "@/interface"
 import { notFound } from "next/navigation";
 import prisma from "@/lib/prisma"

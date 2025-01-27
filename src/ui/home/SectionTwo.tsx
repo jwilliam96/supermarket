@@ -1,5 +1,5 @@
 import { LinkButton, SwiperContainer, Title } from "@/components";
-import { getProducts } from "@/actions/products/products-actions";
+import { getProducts } from "@/actions/products/get-products";
 import cereales from "/public/home/section2oferta.png"
 import pastas from "/public/home/section2.png"
 import Image from "next/image";
