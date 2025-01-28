@@ -21,6 +21,7 @@ interface Cart {
 
     isCart: boolean
     changeCart: () => void
+    deleteAllCart: () => void
 }
 
 export const cartStore = create<Cart>()(
@@ -87,9 +88,11 @@ export const cartStore = create<Cart>()(
             })),
 
             isCart: false,
-            changeCart: () => set(state => ({ isCart: !state.isCart }))
+            changeCart: () => set(state => ({ isCart: !state.isCart })),
+            deleteAllCart: () => set(() => ({ cartState: [] }))
 
         }),
+
         {
             name: "cart-product"
         }
