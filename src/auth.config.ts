@@ -1,5 +1,6 @@
 import Credentials from "next-auth/providers/credentials"
 import Google from "next-auth/providers/google"
+import GitHub from "next-auth/providers/github"
 import prisma from "./lib/prisma"
 import NextAuth from "next-auth"
 import bcryptjs from "bcryptjs"
@@ -13,6 +14,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     providers: [
         Google,
+        GitHub,
         Credentials({
             async authorize(credentials) {
                 const parseCredentials = z
@@ -43,7 +45,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     callbacks: {
         async signIn({ account, profile }) {
 
-            if (account?.provider === "google") {
+            if (account?.provider === "google" || account?.provider === "github") {
                 if (profile?.email) {
                     const emailVerify = await prisma.user.findUnique({ where: { email: profile?.email } })
 
