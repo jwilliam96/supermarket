@@ -28,4 +28,9 @@ export const signInGoogle = async () => {
     await signIn("google", { redirectTo: "/" })
 
 }
+export const signInGitHub = async () => {
+
+    await signIn("github", { redirectTo: "/" })
+
+}
 

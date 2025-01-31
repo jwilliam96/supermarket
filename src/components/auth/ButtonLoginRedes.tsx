@@ -1,6 +1,6 @@
 "use client"
 
-import { signInGoogle } from "@/actions";
+import { signInGitHub, signInGoogle } from "@/actions";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
@@ -8,6 +8,10 @@ export function ButtonLoginRedes() {
 
     const handleGoogle = async () => {
         await signInGoogle()
+
+    }
+    const handleGitHub = async () => {
+        await signInGitHub()
 
     }
 
@@ -23,7 +27,10 @@ export function ButtonLoginRedes() {
             </div>
 
             {/* GITHUB */}
-            <div className="flex items-center gap-2 border border-gray-400 bg-gray-50 w-full justify-center py-2 rounded-md">
+            <div
+                className="cursor-pointer flex items-center gap-2 border border-gray-400 bg-gray-50 w-full justify-center py-2 rounded-md"
+                onClick={handleGitHub}
+            >
                 <FaGithub size={30} />
                 <p className="font-bold text-xl">GitHub</p>
             </div>
