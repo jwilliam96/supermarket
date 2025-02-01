@@ -2,8 +2,8 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth.config";
 
 export const metadata = {
-    title: 'SEO Title',
-    description: 'SEO Title',
+    title: 'Iniciar sesión',
+    description: 'Login to your account',
 };
 export default async function AuthLayout({
     children
