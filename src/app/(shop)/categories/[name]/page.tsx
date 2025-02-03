@@ -15,6 +15,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
     const { products, currentPage, totalPage } = await paginationProduct({ products: subCategories, page })
 
+
     if (!products) {
         redirect(notFound())
     }
