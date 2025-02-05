@@ -66,7 +66,7 @@ export async function TopMenu() {
                     <Link href={"/"} ><Image src={logo} alt="logo" className="h-[70px] w-auto" priority /></Link>
 
                     {/* SEARCH  */}
-                    <div className="hidden sm:block max-w-[450px] w-full ">
+                    <div className="hidden sm:block max-w-[450px] w-full relative ">
                         <Search />
                     </div>
 

@@ -19,7 +19,10 @@ export function PaginationButton({ currentPage, totalPages, url }: Props) {
             return `${url}/?page=${currentPage + 2}`
         }
 
-        if (page === "..") return `${url}/?page=${currentPage - 2}`
+        if (page === "..") {
+            if (currentPage === totalPages) return `${url}/?page=${currentPage - 3}`
+            return `${url}/?page=${currentPage - 2}`
+        }
 
         return `${url}/?page=${page}`
     }
