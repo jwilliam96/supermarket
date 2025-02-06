@@ -12,11 +12,8 @@ import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export async function TopMenu({ searchParams }: { searchParams?: { query?: string; page?: string } }) {
 
-    const query = searchParams?.query || ""
-
-    console.log({ query })
+export async function TopMenu() {
 
     const session = await auth()
 
@@ -76,9 +73,7 @@ export async function TopMenu({ searchParams }: { searchParams?: { query?: strin
                     <div className="hidden sm:block max-w-[450px] w-full relative ">
                         <Search />
 
-                        <Suspense key={query} fallback={<SkeletonSearch />}>
-                            <ListSearch query={query} />
-                        </Suspense>
+                        <ListSearch />
                     </div>
 
                     {/* CART, FAVORITE */}
