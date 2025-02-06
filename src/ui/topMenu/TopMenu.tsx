@@ -1,15 +1,22 @@
 import { IconCorazonLleno } from "@/components/icons/Icons";
+import { SkeletonSearch } from "./skeleton-search";
 import { FaLocationDot } from "react-icons/fa6";
 import { selectOption } from "@/utils/topMenu";
 import { ButtonSignOut } from "@/components";
 import logo from "/public/logo-completo.svg"
+import { ListSearch } from "./ListSearch";
 import { auth } from "@/auth.config";
 import CartMenu from "./CartMenu";
 import { Search } from "./Search";
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export async function TopMenu() {
+export async function TopMenu({ searchParams }: { searchParams?: { query?: string; page?: string } }) {
+
+    const query = searchParams?.query || ""
+
+    console.log({ query })
 
     const session = await auth()
 
@@ -65,9 +72,13 @@ export async function TopMenu() {
                     {/* lOGO  */}
                     <Link href={"/"} ><Image src={logo} alt="logo" className="h-[70px] w-auto" priority /></Link>
 
-                    {/* SEARCH  */}
+                    {/* SEARCH  / LISTA DE BÚSQUEDA*/}
                     <div className="hidden sm:block max-w-[450px] w-full relative ">
                         <Search />
+
+                        <Suspense key={query} fallback={<SkeletonSearch />}>
+                            <ListSearch query={query} />
+                        </Suspense>
                     </div>
 
                     {/* CART, FAVORITE */}

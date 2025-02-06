@@ -6,6 +6,8 @@ export { SectionTwo } from "./home/SectionTwo"
 export { Header } from "./home/Header"
 
 
+export { SkeletonSearch } from "./topMenu/skeleton-search"
+export { ListSearch } from "./topMenu/ListSearch"
 export { TopMenu } from "./topMenu/TopMenu"
 export { Search } from "./topMenu/Search"
 
