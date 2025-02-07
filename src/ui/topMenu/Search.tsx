@@ -27,7 +27,7 @@ export function Search({ className }: { className?: string }) {
             <div className={`flex w-full bg-white rounded-full overflow-hidden p-[1px] mx-auto ${className}`}>
                 <input
                     type="text"
-                    className="grow bg-red-500 rounded-s-full outline-white pl-2 sm:pl-8 "
+                    className="grow bg-red-500 rounded-s-full outline-white pl-4 sm:pl-8 "
                     onChange={(e) => handleSearch(e.target.value)}
                     defaultValue={searchParams.get("query")?.toString()}
                 />

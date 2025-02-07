@@ -4,12 +4,14 @@ import { fetchFilterProducts } from "@/actions";
 import { Product } from "@/interface";
 import { currencyFormat } from "@/utils/currencyFormat";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation"
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react";
 
 export function ListSearch() {
     const searchParams = useSearchParams();
     const query = searchParams.get("query");
+    const router = useRouter()
 
     const [result, setResult] = useState<Product[] | null>([])
 
@@ -24,6 +26,10 @@ export function ListSearch() {
         }
     }, [query]);
 
+    const newUrl = (productId: string) => {
+        router.push(`/product/${productId}`)
+    }
+
     return (
         <>
             {query && (
@@ -34,12 +40,16 @@ export function ListSearch() {
                         ) :
                             result?.map(product => (
                                 <>
-                                    <div key={product.id} className="flex gap-4 mb-2 cursor-pointer">
+                                    <div
+                                        key={product.id}
+                                        onClick={() => console.log("se hizo click")}
+                                        className="flex gap-4 mb-2 cursor-pointer"
+                                    >
                                         <figure>
                                             <Image src={product.image} width={70} height={70} alt={product.title} className="object-cover h-[70px]" />
                                         </figure>
                                         <div className="space-y-2">
-                                            <p className="capitalize text-black">{product.title}</p>
+                                            <Link href={`/product/${product.id}`} className="capitalize text-black">{product.title}</Link>
                                             <p className="font-bold text-green-700">{currencyFormat(product.price)}</p>
                                         </div>
 
