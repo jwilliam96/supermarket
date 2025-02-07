@@ -13,7 +13,7 @@ async function main() {
         const { categoriesData, productsData } = initialData;
 
         // CREAR CATEGORÍAS
-        const categories = categoriesData.map((category) => ({ category }));
+        const categories = categoriesData.map((category) => ({ category: category.toLowerCase() }));
 
         await prisma.category.createMany({
             data: categories,
@@ -21,7 +21,7 @@ async function main() {
 
         // CREAR PRODUCTOS Y SUB CATEGORÍAS
         for (const product of productsData) {
-            const { subCategory, category, ...rest } = product;
+            const { subCategory, category, title, ...rest } = product;
 
             // Encontrar la categoría
             const getCategoryId = await prisma.category.findFirst({
@@ -46,7 +46,7 @@ async function main() {
             // Crear el producto (opcional)
             if (getCategoryId?.id && getSubcategory) {
                 await prisma.product.create({
-                    data: { ...rest, categoryId: getCategoryId?.id, subCategoryId: getSubcategory?.id },
+                    data: { title: title.toLowerCase(), ...rest, categoryId: getCategoryId?.id, subCategoryId: getSubcategory?.id },
                 });
             }
         }

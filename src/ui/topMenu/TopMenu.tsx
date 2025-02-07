@@ -1,14 +1,11 @@
 import { IconCorazonLleno } from "@/components/icons/Icons";
-import { SkeletonSearch } from "./skeleton-search";
 import { FaLocationDot } from "react-icons/fa6";
 import { selectOption } from "@/utils/topMenu";
 import { ButtonSignOut } from "@/components";
 import logo from "/public/logo-completo.svg"
-import { ListSearch } from "./ListSearch";
 import { auth } from "@/auth.config";
 import CartMenu from "./CartMenu";
 import { Search } from "./Search";
-import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -72,8 +69,6 @@ export async function TopMenu() {
                     {/* SEARCH  / LISTA DE BÚSQUEDA*/}
                     <div className="hidden sm:block max-w-[450px] w-full relative ">
                         <Search />
-
-                        <ListSearch />
                     </div>
 
                     {/* CART, FAVORITE */}
