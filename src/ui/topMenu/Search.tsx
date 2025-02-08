@@ -34,7 +34,7 @@ export function Search({ className }: { className?: string }) {
                 <CiSearch size={20} className="m-2 text-red-500 shrink-0" />
             </div>
 
-            <div className="hidden group-focus-within:block">
+            <div className="hidden group-focus-within:block group-hover:block">
                 <ListSearch />
             </div>
         </div>

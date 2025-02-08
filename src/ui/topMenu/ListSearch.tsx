@@ -1,16 +1,16 @@
 "use client"
 
+import { useRouter, useSearchParams } from "next/navigation"
 import { currencyFormat } from "@/utils/currencyFormat";
-import { useSearchParams } from "next/navigation"
 import { fetchFilterProducts } from "@/actions";
 import { useEffect, useState } from "react";
 import { Product } from "@/interface";
 import Image from "next/image";
-import Link from "next/link";
 
 export function ListSearch() {
     const searchParams = useSearchParams();
     const query = searchParams.get("query");
+    const router = useRouter()
 
     const [result, setResult] = useState<Product[] | null>([])
 
@@ -25,10 +25,14 @@ export function ListSearch() {
         }
     }, [query]);
 
+    const newUrl = (productId: string) => {
+        router.push(`/product/${productId}`)
+    }
+
     return (
         <>
             {query && (
-                <div className="absolute left-0 right-0 bg-white border-2 border-gray-400 rounded-md z-[100] p-2 max-h-[600px] overflow-y-auto mt-3  ">
+                <div className="absolute left-0 right-0 bg-white border-2 border-gray-400 rounded-md z-[100] p-2 max-h-[600px] overflow-y-auto   ">
                     {
                         result?.length === 0 ? (
                             <div> Sin Resultados</div>
@@ -37,14 +41,16 @@ export function ListSearch() {
                                 <>
                                     <div
                                         key={product.id}
-                                        onClick={() => console.log("se hizo click")}
+                                        onClick={() => newUrl(product.id)}
                                         className="flex gap-4 mb-2 cursor-pointer"
                                     >
                                         <figure>
                                             <Image src={product.image} width={70} height={70} alt={product.title} className="object-cover h-[70px]" />
                                         </figure>
                                         <div className="space-y-2">
-                                            <Link href={`/product/${product.id}`} className="capitalize text-black">{product.title}</Link>
+                                            <p className="capitalize text-black">
+                                                {product.title}
+                                            </p>
                                             <p className="font-bold text-green-700">{currencyFormat(product.price)}</p>
                                         </div>
 
