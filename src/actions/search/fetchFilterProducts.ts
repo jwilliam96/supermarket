@@ -13,11 +13,14 @@ export async function fetchFilterProducts(query: string): Promise<Product[]> {
         if ("legumbres".includes(query.toLowerCase())) {
             return product.subCategory?.subcategory === "vegetales"
         }
-        return product.title.includes(query.toLowerCase())
+        return product.title.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+            .includes(query.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
             ||
-            product.category?.category.includes(query.toLowerCase())
+            product.category?.category.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+                .includes(query.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
             ||
-            product.subCategory?.subcategory.includes(query.toLowerCase())
+            product.subCategory?.subcategory.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+                .includes(query.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
     })
 
 
