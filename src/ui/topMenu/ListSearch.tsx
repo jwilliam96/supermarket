@@ -1,17 +1,16 @@
 "use client"
 
-import { fetchFilterProducts } from "@/actions";
-import { Product } from "@/interface";
 import { currencyFormat } from "@/utils/currencyFormat";
+import { useSearchParams } from "next/navigation"
+import { fetchFilterProducts } from "@/actions";
+import { useEffect, useState } from "react";
+import { Product } from "@/interface";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react";
 
 export function ListSearch() {
     const searchParams = useSearchParams();
     const query = searchParams.get("query");
-    const router = useRouter()
 
     const [result, setResult] = useState<Product[] | null>([])
 
@@ -25,10 +24,6 @@ export function ListSearch() {
             filterProducts(query)
         }
     }, [query]);
-
-    const newUrl = (productId: string) => {
-        router.push(`/product/${productId}`)
-    }
 
     return (
         <>

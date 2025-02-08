@@ -26,9 +26,7 @@ export const useAddress = create<AddressStore>()(
                         console.error('Invalid address:', parsedAddress.error)
                         return
                     }
-                    set({ address: parsedAddress.data, hasAddress: true })
-                } else {
-                    set({ address: null, hasAddress: false })
+                    set({ address: parsedAddress.data })
                 }
             },
 

@@ -3,8 +3,8 @@
 import { currencyFormat } from "@/utils/currencyFormat"
 import { cartStore, useAddress } from "@/store"
 import { useEffect, useState } from "react"
-import Swal from 'sweetalert2'
 import { useRouter } from "next/navigation"
+import Swal from 'sweetalert2'
 
 export function CheckoutSummary() {
 
@@ -38,7 +38,7 @@ export function CheckoutSummary() {
             <h2 className="text-2xl font-bold">Dirección de entrega</h2>
 
             <ul className="my-6 font-bold">
-                <li className="flex justify-between">Nombre : <span className="font-normal">{order?.name}</span></li>
+                <li className="flex justify-between">Nombre : <span className="font-normal">{order?.name} {order?.lastName}</span></li>
                 <li className="flex justify-between">Dirección :  <span className="font-normal">{order?.address}</span></li>
                 <li className="flex justify-between">Cgo postal :  <span className="font-normal">{order?.postalCode}</span></li>
                 <li className="flex justify-between">Ciudad :  <span className="font-normal">{order?.city}</span></li>

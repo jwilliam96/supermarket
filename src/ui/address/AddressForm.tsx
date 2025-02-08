@@ -23,18 +23,17 @@ export function AddressForm() {
 
 
     useEffect(() => {
-        reset({ ...address })
+        if (isAddress) {
+            reset({ ...address })
+        }
 
-    }, [address, reset])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [reset])
 
 
     const submit = handleSubmit((data: AddressFormData) => {
 
-        if (isAddress) {
-            setAddress(data)
-        } else {
-            setAddress()
-        }
+        setAddress(data)
 
         route.push("/checkout")
     })
