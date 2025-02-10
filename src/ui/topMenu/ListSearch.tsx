@@ -35,12 +35,12 @@ export function ListSearch() {
                 <div className="absolute left-0 right-0 bg-white border-2 border-gray-400 rounded-md z-[100] p-2 max-h-[600px] overflow-y-auto   ">
                     {
                         result?.length === 0 ? (
-                            <div> Sin Resultados</div>
+                            <div className=" text-gray-500 pl-4 py-2 italic"> Sin Resultados...</div>
                         ) :
-                            result?.map(product => (
+                            result?.map((product, i) => (
                                 <>
                                     <div
-                                        key={product.id}
+                                        key={`${product.id}-${i}`}
                                         onClick={() => newUrl(product.id)}
                                         className="flex gap-4 mb-2 cursor-pointer"
                                     >
