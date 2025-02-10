@@ -12,7 +12,7 @@ export { TopMenu } from "./topMenu/TopMenu"
 export { Search } from "./topMenu/Search"
 
 export { Footer } from "./footer/Footer"
-export { title } from "./font/fonts"
+export { fontTitle } from "./font/fonts"
 
 export { AddressForm } from "./address/AddressForm"
 
@@ -22,4 +22,4 @@ export { LoginForm } from "./auth/LoginForm"
 export { CheckoutProducts } from "./checkout/checkout-products"
 export { CheckoutSummary } from "./checkout/checkout-summary"
 
-
+export { SwiperHeader } from "./home/header/SwiperHeader"

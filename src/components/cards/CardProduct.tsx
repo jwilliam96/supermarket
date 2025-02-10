@@ -40,7 +40,12 @@ export function CardProduct({ product }: Props) {
 
             {/* IMAGEN } */}
             <Link href={`/product/${product.id}`}>
-                <Image className="w-full object-cover h-[350px]" src={product.image} width={300} height={200} alt='producto' />
+                <Image
+                    className="w-full object-cover h-[350px]"
+                    src={product.image}
+                    width={300}
+                    height={200}
+                    alt='producto' />
             </Link>
 
             {/* DESCRIPTION  */}
