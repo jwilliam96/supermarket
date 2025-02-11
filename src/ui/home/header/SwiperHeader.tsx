@@ -21,11 +21,19 @@ export function SwiperHeader() {
                 imagesHeader.map(image => (
                     <SwiperSlide key={image.img}>
                         <Image
-                            className="object-cover w-full h-full"
+                            className="hidden md:block object-cover w-full h-full "
                             alt={image.description}
                             src={image.img}
                             width={1000}
                             height={350}
+                            priority
+                        />
+                        <Image
+                            className="block md:hidden object-cover w-full h-full"
+                            alt={image.description}
+                            src={image.img}
+                            width={768}
+                            height={550}
                             priority
                         />
                     </SwiperSlide>

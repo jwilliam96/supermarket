@@ -14,6 +14,7 @@ interface Props {
 
 export function SwiperContainer({ products, filterProduct }: Props) {
 
+
     let productsFilter: Product[] = [];
 
     const filters: Record<string, (product: Product) => boolean> = {
@@ -58,6 +59,7 @@ export function SwiperContainer({ products, filterProduct }: Props) {
                     productsFilter.map(product => (
                         <SwiperSlide key={product.id}>
                             <CardProduct product={product} />
+                            <div className="swiper-lazy-preloader"></div>
                         </SwiperSlide>
                     ))
                 }
