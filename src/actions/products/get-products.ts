@@ -60,17 +60,15 @@ export const getProductsByCategories = async (category: string) => {
 
 
 export const getProductById = async (productId: string) => {
-    try {
-        const products = await getProducts();
 
-        const product = products.find(product => product.id === productId);
+    const products = await getProducts();
 
-        if (!product) {
-            throw notFound(); // Usar notFound directamente si es una excepción
-        }
+    const product = products.find(product => product.id === productId);
 
-        return product;
-    } catch (error) {
-        throw new Error(`Hubo un error: ${error instanceof Error ? error.message : error}`);
+    if (!product) {
+        throw notFound(); // Usar notFound directamente si es una excepción
     }
+
+    return product;
+
 }
