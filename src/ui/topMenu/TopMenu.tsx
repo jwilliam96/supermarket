@@ -1,13 +1,13 @@
-import { IconCorazonLleno } from "@/components/icons/Icons";
 import { FaLocationDot } from "react-icons/fa6";
 import { selectOption } from "@/utils/topMenu";
-import { ButtonSignOut } from "@/components";
+import { ButtonSignOut, IconCorazonLleno } from "@/components";
 import logo from "/public/logo-completo.svg"
 import { auth } from "@/auth.config";
 import CartMenu from "./CartMenu";
 import { Search } from "./Search";
 import Image from "next/image";
 import Link from "next/link";
+import { MenuMobile } from "./MenuMobile";
 
 
 export async function TopMenu() {
@@ -71,11 +71,14 @@ export async function TopMenu() {
                         <Search />
                     </div>
 
-                    {/* CART, FAVORITE */}
+                    {/* MENU ,CART, FAVORITE */}
                     <div className="flex gap-4">
                         <FaLocationDot size={25} />
-                        <Link href={"/favorite"}><IconCorazonLleno size={27} /></Link>
+                        <Link href={"/favorite"}>
+                            <IconCorazonLleno size={27} />
+                        </Link>
                         <CartMenu />
+                        {/* <MenuMobile /> */}
                     </div>
                 </div>
                 {/* SEARCH MOBILE  */}
