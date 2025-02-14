@@ -68,7 +68,7 @@ export function MenuMobile({ session }: { session: boolean }) {
                                 selectOption.filter(category => category.title.toLowerCase() !== "mis pedidos").map((category) => (
 
                                     <div key={category.title}>
-                                        <div className="flex items-center gap-3 space-y-3">
+                                        <div className="flex items-center gap-3 mb-3">
 
                                             <h2
                                                 onClick={() => newUrl(`/categories/${category.title}`)}
@@ -93,7 +93,7 @@ export function MenuMobile({ session }: { session: boolean }) {
                                         </div>
 
                                         {/* SUB CATEGORÍAS  */}
-                                        <div className={`overflow-hidden bg-red-700 rounded-lg  transition-all duration-500 ease-in-out ${isOpenToggle === category.title ? ' max-h-96 opacity-100 my-2' : 'max-h-0 opacity-0'}`}>
+                                        <div className={`overflow-hidden bg-red-700 rounded-lg mb-2 transition-all duration-500 ease-in-out ${isOpenToggle === category.title ? ' max-h-96 opacity-100 ' : 'max-h-0 opacity-0'}`}>
 
                                             <ul className="list-disc list-inside px-2 space-y-1">
                                                 {
