@@ -6,13 +6,13 @@ import { useState } from "react";
 
 export default function PoliticInfo() {
 
-    const [isOpen, setIsOpen] = useState(politicInfo[0].title);
+    const [isOpenToggle, setIsOpenToggle] = useState(politicInfo[0].title);
 
     const toggleInfo = (data: string) => {
-        if (isOpen === data) {
-            setIsOpen("")
+        if (isOpenToggle === data) {
+            setIsOpenToggle("")
         } else {
-            setIsOpen(data);
+            setIsOpenToggle(data);
         }
     };
 
@@ -25,11 +25,11 @@ export default function PoliticInfo() {
                         <div className="flex items-center justify-between cursor-pointer" onClick={() => toggleInfo(info.title)}>
                             <h2 className="text-lg font-semibold">{info.title}</h2>
                             <button className="text-2xl font-bold">
-                                {isOpen === info.title ? '-' : '+'}
+                                {isOpenToggle === info.title ? '-' : '+'}
                             </button>
                         </div>
 
-                        <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen === info.title ? ' max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpenToggle === info.title ? ' max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                             <div className="mt-2 p-4 bg-gray-100 rounded-md">
                                 <p>
                                     {info.description}

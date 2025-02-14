@@ -1,13 +1,15 @@
+
+
+import { ButtonAuth, IconCorazonLleno } from "@/components";
 import { FaLocationDot } from "react-icons/fa6";
 import { selectOption } from "@/utils/topMenu";
-import { ButtonSignOut, IconCorazonLleno } from "@/components";
 import logo from "/public/logo-completo.svg"
+import { MenuMobile } from "./MenuMobile";
 import { auth } from "@/auth.config";
 import CartMenu from "./CartMenu";
 import { Search } from "./Search";
 import Image from "next/image";
 import Link from "next/link";
-import { MenuMobile } from "./MenuMobile";
 
 
 export async function TopMenu() {
@@ -47,14 +49,11 @@ export async function TopMenu() {
                             <figure className="w-8 h-8 bg-black rounded-full"></figure>
                         )
                         }
-                        {
-                            session ? (
-                                <ButtonSignOut />
-                            ) : (
 
-                                <Link href={"/auth/login"}>Entrar</Link>
-                            )
-                        }
+                        <div className="hidden md:block">
+                            <ButtonAuth />
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -73,12 +72,12 @@ export async function TopMenu() {
 
                     {/* MENU ,CART, FAVORITE */}
                     <div className="flex gap-4">
-                        <FaLocationDot size={25} />
+                        <FaLocationDot size={25} className="hidden md:block" />
                         <Link href={"/favorite"}>
                             <IconCorazonLleno size={27} />
                         </Link>
                         <CartMenu />
-                        {/* <MenuMobile /> */}
+                        <MenuMobile session={!!session} />
                     </div>
                 </div>
                 {/* SEARCH MOBILE  */}

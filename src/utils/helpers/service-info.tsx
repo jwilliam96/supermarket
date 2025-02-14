@@ -1,7 +1,7 @@
-import { BiSupport } from "react-icons/bi";
-import { BsBasket2 } from "react-icons/bs";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { MdPhoneIphone } from "react-icons/md";
+import { BiSupport } from "react-icons/bi";
+import { BsBasket2 } from "react-icons/bs";
 
 interface ServiceInfo {
     icon: JSX.Element
