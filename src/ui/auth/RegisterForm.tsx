@@ -1,13 +1,13 @@
 "use client"
 
-import { ButtonLoginRedes, IconLogoCompleto } from "@/components"
+import { ButtonLoginRedes, IconEye, IconEyeSlash, IconLogoCompleto } from "@/components"
 import { registerSchema } from "@/validations/registerSchema"
+import { createUser, signInCredentials } from "@/actions"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { createUser, signInCredentials } from "@/actions"
+import { useState } from "react"
 import Link from "next/link"
 import { z } from "zod"
-import { useState } from "react"
 
 type UserFormData = z.infer<typeof registerSchema>
 
@@ -15,6 +15,7 @@ export function RegisterForm() {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormData>({ resolver: zodResolver(registerSchema) })
     const [errorEmail, setErrorEmail] = useState("")
+    const [isView, setIsView] = useState<boolean>(false)
 
     const onSubmit = handleSubmit(async (data) => {
 
@@ -76,12 +77,27 @@ export function RegisterForm() {
                     <label htmlFor="password" className="my-3">
                         Contraseña
                     </label>
-                    <input
-                        id="password"
-                        type="password"
-                        {...register("password")}
-                        className="border focus:outline-red-500 border-gray-400 rounded-md p-2"
-                    />
+                    <div className="flex relative items-center">
+                        <input
+                            id="password"
+                            type={isView ? "text" : "password"}
+                            {...register("password")}
+                            className="border focus:outline-red-500 border-gray-400 rounded-md p-2 w-full"
+                        />
+                        {
+                            isView ?
+                                (
+                                    <div onClick={() => setIsView(!isView)} className="flex items-center cursor-pointer">
+                                        <IconEye className="absolute right-6" />
+                                    </div>
+                                ) :
+                                (
+                                    <div onClick={() => setIsView(!isView)} className="flex items-center cursor-pointer">
+                                        <IconEyeSlash className="absolute right-6 text-gray-500" />
+                                    </div>
+                                )
+                        }
+                    </div>
                     {errors.password && <span className="text-red-500 mt-1">{errors.password?.message} </span>}
                 </div>
 
@@ -93,7 +109,7 @@ export function RegisterForm() {
                     <input
                         id="confirmPassword"
                         {...register("confirmPassword")}
-                        type="password"
+                        type={isView ? "text" : "password"}
                         className="border focus:outline-red-500 border-gray-400 rounded-md p-2" />
                     {errors.confirmPassword && <span className="text-red-500 mt-1">{errors.confirmPassword?.message} </span>}
                 </div>

@@ -1,6 +1,6 @@
 "use client"
 
-import { ButtonLoginRedes, IconLogoCompleto } from "@/components";
+import { ButtonLoginRedes, IconEye, IconEyeSlash, IconLogoCompleto } from "@/components";
 import { loginSchema } from "@/validations/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signInCredentials } from "@/actions";
@@ -17,6 +17,7 @@ export function LoginForm() {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormData>({ resolver: zodResolver(loginSchema) })
 
     const [errorValidate, setErrorValidate] = useState<string | null>(null)
+    const [isView, setIsView] = useState<boolean>(false)
 
     const onSubmit = handleSubmit(async (data) => {
 
@@ -57,12 +58,27 @@ export function LoginForm() {
                     <label htmlFor="password" className="my-3">
                         Contraseña
                     </label>
-                    <input
-                        id="password"
-                        type="password"
-                        className="border focus:outline-red-500 border-gray-400 rounded-md p-2"
-                        {...register("password")}
-                    />
+                    <div className="flex relative items-center">
+                        <input
+                            id="password"
+                            type={isView ? "text" : "password"}
+                            className="border focus:outline-red-500 border-gray-400 rounded-md p-2 w-full"
+                            {...register("password")}
+                        />
+                        {
+                            isView ?
+                                (
+                                    <div onClick={() => setIsView(!isView)} className="flex items-center cursor-pointer">
+                                        <IconEye className="absolute right-6" />
+                                    </div>
+                                ) :
+                                (
+                                    <div onClick={() => setIsView(!isView)} className="flex items-center cursor-pointer">
+                                        <IconEyeSlash className="absolute right-6 text-gray-500" />
+                                    </div>
+                                )
+                        }
+                    </div>
                     {errors.password && <span className="text-red-500 mt-1">{errors.password.message} </span>}
                     {errorValidate &&
                         <span className="text-red-500 mt-1">

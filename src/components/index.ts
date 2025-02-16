@@ -1,4 +1,4 @@
-export { IconCarrito, IconCorazonLleno, IconDelete, IconCorazon, IconMenu } from "./icons/Icons"
+export { IconCarrito, IconCorazonLleno, IconDelete, IconCorazon, IconMenu, IconEye, IconEyeSlash } from "./icons/Icons"
 
 export { SkeletonProductCheckout } from "./skeleton/productCheckout-skeleton"
 export { SkeletonProductCart } from "./skeleton/productCart-skeleton"

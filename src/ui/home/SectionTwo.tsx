@@ -3,6 +3,7 @@ import { getProducts } from "@/actions/products/get-products";
 import cereales from "/public/home/section2oferta.png"
 import pastas from "/public/home/section2.png"
 import Image from "next/image";
+import Link from "next/link";
 
 export async function SectionTwo() {
 
@@ -29,17 +30,17 @@ export async function SectionTwo() {
                 mm:w-[450px] md:w-[500px] lg:w-[600px]
                 top-1/2 -translate-y-1/2  ">
 
-                        <div className="relative">
+                        <div className="relative max-w-[400px]">
                             <div className="flex justify-between">
                                 <div>
-                                    <p className="font-bold text-xl">¡Es la hola del vino!</p>
-                                    <p className="font-bold my-4 text-3xl md:text-4xl lg:text-5xl ">Gran oferta en </p>
+                                    <p className="font-bold text-xl">sabor de Italia</p>
+                                    <p className="font-bold my-4 text-3xl md:text-4xl lg:text-5xl ">Gran oferta en tus </p>
                                 </div>
 
                             </div>
 
-                            <h3 className="font-bold mb-8 text-4xl md:text-5xl lg:text-7xl ">Vinos selectos</h3>
-                            <button className="bg-red-500 text-white px-4 py-2 rounded-full  hover:bg-red-700">Comprar ahora</button>
+                            <h3 className="font-bold mb-8 text-4xl md:text-5xl lg:text-7xl ">Pastas favoritas</h3>
+                            <Link href={"/categories/pastas%20y%20granos"} className="bg-red-500 text-white px-4 py-2 rounded-full  hover:bg-red-700">Comprar ahora</Link>
                         </div>
 
 
@@ -61,8 +62,8 @@ export async function SectionTwo() {
                         <div>
                             <p className="text-xl font-bold">Oferta de la semana</p>
                             <h3 className="text-7xl md:text-9xl font-bold">-30%</h3>
-                            <p className="text-2xl md:text-3xl font-bold">Productos de limpieza</p>
-                            <button className="bg-red-500 text-white px-4 py-2 rounded-full mt-8 hover:bg-red-700">Comprar ahora</button>
+                            <p className="text-2xl md:text-3xl font-bold">Cereales selectos</p>
+                            <Link href={"/categories/cereales%20y%20botanas"} className="inline-block bg-red-500 text-white px-4 py-2 rounded-full mt-8 hover:bg-red-700">Comprar ahora</Link>
 
                         </div>
 
@@ -71,8 +72,8 @@ export async function SectionTwo() {
                             size-20 shrink-0 rounded-full bg-red-500 grid place-content-center text-center text-white rotate-12 font-bold
                             ss:size-28 md:size-32 
                                   md:text-2xl lg:size-32 " >
-                            <p>oferta</p>
-                            <span>limitada</span>
+                            <p>Súper</p>
+                            <span>oferta</span>
                         </div>
                     </figcaption>
                     <Image
