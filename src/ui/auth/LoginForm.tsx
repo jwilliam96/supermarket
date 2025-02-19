@@ -88,10 +88,7 @@ export function LoginForm() {
 
                 <div className="flex items-center justify-between">
                     {/* checkbox  */}
-                    <div className="flex items-center">
-                        <div className="size-6 border border-gray-500 mr-2 my-4 rounded-md" />
-                        <p>Recordar</p>
-                    </div>
+                    <p className=" my-4 ">Eres nuevo?</p>
                     <Link href={"/auth/register"} className="text-red-500 font-bold underline ">Registrarme</Link>
                 </div>
 
