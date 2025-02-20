@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Freskia",
   description: "supermercado online",
+  other: {
+    "google-site-verification": "hLF9pLxUbvV126G4BdC-NLozOPcipSRg8JMpyYOmTlE",
+  },
 };
 
 export default function RootLayout({
