@@ -23,7 +23,7 @@ export async function SectionTwo() {
             {/* PROMOCIONES DOS  */}
             {/* ESPAGUETIS / CEREALES  */}
 
-            <div className="grid lg:grid-cols-2 lg:gap-12 my-20">
+            <div className="grid xl:grid-cols-2 xl:gap-12 my-20">
                 <figure className="relative h-[450px]">
                     <figcaption
                         className="absolute z-30 mx-auto right-0 left-0 px-4 ss:px6

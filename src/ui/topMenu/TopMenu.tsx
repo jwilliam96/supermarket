@@ -88,8 +88,8 @@ export async function TopMenu() {
                 <div className="text-black lg:text-xl flex gap-8">
                     {
                         selectOption.map(option => (
-                            <div key={option.title} className="group relative">
-                                <Link href={`/categories/${option.title}`} className="hover:text-red-500 cursor-pointer px-4 text-center">{option.title}</Link>
+                            <div key={option.title} className="group relative px-2">
+                                <Link href={`/categories/${option.title}`} className="hover:text-red-500 cursor-pointer  block text-center">{option.title}</Link>
 
                                 {/* HOVER LISTA  */}
                                 {
