@@ -1,12 +1,15 @@
 
 import { CategoriesPopular, DownloadApp, Header, SectionTwo, ServiceInfo, SpecialOffersOne } from "@/ui";
-import { LinkButton, SwiperContainer, Title } from "@/components";
+import { CardProduct, LinkButton, SwiperContainer, Title } from "@/components";
 import { getProducts } from "@/actions/products/get-products";
 import Image from "next/image";
+import { Product } from "@/interface";
 
 export default async function Home() {
 
-  const products = await getProducts()
+  const products: Product[] = await getProducts()
+
+  const filterProductsOffer = products.filter(product => product.offer)
 
   return (
     <>
@@ -25,7 +28,13 @@ export default async function Home() {
         {/* MEJORES OFERTAS  */}
         <Title text="Mejores ofertas" />
 
-        <SwiperContainer products={products} filterProduct="offer" />
+        <SwiperContainer>
+          {
+            filterProductsOffer.map(product => (
+              <CardProduct key={product.id} product={product} />
+            ))
+          }
+        </SwiperContainer>
 
         <LinkButton text="Comprar mejores ofertas" href="/categories/ofertas" className="max-w-max" />
 
@@ -41,7 +50,15 @@ export default async function Home() {
 
         {/* INICIAR LA COMPRA  */}
         <Title text="Iniciar la Compra" />
-        <SwiperContainer products={products} />
+
+
+        <SwiperContainer>
+          {
+            products.map(product => (
+              <CardProduct key={product.id} product={product} />
+            ))
+          }
+        </SwiperContainer>
 
         <LinkButton text="Comprar productos" href="/categories/todos" />
 

@@ -1,4 +1,4 @@
-import { LinkButton, SwiperContainer, Title } from "@/components";
+import { CardProduct, LinkButton, SwiperContainer, Title } from "@/components";
 import { getProducts } from "@/actions/products/get-products";
 import cereales from "/public/home/section2oferta.png"
 import pastas from "/public/home/section2.png"
@@ -8,6 +8,8 @@ import Link from "next/link";
 export async function SectionTwo() {
 
     const products = await getProducts()
+    const filterProductsVentas = products.filter(product => product.masVendido)
+    const filterProductsFrescura = products.filter(product => ["vegetales", "frutas"].includes(product.subCategory?.subcategory || ""))
 
     return (
         <section className="max-w-[1600px] m-auto md:px-4">
@@ -15,7 +17,13 @@ export async function SectionTwo() {
             <Title text="Más populares" />
 
             {/* <MAS POPULARES */}
-            <SwiperContainer products={products} filterProduct="ventas" />
+            <SwiperContainer>
+                {
+                    filterProductsVentas.map(product => (
+                        <CardProduct key={product.id} product={product} />
+                    ))
+                }
+            </SwiperContainer>
 
             <LinkButton text="Comprar más populares" href="/categories/más vendido" />
 
@@ -88,7 +96,13 @@ export async function SectionTwo() {
 
             <Title text="Compra frescura" />
 
-            <SwiperContainer products={products} filterProduct="frescura" />
+            <SwiperContainer>
+                {
+                    filterProductsFrescura.map(product => (
+                        <CardProduct key={product.id} product={product} />
+                    ))
+                }
+            </SwiperContainer>
 
             <LinkButton text="Continuar comprando" href="/categories/verduras y frutas" />
         </section>
