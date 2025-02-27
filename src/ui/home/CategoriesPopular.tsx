@@ -9,9 +9,10 @@ export function CategoriesPopular() {
                 categoryPopular.map(({ image, title }) => (
 
                     <Link
-                        href={`/categories/${title}`}
-                        key={title}
                         className="min-w-[240px] max-w-[385px] w-full h-[400px] border border-gray-400 flex flex-col justify-center items-center gap-12"
+                        href={`/categories/${title}`}
+                        aria-label={title}
+                        key={title}
                     >
 
                         <figure className="w-full h-1/2 relative">
@@ -20,7 +21,7 @@ export function CategoriesPopular() {
                                 src={image}
                                 width={600}
                                 height={600}
-                                alt={title} />
+                                alt="" />
 
                             <div className=" bg-[#FEEFD2] w-4/6 mx-auto rounded-full aspect-square " />
                         </figure>

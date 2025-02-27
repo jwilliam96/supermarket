@@ -10,7 +10,7 @@ export { SkeletonSearch } from "./topMenu/skeleton-search"
 export { MenuMobile } from "./topMenu/MenuMobile"
 export { ListSearch } from "./topMenu/ListSearch"
 export { TopMenu } from "./topMenu/TopMenu"
-export { Search } from "./topMenu/Search"
+export { SearchProducts } from "./topMenu/SearchProducts"
 
 export { Footer } from "./footer/Footer"
 export { fontTitle } from "./font/fonts"

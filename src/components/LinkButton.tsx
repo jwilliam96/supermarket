@@ -3,8 +3,8 @@ import clsx from "clsx"
 import Link from "next/link"
 
 interface Props {
-    text: string
     className?: string,
+    text: string
     href: string
 }
 

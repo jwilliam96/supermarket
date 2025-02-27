@@ -5,9 +5,9 @@ import { FaLocationDot } from "react-icons/fa6";
 import { selectOption } from "@/utils/topMenu";
 import logo from "/public/logo-completo.svg"
 import { MenuMobile } from "./MenuMobile";
+import { SearchProducts } from "./SearchProducts";
 import { auth } from "@/auth.config";
 import CartMenu from "./CartMenu";
-import { Search } from "./Search";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -64,7 +64,7 @@ export async function TopMenu() {
 
                     {/* SEARCH  / LISTA DE BÚSQUEDA*/}
                     <div className="hidden sm:block max-w-[450px] w-full relative ">
-                        <Search />
+                        <SearchProducts />
                     </div>
 
                     {/* MENU ,CART, FAVORITE */}
@@ -79,7 +79,7 @@ export async function TopMenu() {
                 </div>
                 {/* SEARCH MOBILE  */}
                 <div className="sm:hidden block mt-4 px-6 max-w-[450px] w-full mx-auto">
-                    <Search />
+                    <SearchProducts />
                 </div>
             </div>
 

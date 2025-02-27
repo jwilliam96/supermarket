@@ -4,7 +4,6 @@ import { serviceInfo } from "@/utils";
 
 export function ServiceInfo() {
 
-
     return (
         <article className="flex flex-col justify-center border-y-2 border-black/70 divide-black/70 divide-y-2 text-red-500
         md:grid md:grid-cols-2 md:divide-y-0 md:justify-items-center md:border-none

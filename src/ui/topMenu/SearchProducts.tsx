@@ -4,7 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { CiSearch } from "react-icons/ci";
 import { ListSearch } from "./ListSearch";
 
-export function Search({ className }: { className?: string }) {
+export function SearchProducts({ className }: { className?: string }) {
 
     const searchParams = useSearchParams()
     const { replace } = useRouter()
