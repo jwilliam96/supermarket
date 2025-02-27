@@ -1,2 +1,2 @@
 
-export const imagesHeader = [{ img: "/home/img1.png", description: "pan" }, { img: "/home/img2.png", description: "cafe" }, { img: "/home/img3.png", description: "oso de peluche" }]
+export const imagesHeader = [{ img: "/home/header/pan.webp", description: "pan" }, { img: "/home/header/cafe.webp", description: "cafe" }, { img: "/home/header/pañales.webp", description: "oso de peluche" }]
