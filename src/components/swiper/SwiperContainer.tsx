@@ -11,10 +11,13 @@ interface SwiperProductsProps {
 export function SwiperContainer({ children }: SwiperProductsProps) {
     return (
         <div className='px-16 relative'>
-            <button style={{
-                "color": "#ef4444"
-            } as React.CSSProperties}
-                className='swiper-button-prev'></button>
+            <button
+                style={{ "color": "#ef4444" } as React.CSSProperties}
+                className='swiper-button-prev'
+                aria-label="Anterior producto"
+            >
+
+            </button>
 
             <Swiper spaceBetween={25}
                 slidesPerView={1}
@@ -43,10 +46,11 @@ export function SwiperContainer({ children }: SwiperProductsProps) {
             </Swiper>
 
             <button
-                style={{
-                    "color": "#ef4444"
-                } as React.CSSProperties}
-                className='swiper-button-next'></button>
+                style={{ "color": "#ef4444" } as React.CSSProperties}
+                className='swiper-button-next'
+                aria-label="Siguiente producto"
+            >
+            </button>
         </div>
     );
 }

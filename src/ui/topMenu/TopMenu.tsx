@@ -60,7 +60,7 @@ export async function TopMenu() {
 
                 <div className="flex gap-6 justify-between items-center px-6 max-w-[1600px] mx-auto ">
                     {/* lOGO  */}
-                    <Link href={"/"} ><Image src={logo} alt="logo" className="h-[70px] w-auto" priority /></Link>
+                    <Link href={"/"} aria-label="ir a inicio" ><Image src={logo} alt="logo" className="h-[70px] w-auto" priority /></Link>
 
                     {/* SEARCH  / LISTA DE BÚSQUEDA*/}
                     <div className="hidden sm:block max-w-[450px] w-full relative ">
@@ -69,8 +69,8 @@ export async function TopMenu() {
 
                     {/* MENU ,CART, FAVORITE */}
                     <div className="flex gap-4">
-                        <FaLocationDot size={25} className="hidden md:block" />
-                        <Link href={"/favorite"}>
+                        <FaLocationDot size={25} className="hidden md:block" aria-label="ubicación" />
+                        <Link href={"/favorite"} aria-label="favoritos">
                             <IconCorazonLleno size={27} />
                         </Link>
                         <CartMenu />
@@ -98,7 +98,7 @@ export async function TopMenu() {
                                             {
                                                 option.menu.map(list => (
                                                     <li key={list} className="cursor-pointer hover:underline capitalize">
-                                                        <Link href={`/categories/${list}`}>{list}</Link>
+                                                        <Link href={`/categories/${list}`} aria-label={list}>{list}</Link>
                                                     </li>
                                                 ))
                                             }

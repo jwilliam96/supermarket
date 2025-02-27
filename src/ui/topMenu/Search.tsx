@@ -26,10 +26,11 @@ export function Search({ className }: { className?: string }) {
         <div className={`relative ${className} group`}>
             <div className={`flex w-full bg-white rounded-full overflow-hidden p-[1px] mx-auto ${className}`}>
                 <input
-                    type="text"
                     className="grow bg-red-500 rounded-s-full outline-white pl-4 sm:pl-8 "
-                    onChange={(e) => handleSearch(e.target.value)}
                     defaultValue={searchParams.get("query")?.toString()}
+                    onChange={(e) => handleSearch(e.target.value)}
+                    aria-label="Buscar"
+                    type="text"
                 />
                 <CiSearch size={20} className="m-2 text-red-500 shrink-0" />
             </div>

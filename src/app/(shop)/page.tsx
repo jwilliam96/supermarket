@@ -2,8 +2,8 @@
 import { CategoriesPopular, DownloadApp, Header, SectionTwo, ServiceInfo, SpecialOffersOne } from "@/ui";
 import { CardProduct, LinkButton, SwiperContainer, Title } from "@/components";
 import { getProducts } from "@/actions/products/get-products";
-import Image from "next/image";
 import { Product } from "@/interface";
+import Image from "next/image";
 
 export default async function Home() {
 
