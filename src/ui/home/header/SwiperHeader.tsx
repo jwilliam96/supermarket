@@ -2,11 +2,12 @@
 
 import { Autoplay, EffectFade } from "swiper/modules"
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { imagesHeader } from "@/utils";
-import Image from "next/image";
 
+interface Props {
+    children: JSX.Element[]
+}
 
-export function SwiperHeader() {
+export function SwiperHeader({ children }: Props) {
     return (
         <Swiper
             className="h-[400px] md:h-[550px] relative"
@@ -18,24 +19,9 @@ export function SwiperHeader() {
 
         >
             {
-                imagesHeader.map(image => (
-                    <SwiperSlide key={image.img}>
-                        <Image
-                            className="hidden md:block object-cover w-full h-full "
-                            alt={image.description}
-                            src={image.img}
-                            width={1000}
-                            height={350}
-                            priority
-                        />
-                        <Image
-                            className="block md:hidden object-cover w-full h-full"
-                            alt={image.description}
-                            src={image.img}
-                            width={768}
-                            height={550}
-                            priority
-                        />
+                children.map((child, index) => (
+                    <SwiperSlide key={index}>
+                        {child}
                     </SwiperSlide>
                 ))
             }

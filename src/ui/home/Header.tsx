@@ -1,5 +1,7 @@
 
+import { imagesHeader } from "@/utils"
 import { SwiperHeader } from "@/ui"
+import Image from "next/image"
 import Link from "next/link"
 
 
@@ -19,7 +21,22 @@ export function Header() {
                 </Link>
             </div>
 
-            <SwiperHeader />
+            <SwiperHeader>
+                {
+                    imagesHeader.map((image, index) => (
+                        <Image
+                            className="object-cover w-full h-full "
+                            sizes="(max-width: 768px) 100vw"
+                            alt={image.description}
+                            src={image.img}
+                            width={1000}
+                            height={350}
+                            key={index}
+                        />
+                    ))
+                }
+            </SwiperHeader>
+
         </header>
     )
 }
