@@ -5,11 +5,13 @@ export { SkeletonProductCart } from "./skeleton/productCart-skeleton"
 
 export { PaginationButton } from "./pagination/pagination-button"
 
+export { CardImagesProducts } from "./cards/CardImagesProducts"
 export { CardProductsGrid } from "./cards/CardProductsGrid"
 export { CardProduct } from "./cards/CardProduct"
 export { AddProduct } from "./cards/AddProduct"
 
 export { SwiperContainer } from "./swiper/SwiperContainer"
+export { SwiperProducts } from "./swiper/SwiperProducts"
 
 export { ButtonLoginRedes } from "./auth/ButtonLoginRedes"
 export { ButtonSignOut } from "./auth/ButtonSignOut"
