@@ -5,10 +5,11 @@ import { getProducts } from "@/actions/products/get-products";
 import { Product } from "@/interface";
 import Image from "next/image";
 
+
+
 export default async function Home() {
 
   const products: Product[] = await getProducts()
-
   const filterProductsOffer = products.filter(product => product.offer)
 
   return (

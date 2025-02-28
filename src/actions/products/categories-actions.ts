@@ -3,8 +3,9 @@
 
 import { Category } from "@/interface"
 import prisma from "@/lib/prisma"
+import { cache } from "react"
 
-export const getCategories = async (): Promise<Category[]> => {
+export const getCategories = cache(async (): Promise<Category[]> => {
 
     try {
 
@@ -17,4 +18,4 @@ export const getCategories = async (): Promise<Category[]> => {
         throw new Error(`hubo un error ${error}`)
     }
 
-}
+})

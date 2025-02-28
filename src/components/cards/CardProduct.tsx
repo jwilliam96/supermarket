@@ -15,29 +15,29 @@ export function CardProduct({ product }: Props) {
 
     return (
 
-        <article className="flex flex-col border border-gray-400 cursor-pointer max-w-[350px] h-[600px]  mb-6">
+        <article className="relative flex flex-col border border-gray-400 cursor-pointer max-w-[350px] h-[600px]  mb-6">
 
             {/* ETIQUETAS  */}
             {/* MEJORES OFERTAS  */}
             {
                 masVendido ? (
-                    <span className="bg-red-500 text-white text-xl py-1 px-4 absolute top-0 left-0">Mas vendido</span>
+                    <span className="bg-red-500 text-white text-xl py-1 px-4 absolute top-0 left-0 z-30">Mas vendido</span>
                 ) :
                     offer ? (
-                        <span className="bg-red-500 text-white text-xl py-1 px-4 absolute top-0 left-0">Mejor oferta</span>
+                        <span className="bg-red-500 text-white text-xl py-1 px-4 absolute top-0 left-0 z-30">Mejor oferta</span>
                     ) : null
             }
 
             {/* IMAGEN } */}
             <Link href={`/product/${id}`}>
-                <figure className="max-w-[348px] h-[350px]">
+                <figure className="max-w-[348px] h-[350px] relative mb-2">
                     <Image
-                        className="object-cover w-full h-full"
+                        className="object-cover "
                         alt={description}
                         loading="lazy"
-                        height={350}
-                        width={348}
+                        sizes="348px"
                         src={image}
+                        fill
                     />
                 </figure>
             </Link>

@@ -25,9 +25,11 @@ export function Header() {
                 {
                     imagesHeader.map((image, index) => (
                         <Image
+                            fetchPriority={index === 0 ? "high" : "auto"}
                             className="object-cover w-full h-full "
                             sizes="(max-width: 768px) 100vw"
                             alt={image.description}
+                            priority={index === 0}
                             src={image.img}
                             width={1000}
                             height={350}

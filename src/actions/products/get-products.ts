@@ -4,8 +4,9 @@
 import { notFound } from "next/navigation";
 import { Product } from "@/interface"
 import prisma from "@/lib/prisma"
+import { cache } from "react";
 
-export const getProducts = async (): Promise<Product[]> => {
+export const getProducts = cache(async (): Promise<Product[]> => {
     // Obtener productos con categorías y subCategorías relacionadas
     const products = await prisma.product.findMany({
         include: {
@@ -14,7 +15,7 @@ export const getProducts = async (): Promise<Product[]> => {
         },
     });
 
-    if (!products.length) return [];
+    if (!products) return [];
 
     // Crear un mapa para agrupar productos por subCategoría
     const productsBySubcategory = products.reduce((acc, product) => {
@@ -31,30 +32,30 @@ export const getProducts = async (): Promise<Product[]> => {
         if (mostSold) mostSold.masVendido = true;
     });
 
-
     return products;
-};
+})
 
 export const getProductsByCategories = async (category: string) => {
-    try {
-        if (!category) {
-            throw new Error("La categoría no puede estar vacía.");
-        }
 
+    if (!category) {
+        return { ok: false, message: "categoría invalida", categories: [] }
+    }
+
+    try {
         const products = await getProducts();
 
-        if (!Array.isArray(products)) {
-            throw new Error("La lista de productos no es válida.");
+        if (!products) {
+            return { ok: false, message: "productos no encontrados", categories: [] }
         }
 
         const filteredProducts = products.filter(product =>
             product.category?.category.toLowerCase() === category.toLowerCase()
         );
 
-        return filteredProducts;
+        return { ok: true, categories: filteredProducts }
 
     } catch (error) {
-        throw new Error(`Hubo un error: ${error instanceof Error ? error.message : error}`);
+        return { ok: false, message: "hubo un error", categories: [] }
     }
 }
 
