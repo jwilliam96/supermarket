@@ -1,5 +1,4 @@
 import { getProductById, getProducts } from "@/actions";
-import { notFound, redirect } from "next/navigation";
 import PoliticInfo from "@/components/PoliticInfo";
 import { IoIosArrowBack } from "react-icons/io";
 import { AddProduct } from "@/components";
@@ -16,9 +15,11 @@ export async function generateStaticParams() {
 }
 
 
-export default async function ProductPage({ params }: { params: { id: string } }) {
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
 
-    const product: Product = await getProductById(params.id)
+    const id = (await params).id
+
+    const product: Product = await getProductById(id)
 
     return (
         <div className="min-h-screen max-w-[500px] mx-auto md:max-w-[1100px] my-8">

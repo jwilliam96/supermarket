@@ -3,14 +3,17 @@ import { getSubcategoryName, paginationProduct } from "@/actions";
 import { CardProductsGrid, PaginationButton } from "@/components";
 
 interface Props {
-    params: { name: string };
-    searchParams: { page?: string };
+    params: Promise<{ name: string }>;
+    searchParams: Promise<{ [key: string]: string | string[] | undefined, page: string }>;
 }
 
 export default async function CategoryPage({ params, searchParams }: Props) {
 
-    const page = searchParams.page ? parseInt(searchParams.page) : 1
-    const filterProduct = decodeURIComponent(params.name)
+    const name = (await params).name
+    const searchPage = (await searchParams).page
+
+    const page = searchPage ? parseInt(searchPage) : 1
+    const filterProduct = decodeURIComponent(name)
     const subCategories = await getSubcategoryName(filterProduct)
 
     const { products, currentPage, totalPage } = await paginationProduct({ products: subCategories, page })
@@ -27,7 +30,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
             <CardProductsGrid products={products} />
 
-            <PaginationButton currentPage={currentPage} totalPages={totalPage} url={params.name} />
+            <PaginationButton currentPage={currentPage} totalPages={totalPage} url={name} />
         </div>
     );
 }
