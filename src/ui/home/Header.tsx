@@ -23,15 +23,13 @@ export function Header() {
 
             <SwiperHeader>
                 {
-                    imagesHeader.map((image, index) => (
+                    imagesHeader.map((image) => (
                         <Image
                             className="object-cover"
                             alt={image.description}
+                            key={image.img}
                             src={image.img}
                             sizes="100vw"
-                            width={3000}
-                            height={905}
-                            key={index}
                             priority
                             fill
                         />
