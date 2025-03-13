@@ -1,42 +1,62 @@
-
 import { imagesHeader } from "@/utils"
 import { SwiperHeader } from "@/ui"
+import Script from "next/script"
 import Image from "next/image"
 import Link from "next/link"
 
-
 export function Header() {
-
     return (
         <header className="relative">
+            {/* Contenido de texto principal */}
             <div className="absolute top-1/2 -translate-y-1/2 left-[5%] lg:left-[10%] xl:left-[20%] 2xl:left-[25%] z-50">
                 <p className="text-xl md:text-2xl">Fácil, fresco y cómodo</p>
-                <h2 className="text-3xl font-bold my-4 md:text-7xl">Compra lo <br />básico del día</h2>
-                <p className="text-2xl font-bold md:text-3xl">Ahorra en grande en <br />tus marcas favoritas</p>
+                <h2 className="text-3xl font-bold my-4 md:text-7xl">
+                    Compra lo <br /> básico del día
+                </h2>
+                <p className="text-2xl font-bold md:text-3xl">
+                    Ahorra en grande en <br /> tus marcas favoritas
+                </p>
                 <Link
-                    href={"/categories/Comida"}
+                    href="/categories/Comida"
                     className="inline-block bg-red-500 text-white text-xl px-3 py-2 rounded-full my-10"
                 >
                     Comprar ahora
                 </Link>
             </div>
 
+            {/* Imagen principal (Optimizada para LCP) */}
+            {imagesHeader.length > 0 && (
+                <Image
+                    className="object-cover"
+                    alt={imagesHeader[0].description}
+                    src={imagesHeader[0].img}
+                    loading="eager"
+                    width={3000}
+                    height={905}
+                    priority
+                />
+            )}
+
+            {/* Swiper diferido */}
             <SwiperHeader>
-                {
-                    imagesHeader.map((image, index) => (
-                        <Image
-                            className="object-cover"
-                            alt={image.description}
-                            src={image.img}
-                            sizes="100vw"
-                            key={index}
-                            priority
-                            fill
-                        />
-                    ))
-                }
+                {imagesHeader.slice(1).map((image, index) => (
+                    <Image
+                        className="object-cover"
+                        alt={image.description}
+                        src={image.img}
+                        width={1920}
+                        height={1080}
+                        key={index}
+                        loading="lazy"
+                    />
+                ))}
             </SwiperHeader>
 
+            {/* Cargar Swiper.js de forma diferida para mejorar el rendimiento */}
+            <Script
+                src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"
+                strategy="lazyOnload"
+            />
         </header>
     )
 }
