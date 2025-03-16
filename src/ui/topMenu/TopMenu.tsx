@@ -1,16 +1,15 @@
 
 
 import { ButtonAuth, IconCorazonLleno } from "@/components";
+import { SearchProducts } from "./SearchProducts";
 import { FaLocationDot } from "react-icons/fa6";
 import { selectOption } from "@/utils/topMenu";
 import logo from "/public/logo-completo.svg"
 import { MenuMobile } from "./MenuMobile";
-import { SearchProducts } from "./SearchProducts";
 import { auth } from "@/auth.config";
 import CartMenu from "./CartMenu";
 import Image from "next/image";
 import Link from "next/link";
-
 
 export async function TopMenu() {
 
@@ -35,15 +34,13 @@ export async function TopMenu() {
                     {session?.user && (
                         <div className="flex gap-4 items-center lg:ml-36">
                             <p > {session.user.name.toUpperCase()}</p>
-                            <figure>
-                                <Image
-                                    src={session.user.image ?? "https://i.pinimg.com/474x/31/ec/2c/31ec2ce212492e600b8de27f38846ed7.jpg"}
-                                    alt="foto de usuario"
-                                    width={45}
-                                    height={45}
-                                    className="rounded-full"
-                                />
-                            </figure>
+                            <Image
+                                src={session.user.image ?? "https://i.pinimg.com/474x/31/ec/2c/31ec2ce212492e600b8de27f38846ed7.jpg"}
+                                className="rounded-full object-cover"
+                                alt="foto de usuario"
+                                width={45}
+                                height={45}
+                            />
                         </div>
                     )
                     }
@@ -56,7 +53,7 @@ export async function TopMenu() {
             </div>
 
             {/* SEARCH, CART  */}
-            <div className="bg-red-500 py-5">
+            <div className="bg-red-500 py-3">
 
                 <div className="flex gap-6 justify-between items-center px-6 max-w-[1600px] mx-auto ">
                     {/* lOGO  */}
@@ -78,7 +75,7 @@ export async function TopMenu() {
                     </div>
                 </div>
                 {/* SEARCH MOBILE  */}
-                <div className="sm:hidden block mt-4 px-6 max-w-[450px] w-full mx-auto">
+                <div className="sm:hidden block my-2 px-6 max-w-[450px] w-full mx-auto">
                     <SearchProducts />
                 </div>
             </div>

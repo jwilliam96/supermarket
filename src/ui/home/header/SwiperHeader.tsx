@@ -10,7 +10,7 @@ interface Props {
 export function SwiperHeader({ children }: Props) {
     return (
         <Swiper
-            className="h-[400px] md:h-[550px] w-full relative"
+            className="h-[300px] md:h-[400px] lg:h-[550px] w-full relative"
             modules={[Autoplay, EffectFade]}
             autoplay={{ delay: 4000 }}
             spaceBetween={50}
