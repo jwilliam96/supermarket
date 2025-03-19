@@ -34,6 +34,7 @@ export function PaginationButton({ currentPage, totalPages, url }: Props) {
                 {/* Botón Anterior */}
                 {currentPage > 1 ? (
                     <Link
+                        aria-label="pagina anterior"
                         href={createUrl(currentPage - 1)}
                         className="relative inline-flex items-center rounded-l-md px-2 py-2 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 "
                     >
@@ -70,6 +71,7 @@ export function PaginationButton({ currentPage, totalPages, url }: Props) {
                 {/* Botón Siguiente */}
                 {currentPage < totalPages ? (
                     <Link
+                        aria-label="siguiente pagina"
                         href={createUrl(currentPage + 1)}
                         className="relative inline-flex items-center rounded-r-md px-2 py-2 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 "
                     >

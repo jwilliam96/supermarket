@@ -16,7 +16,7 @@ export async function TopMenu() {
     const session = await auth()
 
     return (
-        <header className=" text-white">
+        <div className=" text-white">
 
             {/* ATENCIÓN AL CLIENTE */}
             <div className="bg-red-800 py-5 px-4">
@@ -107,6 +107,6 @@ export async function TopMenu() {
                     }
                 </div>
             </div>
-        </header>
+        </div>
     )
 }
