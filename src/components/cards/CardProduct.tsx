@@ -15,7 +15,7 @@ export function CardProduct({ product }: Props) {
 
     return (
 
-        <article className="relative flex flex-col border border-gray-400 cursor-pointer max-w-[350px] h-[600px]  mb-6">
+        <article className="relative flex flex-col border border-gray-400 cursor-pointer max-w-[350px] h-[450px] md:h-[600px]  mb-6">
 
             {/* ETIQUETAS  */}
             {/* MEJORES OFERTAS  */}
@@ -30,7 +30,7 @@ export function CardProduct({ product }: Props) {
 
             {/* IMAGEN } */}
             <Link href={`/product/${id}`}>
-                <figure className="max-w-[348px] h-[350px] relative mb-2">
+                <figure className="max-w-[348px] h-[250px] md:h-[350px] relative mb-2">
                     <Image
                         className="object-cover "
                         alt={description}
